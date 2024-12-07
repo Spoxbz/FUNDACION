@@ -1,0 +1,21 @@
+.cont-modules {
+  /* border: 4px solid green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+header {
+  text-align: center;
+}
+
+.main {
+  width: inherit;
+  /* background-color: aquamarine; */
+  display: flex;
+  flex-wrap: wrap; /*Esto permitirá que las tarjetas se envuelvan */
+  align-items: center;
+  justify-content: center;
+}

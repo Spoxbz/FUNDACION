@@ -1,0 +1,29 @@
+a {
+  /*.card-container */
+  max-width: 100px;
+  min-width: 200px;
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+  justify-content: "center";
+  padding: 2;
+  text-align: "center"; /*Centra el texto*/
+  margin: 5px;
+  flex: 1 1; /* Permitir que las tarjetas se ajusten pero que tengan un tamaño mínimo */
+  margin: 10px;
+}
+
+.card-container:hover {
+  background: lightgray;
+  cursor: pointer;
+  /* opacity: 0.6; */
+  transition: 0.8s;
+}
+
+.icon-card {
+  padding: 10px;
+}
+
+.title-card {
+  text-align: center;
+}

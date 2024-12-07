@@ -1,0 +1,44 @@
+.main-container {
+  background-color: #1976d2;
+  width: 100%;
+  height: auto;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrado de los elementos dentro del contenedor */
+  justify-content: center; /* Centrado vertical */
+  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  /* border: 1px solid red; */
+}
+
+input {
+  width: 250px; /* Controlamos el ancho de los campos de texto */
+  height: 40px; /* Controlamos la altura de los campos */
+  margin-bottom: 15px; /* Separación entre campos */
+}
+
+button-login {
+  width: 20px;
+  height: 40px;
+  background-color: #1976d2;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button-login:hover {
+  background-color: #1565c0;
+}

@@ -1,0 +1,39 @@
+.appbar-container {
+  height: 64px;
+  display: flex;
+}
+
+.toolbar-content {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.left-section {
+  width: auto;
+  margin-right: 2%;
+}
+
+.img-logo {
+  height: 40px;
+  width: 40px;
+  margin: 0;
+  margin-right: 10px;
+}
+
+.midle-section {
+  display: flex;
+  width: 90%;
+  height: auto;
+  align-items: center;
+}
+
+.rigth-section {
+  display: flex;
+  align-items: center; /* Alineación vertical */
+  justify-content: flex-end; /* Alineación horizontal a la derecha */
+  /* justify-content: space-between; */
+  gap: 15px; /* Espaciado entre los elementos */
+  width: 9%; /* Ajusta el ancho al contenido */
+}
