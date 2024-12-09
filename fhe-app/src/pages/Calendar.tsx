@@ -9,22 +9,29 @@ import SpecialtyCard from "../components/StickyCards/SpecialtyCard";
 import "../CSS/calendar.css";
 import "../CSS/fullcalendar.css";
 import ProfessionalCard from "../components/StickyCards/ProfessionalCard";
+import { Stack } from "@mui/material";
 
 const Calendar: React.FC = () => {
   return (
     <div className="container-schedule">
-      <header className="header-schedule">
+      <header className="encabezado-schedule">
         <h1>Agenda</h1>
       </header>
       <main className="main-content-calendar">
         <aside className="aside-calendar">
           <SpecialtyCard />
+          <br />
           <ProfessionalCard />
         </aside>
         <div className="display-calendar">
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]} // Registra los módulos
             initialView="dayGridMonth" // Vista inicial (mes en cuadrícula)
+            themeSystem="luxon" // Tema del calendario
+            headerToolbar={{
+              start: "title",
+              center: "dayGridMonth,timeGridWeek,timeGridDay",
+            }}
             editable={true} // Permite arrastrar y soltar eventos
             selectable={true} // Permite seleccionar fechas y horarios
             aspectRatio={1.5} // Proporción de la altura y anchura del calendario

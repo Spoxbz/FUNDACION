@@ -17,7 +17,7 @@ export default function LogOptions({ title, icon, onClick }: LogOptionsProps) {
   };
 
   return (
-    <a onClick={handleNavigation}>
+    <div className="carta-modulos" onClick={handleNavigation}>
       <Card className="card-container">
         <CardMedia
           className="icon-card"
@@ -42,7 +42,7 @@ export default function LogOptions({ title, icon, onClick }: LogOptionsProps) {
           </Typography>
         </CardContent>
       </Card>
-    </a>
+    </div>
   );
 }
 

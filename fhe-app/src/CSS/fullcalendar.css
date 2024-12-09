@@ -1,14 +1,59 @@
 /* Cambia el tamaño de las celdas en la vista de cuadrícula diaria */
 .fc-daygrid-day {
-  height: 100px; /* Ajusta la altura de las celdas */
-  min-height: 80px; /* Altura mínima para evitar colapso */
+  height: 5px; /* Ajusta la altura de las celdas */
+  min-height: 0px; /* Altura mínima para evitar colapso */
+  width: 10px;
+  min-width: 5px;
 }
 
+/**********************Vista de calendario en mes*********************************/
+/*?Header tool bar */
+
+/*cabecera de tabla*/
+.fc-col-header {
+  background-color: aqua;
+  font-family: "Courier New", Courier, monospace;
+  text-align: left;
+}
+
+/*Clase de texto de celdas de cabecera*/
+.fc th {
+  text-align: center;
+}
+
+/*Texto de la cabecera de las columnas*/
+.fc-col-header-cell-cushion {
+  /* background-color: white; */
+  border: 1px solid black;
+}
+/*Clase contenedor de texto cabecera tabla de dias y eventos*/
+a {
+  width: auto;
+  min-width: 10px;
+}
+/*Clase para celdas de cabecera y celdas de dia*/
+.fc-day {
+  background-color: red;
+  width: 10px;
+  max-width: 200px;
+  min-width: 10px;
+  border: 1px solid black;
+  text-align: left;
+}
+/*Celdas de calendario*/
+.fc-daygrid-day-frame {
+  background-color: antiquewhite;
+  width: 50%;
+}
+/*Estilo de todas las celdas con cabecera y todo*/
+.fc-scrollgrid-sync-inner {
+  /* background-color: green; */
+}
 /* Opcional: Cambiar el tamaño de las celdas en la vista de cuadrícula horaria */
 .fc-timegrid-slot {
   height: 50px; /* Altura de cada franja horaria */
 }
-
+/*******************Estilos Responsive***************************/
 @media (max-width: 768px) {
   .fc-daygrid-day {
     height: 70px; /* Reduce el tamaño de las celdas en pantallas pequeñas */
