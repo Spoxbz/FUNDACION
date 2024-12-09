@@ -1,0 +1,58 @@
+.container-schedule {
+  border: 1px solid red;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-schedule {
+  border: 1px dashed green;
+  width: 100%;
+  text-align: center;
+}
+.header-schedule > h1 {
+  margin: 0;
+}
+
+.main-content-calendar {
+  border: 1px solid blue;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos cambien de posición en pantallas pequeñas */
+  justify-content: center;
+  align-items: flex-start;
+  /*Espaciado entre elementos*/
+  gap: 2rem;
+}
+
+.aside-calendar {
+  /* border: 1px solid black; */
+  flex: 1;
+  min-width: 150px;
+  max-width: 200px;
+}
+
+.display-calendar {
+  flex: 2;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 320px;
+}
+
+@media (max-width: 768px) {
+  .main-content-calendar {
+    flex-direction: column; /* Cambia a diseño vertical en pantallas pequeñas */
+    align-items: center;
+  }
+
+  .aside-calendar {
+    width: 100%;
+  }
+
+  .display-calendar {
+    width: 100%;
+  }
+}

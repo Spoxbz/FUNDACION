@@ -1,0 +1,20 @@
+/* Cambia el tamaño de las celdas en la vista de cuadrícula diaria */
+.fc-daygrid-day {
+  height: 100px; /* Ajusta la altura de las celdas */
+  min-height: 80px; /* Altura mínima para evitar colapso */
+}
+
+/* Opcional: Cambiar el tamaño de las celdas en la vista de cuadrícula horaria */
+.fc-timegrid-slot {
+  height: 50px; /* Altura de cada franja horaria */
+}
+
+@media (max-width: 768px) {
+  .fc-daygrid-day {
+    height: 70px; /* Reduce el tamaño de las celdas en pantallas pequeñas */
+  }
+
+  .fc-timegrid-slot {
+    height: 40px; /* Ajusta la altura de las franjas horarias */
+  }
+}
