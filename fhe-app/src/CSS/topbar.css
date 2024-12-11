@@ -1,24 +1,35 @@
 .appbar-container {
-  height: 64px;
   display: flex;
+  height: fit-content;
+  box-sizing: border-box;
+  background-color: #1976d2;
+  /*estilos para mantener el topbar arriba*/
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+  font-family: "Roboto", sans-serif;
 }
 
 .toolbar-content {
   display: flex;
   width: 100%;
+  height: 40px;
   box-sizing: border-box;
-  justify-content: space-between;
 }
 
 .left-section {
   width: auto;
-  margin-right: 2%;
+  margin-left: 1%;
+  margin-right: 0.9%;
+  display: flex;
+  align-items: center;
 }
 
 .img-logo {
-  height: 40px;
-  width: 40px;
-  margin: 0;
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
   margin-right: 10px;
 }
 
@@ -27,13 +38,32 @@
   width: 90%;
   height: auto;
   align-items: center;
+  border: 1px solid black;
+}
+.midle-section h1 {
+  margin: 0;
 }
 
 .rigth-section {
+  border: 1px solid black;
   display: flex;
-  align-items: center; /* Alineación vertical */
-  justify-content: flex-end; /* Alineación horizontal a la derecha */
-  /* justify-content: space-between; */
-  gap: 15px; /* Espaciado entre los elementos */
-  width: 9%; /* Ajusta el ancho al contenido */
+  align-items: center;
+  justify-content: space-between;
+  width: 10%; /* Ajusta el ancho al contenido */
+}
+
+/**Media Querys**/
+
+@media (max-width: 700px) {
+  .midle-section h1 {
+    margin: 0;
+    font-size: x-large;
+  }
+}
+
+@media (max-width: 540px) {
+  .midle-section h1 {
+    margin: 0;
+    font-size: large;
+  }
 }

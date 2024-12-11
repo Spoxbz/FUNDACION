@@ -4,7 +4,7 @@ import SpecialtyBodyCard from "./SpecialtyBodyCard";
 export default function SpecialtyCard() {
   return (
     <>
-      <Card>
+      <Card className="tarjetas">
         <CardContent>
           <SpecialtyBodyCard title={"Especialidad"} />
         </CardContent>

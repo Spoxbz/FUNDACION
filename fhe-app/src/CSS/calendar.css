@@ -1,5 +1,5 @@
 .container-schedule {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   /* width: 100%; */
   height: fit-content;
   display: flex;
@@ -15,7 +15,7 @@
   text-align: center;
 }
 .encabezado-schedule > h1 {
-  margin: 0;
+  margin: 10px;
 }
 
 .main-content-calendar {
@@ -26,22 +26,22 @@
   justify-content: center;
   align-items: flex-start;
   /*Espaciado entre elementos*/
-  gap: 2rem;
+  /* gap: 2rem; */
 }
 
 .aside-calendar {
   /* border: 1px solid black; */
   flex: 1;
   min-width: 150px;
-  max-width: 200px;
-  margin-left: 1%;
+  max-width: 300px;
+  /* margin-left: 1%; */
 }
 
 .display-calendar {
   flex: 2;
-  width: 100%;
-  /* max-width: 1200px; */
   min-width: 320px;
+  background-color: white;
+  box-shadow: 10px 10px 15px gray;
 }
 
 @media (max-width: 768px) {

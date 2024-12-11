@@ -55,7 +55,11 @@ export default function LoginPage() {
               Iniciar Sesión
             </Typography>
             {/* Logo */}
-            <img src="logo.avif" alt="Logo FHE" />
+            <img
+              style={{ marginBottom: "15px" }}
+              src="logo.avif"
+              alt="Logo FHE"
+            />
 
             {/* Formulario */}
             <Box
@@ -73,6 +77,7 @@ export default function LoginPage() {
                 required
                 fullWidth
                 className="input-field" // Aplica la clase para personalizar el tamaño
+                sx={{ marginBottom: "15px" }}
               />
               <TextField
                 label="Contraseña"
@@ -83,6 +88,7 @@ export default function LoginPage() {
                 required
                 fullWidth
                 className="input-field" // Aplica la clase para personalizar el tamaño
+                sx={{ marginBottom: "15px" }}
               />
               {errorMessage && (
                 <Typography color="error" align="center">

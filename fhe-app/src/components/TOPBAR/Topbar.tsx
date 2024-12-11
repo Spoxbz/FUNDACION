@@ -1,21 +1,11 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Box,
-  Menu,
-  MenuItem,
-  Avatar,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import "../../CSS/topbar.css";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Avatar } from "@mui/material";
 
 interface TopbarProps {
   onMenuClick: () => void;
   onMenuOpen: (event: React.MouseEvent<HTMLElement>) => void;
-  onMenuClose: () => void;
   username: string;
   menuAnchorEl: null | HTMLElement;
   onLogout: () => void;
@@ -25,86 +15,73 @@ interface TopbarProps {
 const Topbar: React.FC<TopbarProps> = ({
   onMenuClick,
   onMenuOpen,
-  onMenuClose,
   username,
   menuAnchorEl,
   onLogout,
   toggleButtonRef,
 }) => {
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        zIndex: (theme) => theme.zIndex.drawer + 1,
-      }}
-      className="appbar-container"
-    >
-      <Toolbar className="toolbar-content">
-        {/* Sección izquierda */}
-        <Box
-          className="left-section"
-          sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}
-        >
-          <IconButton
+    <header className="appbar-container">
+      <div className="toolbar-content">
+        {/* Sección izquierda: Botón para desplegar el Sidebar */}
+        <div className="left-section">
+          <button
             ref={toggleButtonRef}
-            color="inherit"
             onClick={onMenuClick}
             aria-label="toggle drawer"
-            edge="start"
-            sx={{ marginLeft: 0 }}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Box>
-
-        {/* Sección central */}
-
-        <Box className="midle-section">
-          <img className="img-logo" src="logo.avif" alt="" />
-          <Typography variant="h6">Fundación Hogar del Ecuador</Typography>
-        </Box>
-
-        {/* Sección derecha */}
-        <Box className="rigth-section" onClick={onMenuOpen}>
-          <IconButton
-            color="inherit"
-            aria-controls="user-menu"
-            aria-haspopup="true"
-            onClick={onMenuOpen}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 1, // Espacio entre el Avatar y el texto
+            style={{
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "1.5rem",
             }}
           >
-            <Avatar
-              sx={{
-                width: 30,
-                height: 30,
-              }}
-              src=""
-            />
-          </IconButton>
-          <Typography
-            variant="body1"
+            <MenuIcon />
+          </button>
+        </div>
+
+        {/* Sección central */}
+        <div className="midle-section">
+          <img className="img-logo" src="logo.avif" alt="Logo" />
+          <h1>Fundación Hogar del Ecuador</h1>
+        </div>
+
+        {/* Sección derecha */}
+        <div className="rigth-section">
+          {/* Avatar */}
+          <Avatar
+            sx={{ width: "30px", height: "30px" }}
+            onClick={onMenuOpen}
             style={{ cursor: "pointer" }}
-            flexWrap={"wrap"}
-          >
-            {username}
-          </Typography>
-          <Menu
-            id="user-menu"
-            anchorEl={menuAnchorEl}
-            open={Boolean(menuAnchorEl)}
-            onClose={onMenuClose}
-          >
-            <MenuItem>Settings</MenuItem>
-            <MenuItem onClick={onLogout}>Cerrar Sesion</MenuItem>
-          </Menu>
-        </Box>
-      </Toolbar>
-    </AppBar>
+          />
+
+          {/* Menú desplegable */}
+          {menuAnchorEl && (
+            <div
+              id="user-menu"
+              style={{
+                position: "absolute",
+                top: "50px",
+                right: "10px",
+                background: "white",
+                border: "1px solid #ddd",
+                boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+                padding: "10px",
+                zIndex: 1001,
+              }}
+            >
+              <p>{username}</p>
+              <button
+                onClick={onLogout}
+                style={{ display: "block", marginBottom: "10px" }}
+              >
+                Cerrar Sesión
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
   );
 };
 

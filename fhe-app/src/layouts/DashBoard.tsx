@@ -44,7 +44,11 @@ export default function DashBoard() {
 
   // Abrir el menú del usuario
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMenuAnchorEl(event.currentTarget);
+    if (menuAnchorEl) {
+      setMenuAnchorEl(null); // Si ya está abierto, ciérralo
+    } else {
+      setMenuAnchorEl(event.currentTarget); // Ábrelo
+    }
   };
 
   // Cerrar el menú del usuario
@@ -56,7 +60,7 @@ export default function DashBoard() {
   const handleLogout = () => {
     console.log("Cerrando sesión...");
     client.auth.signOut();
-    handleMenuClose();
+    // handleMenuClose();
   };
 
   // Cambiar el módulo que se está mostrando
@@ -82,7 +86,6 @@ export default function DashBoard() {
       <Topbar
         onMenuClick={toggleSidebar}
         onMenuOpen={handleMenuOpen}
-        onMenuClose={handleMenuClose}
         username={username}
         menuAnchorEl={menuAnchorEl}
         onLogout={handleLogout}
