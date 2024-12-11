@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
+import { useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -8,6 +8,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import { Home } from "@mui/icons-material";
+//Estilos
+import "../../CSS/sidebar.css";
 
 const drawerWidth = 160; // 240 default
 
@@ -32,14 +34,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
-}));
-
 interface SidebarProps {
   open: boolean;
   handleDrawerClose: () => void;
@@ -58,6 +52,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open }) => {
 
   return (
     <MuiDrawer
+      className="barra-lateral"
       variant="permanent"
       open={open}
       sx={{
@@ -73,12 +68,13 @@ const Sidebar: React.FC<SidebarProps> = ({ open }) => {
         }),
       }}
     >
-      <DrawerHeader></DrawerHeader>
+      <br />
+      <br />
       <List>
         {listOptions.map((text, index) => (
           <ListItem key={text} disablePadding sx={{ display: "block" }}>
             <ListItemButton
-              style={{ color: "black" }}
+              style={{ color: "white" }}
               sx={{
                 minHeight: 48,
                 px: 2.5,
@@ -90,6 +86,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open }) => {
                   minWidth: 0,
                   justifyContent: "center",
                   mr: open ? 3 : "auto",
+                  color: "white",
                 }}
               >
                 {index % 2 === 0 ? <Home /> : <MailIcon />}

@@ -11,7 +11,12 @@ export default function SpecialtyBodyCard(props: SpecialtyCardBodyProps) {
   const listespecialities: string[] = [
     "Ondotologia",
     "Cardiologia",
-    "otorrinolaringología",
+    "Prefesion 3",
+    "Prefesion 4",
+    "Prefesion 5",
+    "Prefesion 6",
+    "Prefesion 7",
+    "Prefesion 8",
   ];
 
   return (

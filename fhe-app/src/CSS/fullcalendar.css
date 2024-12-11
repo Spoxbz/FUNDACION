@@ -2,7 +2,7 @@
 .fc-header-toolbar {
   /* background-color: #f4f4f4; */
   width: 100%;
-  padding: 10px 0;
+  /* padding: 10px 0; */
 }
 
 .fc-col-header-cell-cushion {
@@ -14,14 +14,15 @@
   font-weight: bold;
 }
 .fc-daygrid-day-frame {
-  background-color: antiquewhite;
+  background-color: lightgrey;
   border: 1px solid #ddd;
   /* width: 50%; */
 }
 
 /*Clase div de cabecera tabla*/
 .fc th {
-  background-color: #1976d2;
+  /* background-color: #1976d2; */
+  background-color: #374fa7;
 }
 
 /*******************Estilos vista de semana*************************/

@@ -15,7 +15,7 @@ export default function StickyListCard(props: Props) {
 
   return (
     <Box>
-      <List>
+      <List className="contenido-carta">
         {data.map((elemento, i) => (
           <ListItem
             key={elemento}

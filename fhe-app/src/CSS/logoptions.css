@@ -11,10 +11,12 @@
   margin: 5px;
   flex: 1 1; /* Permitir que las tarjetas se ajusten pero que tengan un tamaño mínimo */
   margin: 10px;
+  border: 2px solid #8d9bcd;
+  border-radius: 4px;
 }
 
 .card-container:hover {
-  background: lightgray;
+  background: #c6cde6;
   cursor: pointer;
   /* opacity: 0.6; */
   transition: 0.8s;

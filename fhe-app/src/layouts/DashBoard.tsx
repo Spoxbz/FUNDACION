@@ -13,6 +13,7 @@ export default function DashBoard() {
   const sidebarRef = useRef<HTMLDivElement | null>(null); // Referencia al sidebar
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null); // Referencia al botón de toggle
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null); // Estado del menú desplegable
+  const menuRef = useRef<HTMLDivElement | null>(null); // Referencia al menú desplegable
   const username = "Bruno Bravo"; // Nombre del usuario en sesión
   const [currentModule, setCurrentModule] = useState<React.ReactNode>(null); // Estado para el módulo actual
 
@@ -32,6 +33,10 @@ export default function DashBoard() {
     ) {
       setOpen(false);
     }
+
+    if (menuAnchorEl && menuRef.current && !menuRef.current.contains(target)) {
+      setMenuAnchorEl(null);
+    }
   };
 
   // Agregar y limpiar listeners de clic
@@ -40,20 +45,16 @@ export default function DashBoard() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [menuAnchorEl]);
 
-  // Abrir el menú del usuario
+  // Abrir o cerrar el menú del usuario
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    if (menuAnchorEl) {
-      setMenuAnchorEl(null); // Si ya está abierto, ciérralo
+    // Verificar si el menú ya está abierto y el clic es sobre el mismo elemento
+    if (menuAnchorEl && menuAnchorEl === event.currentTarget) {
+      setMenuAnchorEl(null); // Cierra el menú
     } else {
-      setMenuAnchorEl(event.currentTarget); // Ábrelo
+      setMenuAnchorEl(event.currentTarget); // Abre el menú
     }
-  };
-
-  // Cerrar el menú del usuario
-  const handleMenuClose = () => {
-    setMenuAnchorEl(null);
   };
 
   // Cerrar sesión
@@ -80,9 +81,7 @@ export default function DashBoard() {
   }, []);
 
   return (
-    <Box sx={{ display: "flex", height: "100vh" }}>
-      {/* <CssBaseline /> */}
-      {/* Barra superior */}
+    <Box className={"dashboardpage-container"}>
       <Topbar
         onMenuClick={toggleSidebar}
         onMenuOpen={handleMenuOpen}
@@ -90,14 +89,13 @@ export default function DashBoard() {
         menuAnchorEl={menuAnchorEl}
         onLogout={handleLogout}
         toggleButtonRef={toggleButtonRef} // Pasar la referencia del botón
+        menuRef={menuRef} // Pasar la referencia del menú
       />
 
-      {/* Sidebar */}
       <div ref={sidebarRef}>
         <Sidebar open={open} handleDrawerClose={() => setOpen(false)} />
       </div>
 
-      {/* Contenido principal */}
       <div className="dash-content">{currentModule}</div>
     </Box>
   );

@@ -34,8 +34,8 @@ export default function Modules({
 }) {
   return (
     <div className="cont-modules">
-      <header>
-        <h1>Sus Módulos</h1>
+      <header className="headerModulesPage">
+        <h1 className="titleHeaderModules">Sus Módulos</h1>
       </header>
       <div className="main">
         {" "}

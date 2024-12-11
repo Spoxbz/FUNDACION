@@ -10,6 +10,7 @@ interface TopbarProps {
   menuAnchorEl: null | HTMLElement;
   onLogout: () => void;
   toggleButtonRef: React.RefObject<HTMLButtonElement>;
+  menuRef: React.RefObject<HTMLDivElement>;
 }
 
 const Topbar: React.FC<TopbarProps> = ({
@@ -19,11 +20,11 @@ const Topbar: React.FC<TopbarProps> = ({
   menuAnchorEl,
   onLogout,
   toggleButtonRef,
+  menuRef,
 }) => {
   return (
     <header className="appbar-container">
       <div className="toolbar-content">
-        {/* Sección izquierda: Botón para desplegar el Sidebar */}
         <div className="left-section">
           <button
             ref={toggleButtonRef}
@@ -36,29 +37,26 @@ const Topbar: React.FC<TopbarProps> = ({
               fontSize: "1.5rem",
             }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ color: "white" }} />
           </button>
         </div>
 
-        {/* Sección central */}
         <div className="midle-section">
-          <img className="img-logo" src="logo.avif" alt="Logo" />
+          <img className="img-logo" src="Logo.avif" alt="Logo" />
           <h1>Fundación Hogar del Ecuador</h1>
         </div>
 
-        {/* Sección derecha */}
         <div className="rigth-section">
-          {/* Avatar */}
           <Avatar
             sx={{ width: "30px", height: "30px" }}
             onClick={onMenuOpen}
             style={{ cursor: "pointer" }}
           />
 
-          {/* Menú desplegable */}
           {menuAnchorEl && (
             <div
               id="user-menu"
+              ref={menuRef}
               style={{
                 position: "absolute",
                 top: "50px",
@@ -81,6 +79,7 @@ const Topbar: React.FC<TopbarProps> = ({
           )}
         </div>
       </div>
+      <div className="divisor"></div>
     </header>
   );
 };

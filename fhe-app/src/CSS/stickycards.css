@@ -1,3 +1,44 @@
 .tarjetas {
-  width: 200px;
+  width: 250px;
+  height: auto; /*Para poder hacer que el scroll funcione se pone en auto la altura del contenedor*/
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 0;
 }
+
+.contenido-carta {
+  /*Scroll de la lista que muestra informacion*/
+  position: relative;
+  overflow: auto;
+  max-height: 150px;
+}
+
+/** Estilos calendario pequeño*/
+.calen-small {
+  background-color: white;
+  border: 1px solib black;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 250px; /* Cambia según sea necesario */
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 0;
+}
+
+.calendar-container {
+  width: 100%; /* Se adapta al ancho del contenedor padre */
+  transform: scale(0.8); /* Escala el calendario */
+  transform-origin: top center; /* Fija el punto de escala */
+}
+
+.calendar-container > * {
+  width: 90% !important; /* Sobrescribe el tamaño predeterminado */
+}
+
+/* .css-1n1xn3x-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition {
+  border: 1px solid black;
+  background-color: aqua;
+} */
