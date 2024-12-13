@@ -1,7 +1,7 @@
 import { CardHeader, Divider } from "@mui/material";
 import StickyListCard from "./StickyListCard";
 //Estilos
-import "../../CSS/stickycards.css";
+import "../../CSS/calendar.css";
 
 type ProfessionalBodyCardProps = {
   title: string;
@@ -22,7 +22,7 @@ export default function ProfessionBodyCard(props: ProfessionalBodyCardProps) {
   ];
   return (
     <>
-      <CardHeader title={title} />
+      <CardHeader className="encabezado-tarjetas" title={title} />
       <Divider />
       <div>
         <StickyListCard data={professionallist} />

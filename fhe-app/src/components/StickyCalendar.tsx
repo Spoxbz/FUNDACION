@@ -1,14 +1,14 @@
 import { DateCalendar, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 // Estilos
-import "../CSS/stickycards.css";
+import "../CSS/calendar.css";
 
 export default function StickyCalendar() {
   return (
-    <div className="calen-small">
+    <div className="small-calendar">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <div className="calendar-container">
-          <DateCalendar />
+          <DateCalendar displayWeekNumber />
         </div>
       </LocalizationProvider>
     </div>

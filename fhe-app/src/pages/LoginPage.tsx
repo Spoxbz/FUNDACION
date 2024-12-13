@@ -56,8 +56,8 @@ export default function LoginPage() {
             </Typography>
             {/* Logo */}
             <img
-              style={{ marginBottom: "15px" }}
-              src="logo.avif"
+              style={{ marginBottom: "15px", width: "120px", height: "100px" }}
+              src="Logo.avif"
               alt="Logo FHE"
             />
 
@@ -66,6 +66,7 @@ export default function LoginPage() {
               component="form"
               onSubmit={handleLogin}
               sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+              className="input-areas"
             >
               <TextField
                 label="Correo"

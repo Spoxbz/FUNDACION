@@ -21,11 +21,8 @@
 
 .main-content-calendar {
   /* border: 1px solid blue; */
-  width: 98%;
   height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   /*Espaciado entre elementos*/
   gap: 1rem;
 }
@@ -34,36 +31,121 @@
   /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
-  min-width: 150px;
+  align-items: start;
   width: auto;
   height: auto;
 }
 
 .display-calendar {
-  flex: 2;
+  /* flex: 2; */
   background-color: white;
-  box-shadow: 10px 10px 15px gray;
-  border: 1px solid black;
+  /* box-shadow: 10px 10px 15px gray; */
+  width: auto;
   height: 100%;
   font-family: "Roboto", sans-serif;
 }
 
-@media (max-width: 768px) {
+/**********StickyCards************/
+.tarjetas {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 10px;
+  padding: 0;
+  align-items: center;
+}
+/*Encabezado de tarjetas*/
+.encabezado-tarjetas {
+  padding-top: 10px !important;
+  padding-left: 10px !important;
+  padding-right: 0 !important;
+  padding-bottom: 1px !important;
+  border-bottom: 1px !important;
+}
+
+/*Clase padding tarjetas de mui*/
+.css-1lt5qva-MuiCardContent-root {
+  padding: 0 !important;
+}
+
+.lista-contenido-carta {
+  /*Scroll de la lista que muestra informacion*/
+  position: relative;
+  overflow: auto;
+  max-height: 170px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  width: 80%;
+  margin-top: 8px !important;
+  margin-left: 10% !important;
+  margin-bottom: 0px !important;
+  cursor: pointer;
+}
+
+.contenido-tarjeta {
+  padding: 0;
+}
+
+/** Estilos calendario pequeño*/
+/* .small-calendar {
+  border: 1px solid black;
+} */
+
+.calendar-container {
+  width: 100%; /* Se adapta al ancho del contenedor padre */
+  transform: scale(0.8); /* Escala el calendario */
+  transform-origin: top center; /* Fija el punto de escala */
+}
+
+.calendar-container > * {
+  display: block !important;
+  width: 100% !important; /* Sobrescribe el tamaño predeterminado */
+  background-color: white;
+  border-radius: 4px;
+  height: 300px !important;
+  margin-bottom: 0 !important;
+}
+/*Contenedor fechas sticky Calendar*/
+/* .css-1n1xn3x-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition {
+  background-color: aqua;
+} */
+
+/***********Responsive***********/
+@media (min-width: 850px) {
+  .aside-cards {
+    display: flex;
+  }
+}
+
+@media (max-width: 770px) {
   .main-content-calendar {
     flex-direction: column;
     align-items: center;
   }
 
   .display-calendar {
-    width: 100%;
+    width: auto;
+    margin-left: 0%;
   }
-}
 
-@media (max-width: 834px) {
+  /**Aside**/
   .aside-calendar {
-    background-color: blue;
     width: 100%;
     display: flex;
     flex-direction: row;
+    padding-left: 0;
+  }
+  .tarjetas {
+    width: 100%;
+  }
+  .calendar-container > * {
+    width: auto !important; /* Sobrescribe el tamaño predeterminado */
+  }
+  /**Calendario Principal**/
+  .display-calendar {
+    width: auto;
+  }
+  /*Calendario pequeño*/
+  .small-calendar {
+    width: 30%;
   }
 }

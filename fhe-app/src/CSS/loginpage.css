@@ -18,15 +18,15 @@
   align-items: center;
   background-color: white;
   border-radius: 10px;
-  height: 300px;
+  min-height: 200px;
+  height: 350px;
+  max-height: 350;
   padding: 20px;
-  /* border: 1px solid red; */
 }
 
-.input-field {
-  width: 2500px; /* Controlamos el ancho de los campos de texto */
-  height: 40px; /* Controlamos la altura de los campos */
-  margin-bottom: 15px; /* Separación entre campos */
+.input-areas {
+  height: 100%;
+  margin-top: 10px;
 }
 
 .login {

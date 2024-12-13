@@ -9,16 +9,13 @@ import "../CSS/calendar.css";
 const Calendar: React.FC = () => {
   return (
     <div className="container-schedule">
-      <header className="encabezado-schedule">
-        <h1>Agenda</h1>
-      </header>
+      {/* <header className="encabezado-schedule"><h1>Agenda</h1></header> */}
       <main className="main-content-calendar">
         <aside className="aside-calendar">
           <SpecialtyCard />
           <ProfessionalCard />
           <StickyCalendar />
         </aside>
-        <div style={{ width: "30%" }}></div>
         <Box className="display-calendar">
           <FullCalendarEmisor />
         </Box>

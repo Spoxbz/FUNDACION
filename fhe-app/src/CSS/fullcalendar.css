@@ -1,13 +1,27 @@
+.fc-media-screen {
+  /* border: 1px solid black; */
+  background-color: #374fa7;
+}
+
 /**********************Vista de calendario en mes*********************************/
 .fc-header-toolbar {
-  /* background-color: #f4f4f4; */
+  /* background-color: green; */
   width: 100%;
-  /* padding: 10px 0; */
+  padding: 10px 0;
+  color: #fff;
+  margin-bottom: 0 !important;
+  height: 100px !important;
+  display: flex !important;
+  background: gray;
+  width: 100% !important;
+  border: 1px solid black;
+  padding: 0 !important;
 }
 
 .fc-col-header-cell-cushion {
   /* border: 1px dashed black;   */
   text-align: center;
+  color: #fff;
 }
 .fc-col-header-cell {
   text-transform: uppercase;
@@ -30,8 +44,10 @@
   border: 1px solid #ccc;
   background-color: #fff;
 }
+/*Texto  cabecera columna hora jornada*/
 .fc-timegrid-axis-cushion {
   font-weight: bold;
+  color: white;
 }
 /*******************Estilos Responsive***************************/
 @media (max-width: 768px) {
