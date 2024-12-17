@@ -63,6 +63,12 @@ export default function SpecialtyBodyCard(props: SpecialtyCardBodyProps) {
     "Prefesion 6",
     "Prefesion 7",
     "Prefesion 8",
+    "Prefesion 8",
+    "Prefesion 8",
+    "Prefesion 8",
+    "Prefesion 8",
+    "Prefesion 8",
+    "Prefesion 8",
   ];
 
   return (

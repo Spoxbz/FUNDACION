@@ -3,6 +3,11 @@
   background-color: #374fa7;
 }
 
+/*Estilos para los botones y titulo del full calendar*/
+.fc-toolbar-chunk {
+  /* background: #ccc; */
+  margin: 0 !important;
+}
 /**********************Vista de calendario en mes*********************************/
 .fc-header-toolbar {
   /* background-color: green; */
@@ -12,9 +17,8 @@
   margin-bottom: 0 !important;
   height: 100px !important;
   display: flex !important;
-  background: gray;
+  /* justify-content: space-around !important; */
   width: 100% !important;
-  border: 1px solid black;
   padding: 0 !important;
 }
 
