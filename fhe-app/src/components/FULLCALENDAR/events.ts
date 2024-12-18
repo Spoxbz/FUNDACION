@@ -1,13 +1,13 @@
-// Events.ts
+// Eventos fijos
+export const getFixedEvents = () => {
+  return [
+    { title: "Evento Fijo 1", date: "2024-12-09" },
+    { title: "Evento Fijo 2", date: "2024-12-10" },
+  ];
+};
 
-// Funcion de eventos fijos en el calendario
-export const getFixedEvents = () => [
-  { title: "Evento Fijo 1", date: "2024-12-09" },
-  { title: "Evento Fijo 2", date: "2024-12-10" },
-];
-
-// Funcion de eventos dinamicos en el calendario
-export const getDynamicEvents = (): { title: string; date: string }[] => {
+// Generar eventos dinámicos
+export const getDynamicEvents = () => {
   const today = new Date();
   const yesterday = new Date(today);
   const tomorrow = new Date(today);

@@ -1,24 +1,19 @@
-// Estilos
-import "../../CSS/fullcalendar.css";
-import "../../CSS/calendar.css";
-
-// FullCalendarEmisor.tsx
 import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
+import { getFixedEvents, getDynamicEvents } from "./events"; // Lógica separada
+//Estilos
+import "../../CSS/fullcalendar.css";
+import { CustomButtons } from "./custombuttons/customButtonTypes";
 
-import { getFixedEvents, getDynamicEvents } from "./events";
-import {
-  timeGridDayView,
-  timeGridWeekView,
-  dayGridMonthView,
-} from "./customviews/CustomViews";
-import { customButtons } from "./custombuttons/CustomButtons";
+interface Props {
+  customButtons: CustomButtons; // Personaliza el tipo si lo prefieres
+}
 
-const FullCalendarEmisor: React.FC = () => {
+const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
   const [fixedEvents] = useState(getFixedEvents());
   const [dynamicEvents, setDynamicEvents] = useState<
     { title: string; date: string }[]
@@ -28,15 +23,27 @@ const FullCalendarEmisor: React.FC = () => {
     setDynamicEvents(getDynamicEvents());
   }, []);
 
+  const timeGridDayView = {
+    slotDuration: "00:15:00",
+    slotLabelFormat: { hour: "2-digit", minute: "2-digit" } as const, // Agregado "as const" para garantizar el tipo correcto
+  };
+
+  const timeGridWeekView = {
+    slotDuration: "00:15:00",
+    slotLabelFormat: { hour: "2-digit", minute: "2-digit" } as const, // Igual que arriba
+  };
+
+  const dayGridMonthView = {};
+
   return (
     <FullCalendar
       locale={esLocale}
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
       initialView="timeGridDay"
       headerToolbar={{
-        start: "prev,next today addEventButton", // Botón personalizado agregado aquí
-        center: "title",
-        end: "timeGridDay,timeGridWeek,dayGridMonth",
+        start: "title,prev,next,today",
+        center: "timeGridDay,timeGridWeek,dayGridMonth",
+        end: "deleteEventButton,emitEventButton,rescheduleEventButton,reserveEventButton,openModalButton",
       }}
       customButtons={customButtons}
       views={{

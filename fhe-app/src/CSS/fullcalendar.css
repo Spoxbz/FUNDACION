@@ -3,11 +3,39 @@
   background-color: #374fa7;
 }
 
-/*Estilos para los botones y titulo del full calendar*/
+/******Estilos Botones personalizados del headertoolbar*******/
 .fc-toolbar-chunk {
-  /* background: #ccc; */
-  margin: 0 !important;
+  width: 100% !important;
+  height: 100%;
+  margin: 10px !important;
+  padding: 0px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
+.fc-button-group {
+  /* border: 1px solid; */
+  width: 100%;
+  margin: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fc-button {
+  margin: 5px !important;
+  padding: 0 !important;
+  width: 20% !important;
+}
+
+/* .fc-reserveEventButton-button {
+} */
+
+.fc-toolbar-title {
+  text-transform: uppercase;
+}
+
 /**********************Vista de calendario en mes*********************************/
 .fc-header-toolbar {
   /* background-color: green; */
