@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -6,12 +6,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import MenuIcon from "@mui/icons-material/Menu";
 import MailIcon from "@mui/icons-material/Mail";
 import { Home } from "@mui/icons-material";
-//Estilos
 import "../../CSS/sidebar.css";
 
-const drawerWidth = 150; // 240 default
+const drawerWidth = 150; // Ancho del drawer
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -39,15 +39,15 @@ interface SidebarProps {
   handleDrawerClose: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ open }) => {
+const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
   const listOptions: string[] = [
-    "Opcion1",
-    "Opcion 2",
-    "Opcion 3",
-    "Opcion 4",
-    "Opcion 5",
-    "Opcion 6",
+    "Opción 1",
+    "Opción 2",
+    "Opción 3",
+    "Opción 4",
+    "Opción 5",
+    "Opción 6",
   ];
 
   return (
@@ -68,8 +68,37 @@ const Sidebar: React.FC<SidebarProps> = ({ open }) => {
         }),
       }}
     >
-      <br />
-      <br />
+      {/* Botón de hamburguesa */}
+      <div
+        style={{
+          display: "flex",
+          padding: "0px",
+          marginTop: "10px",
+          marginBottom: "0px",
+          marginLeft: "5px",
+          marginRight: "0px",
+          position: "sticky",
+          width: "50px",
+          // width: open ? "30%" : "60%",
+          textAlign: "initial",
+        }}
+      >
+        <button
+          onClick={handleDrawerClose}
+          aria-label="toggle drawer"
+          style={{
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "1.5rem",
+            color: "white",
+          }}
+        >
+          <MenuIcon />
+        </button>
+      </div>
+
+      {/* Lista de opciones */}
       <List>
         {listOptions.map((text, index) => (
           <ListItem key={text} disablePadding sx={{ display: "block" }}>

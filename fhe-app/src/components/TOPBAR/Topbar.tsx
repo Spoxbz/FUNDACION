@@ -1,6 +1,5 @@
 import React from "react";
 import "../../CSS/topbar.css";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Avatar } from "@mui/material";
 
 interface TopbarProps {
@@ -14,33 +13,16 @@ interface TopbarProps {
 }
 
 const Topbar: React.FC<TopbarProps> = ({
-  onMenuClick,
   onMenuOpen,
   username,
   menuAnchorEl,
   onLogout,
-  toggleButtonRef,
   menuRef,
 }) => {
   return (
     <header className="appbar-container">
       <div className="toolbar-content">
-        <div className="left-section">
-          <button
-            ref={toggleButtonRef}
-            onClick={onMenuClick}
-            aria-label="toggle drawer"
-            style={{
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
-              fontSize: "1.5rem",
-            }}
-          >
-            <MenuIcon sx={{ color: "white" }} />
-          </button>
-        </div>
-
+        <div className="left-section"></div>
         <div className="midle-section">
           <img className="img-logo" src="Logo.avif" alt="Logo" />
           <h1>Fundación Hogar del Ecuador</h1>

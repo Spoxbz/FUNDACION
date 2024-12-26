@@ -39,7 +39,6 @@ export default function DashBoard() {
     }
   };
 
-  // Agregar y limpiar listeners de clic
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -47,35 +46,29 @@ export default function DashBoard() {
     };
   }, [menuAnchorEl]);
 
-  // Abrir o cerrar el menú del usuario
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    // Verificar si el menú ya está abierto y el clic es sobre el mismo elemento
     if (menuAnchorEl && menuAnchorEl === event.currentTarget) {
-      setMenuAnchorEl(null); // Cierra el menú
+      setMenuAnchorEl(null);
     } else {
-      setMenuAnchorEl(event.currentTarget); // Abre el menú
+      setMenuAnchorEl(event.currentTarget);
     }
   };
 
-  // Cerrar sesión
   const handleLogout = () => {
     console.log("Cerrando sesión...");
     client.auth.signOut();
-    // handleMenuClose();
   };
 
-  // Cambiar el módulo que se está mostrando
   const handleModuleClick = (moduleName: string) => {
     if (moduleName === "Emisor") {
       setCurrentModule(<Calendar />);
     } else if (moduleName === "Signos") {
       setCurrentModule(<VitalSigns />);
     } else {
-      setCurrentModule(<div>Componente para {moduleName}</div>); // Placeholder
+      setCurrentModule(<div>Componente para {moduleName}</div>);
     }
   };
 
-  // Inicializar el módulo inicial después de renderizar
   useEffect(() => {
     setCurrentModule(<Modules handleModuleClick={handleModuleClick} />);
   }, []);
@@ -88,12 +81,12 @@ export default function DashBoard() {
         username={username}
         menuAnchorEl={menuAnchorEl}
         onLogout={handleLogout}
-        toggleButtonRef={toggleButtonRef} // Pasar la referencia del botón
-        menuRef={menuRef} // Pasar la referencia del menú
+        toggleButtonRef={toggleButtonRef}
+        menuRef={menuRef}
       />
 
       <div ref={sidebarRef}>
-        <Sidebar open={open} handleDrawerClose={() => setOpen(false)} />
+        <Sidebar open={open} handleDrawerClose={toggleSidebar} />
       </div>
 
       <div className="dash-content">{currentModule}</div>
