@@ -1,13 +1,13 @@
 import LogOptions from "../components/LogOptions";
 //import images
-import emisor from "../assets/img/cardoptions/emisor.png";
-import sign from "../assets/img/cardoptions/sign.png";
-import consult from "../assets/img/cardoptions/consult.png";
-import hospital from "../assets/img/cardoptions/hospital.png";
-import dental from "../assets/img/cardoptions/dental.png";
-import optic from "../assets/img/cardoptions/optic.png";
-import pharmacy from "../assets/img/cardoptions/pharmacy.png";
-import inventory from "../assets/img/cardoptions/inventory.png";
+import emisor from "../assets/img/cardoptions/emisor-blue.png";
+import sign from "../assets/img/cardoptions/sign-blue.png";
+import consult from "../assets/img/cardoptions/consult-blue.png";
+// import hospital from "../assets/img/cardoptions/hospital.png";
+// import dental from "../assets/img/cardoptions/dental.png";
+// import optic from "../assets/img/cardoptions/optic.png";
+// import pharmacy from "../assets/img/cardoptions/pharmacy.png";
+// import inventory from "../assets/img/cardoptions/inventory.png";
 import example from "../assets/img/example.png";
 
 import "../css/modules.css";
@@ -16,11 +16,11 @@ const modules = [
   { title: "Emisor", icon: emisor, route: "modules/schedule" },
   { title: "Signos", icon: sign, route: "modules/signs" },
   { title: "Consultorio", icon: consult, route: "modules/consultorio" },
-  { title: "Hospital", icon: hospital, route: "modules/hospital" },
-  { title: "Otondología", icon: dental, route: "modules/ondologia" },
-  { title: "Óptica", icon: optic, route: "modules/optic" },
-  { title: "Farmacia", icon: pharmacy, route: "modules/pharmcy" },
-  { title: "Inventario", icon: inventory, route: "modules/inventory" },
+  // { title: "Hospital", icon: hospital, route: "modules/hospital" },
+  // { title: "Otondología", icon: dental, route: "modules/ondologia" },
+  // { title: "Óptica", icon: optic, route: "modules/optic" },
+  // { title: "Farmacia", icon: pharmacy, route: "modules/pharmcy" },
+  // { title: "Inventario", icon: inventory, route: "modules/inventory" },
   { title: "Example", icon: example, route: "modules/example" },
   // { title: "Example", icon: example },
   // { title: "Example", icon: example },

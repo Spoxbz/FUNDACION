@@ -1,3 +1,58 @@
 .container-vitalsigns {
-  border: 1px solid black;
+  border: 1px solid red;
+  /* background-color: white; */
+  width: 100%;
+  height: fit-content;
+  /* text-align: center; */
+}
+
+/**********Estilos Encabezado***********/
+.vts-header {
+  /* background-color: yellow; */
+  display: flex;
+  align-items: center;
+}
+.vts-title {
+  /* background-color: yellowgreen; */
+  text-align: center;
+  width: 70%;
+}
+.vts-header-date {
+  background-color: lightblue;
+  /* width: 15%; */
+  margin: o !important;
+  display: flex;
+  justify-content: flex-end !important;
+}
+.css-11ag90j-MuiStack-root {
+  padding-top: 0px !important;
+}
+
+/**********Estilos Contenido princip+al***********/
+.vts-main {
+  background-color: white;
+  padding: 0.5rem;
+  display: flex;
+  height: 100%;
+}
+
+/**********Estilos Sección Izquierda***********/
+.vts-main-left {
+  background-color: lightblue;
+  width: 50%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.chair-card {
+  background-color: lightcoral !important;
+  margin: 0.5rem;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+/**********Estilos Sección Derecha***********/
+.vts-main-right {
+  background-color: lightcoral;
+  width: 50%;
+  padding: 0.5rem;
 }

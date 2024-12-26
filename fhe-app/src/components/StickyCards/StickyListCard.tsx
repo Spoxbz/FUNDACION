@@ -87,7 +87,7 @@ export default function StickyListCard(props: Props) {
               primary={elemento}
               sx={{
                 margin: "0px",
-                height: "10px",
+                height: "px",
                 display: "flex",
                 alignItems: "center",
               }}

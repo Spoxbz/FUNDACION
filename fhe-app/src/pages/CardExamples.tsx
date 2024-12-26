@@ -1,7 +1,7 @@
 import BasicCard from "../components/CARD/Card";
-import CardEvent from "../components/CARDEVENT/CardEvent";
-import CardProps from "../components/CARDWITHPROPS/CardProps";
-import CardList from "../components/LISTS/CardList";
+import CardEvent from "../components/CARD/CARDEVENT/CardEvent";
+import CardProps from "../components/CARD/CARDWITHPROPS/CardProps";
+import CardList from "../components/CARD/LISTS/CardList";
 
 export default function CardExamples() {
   return (

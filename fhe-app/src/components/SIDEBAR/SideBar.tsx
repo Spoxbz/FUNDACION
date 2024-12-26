@@ -11,7 +11,7 @@ import { Home } from "@mui/icons-material";
 //Estilos
 import "../../CSS/sidebar.css";
 
-const drawerWidth = 160; // 240 default
+const drawerWidth = 150; // 240 default
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,

@@ -6,11 +6,11 @@ import "../CSS/calendar.css";
 export default function StickyCalendar() {
   return (
     <div className="small-calendar">
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <div className="calendar-container">
-          <DateCalendar displayWeekNumber />
-        </div>
-      </LocalizationProvider>
+      <div className="calendar-container">
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DateCalendar displayWeekNumber sx={{ margin: "0 !important" }} />
+        </LocalizationProvider>
+      </div>
     </div>
   );
 }
