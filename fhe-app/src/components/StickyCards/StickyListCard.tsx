@@ -1,16 +1,24 @@
+// src/components/StickyCards/StickyListCard.tsx
+
 import { Box, List, ListItem, ListItemText } from "@mui/material";
 import { useState } from "react";
 
-type Props = {
-  data: string[];
-};
+interface StickyListCardProps<T> {
+  data: T[];
+  onItemSelect?: (item: T) => void; // Hacemos que onItemSelect sea opcional
+}
 
-export default function StickyListCard(props: Props) {
-  const { data } = props;
+export default function StickyListCard<T extends { nombre: string }>({
+  data,
+  onItemSelect,
+}: StickyListCardProps<T>) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const handleClick = (i: number) => {
+  const handleClick = (i: number, item: T) => {
     setActiveIndex(i);
+    if (onItemSelect) {
+      onItemSelect(item);
+    }
   };
 
   return (
@@ -18,8 +26,8 @@ export default function StickyListCard(props: Props) {
       <List className="lista-contenido-carta">
         {data.map((elemento, i) => (
           <ListItem
-            key={elemento}
-            onClick={() => handleClick(i)}
+            key={elemento.nombre}
+            onClick={() => handleClick(i, elemento)}
             className={activeIndex === i ? "active" : ""}
             sx={{
               "&.active": {
@@ -30,7 +38,7 @@ export default function StickyListCard(props: Props) {
             }}
           >
             <ListItemText
-              primary={elemento}
+              primary={elemento.nombre}
               sx={{
                 margin: "0px",
                 height: "px",

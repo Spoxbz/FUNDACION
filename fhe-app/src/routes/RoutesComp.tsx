@@ -7,12 +7,14 @@ import Calendar from "../pages/Calendar";
 import VitalSigns from "../pages/VitalSigns";
 import Modules from "../pages/Modules";
 import InterfaceExample from "../pages/InterfaceExample";
+import RegisterPage from "../pages/RegisterPage";
 
 export default function RoutesComp() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="modules  " element={<Modules />} />
         <Route path="modules/calendar" element={<Calendar />} />

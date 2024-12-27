@@ -1,13 +1,30 @@
-import { Card, CardContent } from "@mui/material";
-import SpecialtyBodyCard from "./SpecialtyBodyCard";
-import "../../CSS/calendar.css";
+// src/components/StickyCards/SpecialtyCard.tsx
 
-export default function SpecialtyCard() {
+import { Card, CardContent, CardHeader, Divider } from "@mui/material";
+import "../../CSS/calendar.css";
+import StickyListCard from "./StickyListCard";
+import {
+  listespecialities,
+  Specialty,
+} from "../../data/datacalendar/listcontent";
+
+interface SpecialtyCardProps {
+  onSelectSpecialty: (specialty: Specialty) => void;
+}
+
+export default function SpecialtyCard({
+  onSelectSpecialty,
+}: SpecialtyCardProps) {
   return (
     <>
       <Card className="tarjetas" sx={{ marginRight: "20px" }}>
         <CardContent>
-          <SpecialtyBodyCard title={"Especialidad"} />
+          <CardHeader className="encabezado-tarjetas" title="Especialidad" />
+          <Divider />
+          <StickyListCard
+            data={listespecialities}
+            onItemSelect={onSelectSpecialty}
+          />
         </CardContent>
       </Card>
     </>

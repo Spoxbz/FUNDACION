@@ -1,13 +1,24 @@
-import { Card, CardContent } from "@mui/material";
-import ProfessionalBodyCard from "./ProfessionalBodyCard";
-import "../../CSS/calendar.css";
+// src/components/StickyCards/ProfessionalCard.tsx
 
-export default function ProfessionalCard() {
+import { Card, CardContent, CardHeader, Divider } from "@mui/material";
+import "../../CSS/calendar.css";
+import StickyListCard from "./StickyListCard";
+import { Profesional } from "../../data/datacalendar/listcontent";
+
+interface ProfessionalCardProps {
+  professionals: Profesional[];
+}
+
+export default function ProfessionalCard({
+  professionals,
+}: ProfessionalCardProps) {
   return (
     <>
       <Card className="tarjetas" sx={{ marginRight: "20px" }}>
         <CardContent>
-          <ProfessionalBodyCard title="Profesionales" />
+          <CardHeader className="encabezado-tarjetas" title="Profesionales" />
+          <Divider />
+          <StickyListCard data={professionals} />
         </CardContent>
       </Card>
     </>

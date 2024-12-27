@@ -1,5 +1,5 @@
 // components/FULLCALENDAR/custombuttons/CustomButtons.tsx
-import { CustomButtons } from "./customButtonTypes"; // Importar la interfaz si está en un archivo separado
+import { CustomButtons } from "./CustomButtonTypes"; // Importar la interfaz si está en un archivo separado
 
 export const customButtons = (
   openModalFunction: () => void

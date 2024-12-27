@@ -17,6 +17,9 @@
 
 .card-container:hover {
   background: #c6cde6;
+  /* background: white !important; */
+  /* background: #8d9bcd; */
+  /* background-color: #e2e6f2; */
   cursor: pointer;
   /* opacity: 0.6; */
   transition: 0.8s;
