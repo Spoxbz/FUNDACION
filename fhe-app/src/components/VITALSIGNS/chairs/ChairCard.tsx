@@ -5,14 +5,15 @@ import ChairBodyCard from "./ChairBodyCard";
 
 // Tipo de dato que se espera en la función ChairCard
 interface ChairCardProps {
+  id: string;
   title: string;
 }
 
 export default function ChairCard(props: ChairCardProps) {
-  const title = props.title;
+  const { id, title } = props;
   return (
-    <Card className="chair-card">
-      <h1>{title}</h1>
+    <Card id={id} className="chair-card">
+      <h1 className="encabezado">{title}</h1>
       <CardContent>
         <ChairBodyCard />
       </CardContent>

@@ -2,14 +2,15 @@ import { Stack, Typography } from "@mui/material";
 //componentes
 import HeaderDate from "../components/VITALSIGNS/HeaderDate";
 import ListTablePacients from "../components/VITALSIGNS/listablepacient/ListTablePacients";
+import ChairCard from "../components/VITALSIGNS/chairs/ChairCard";
+
 // Estilos
 import "../CSS/vitalsigns.css";
 import "../CSS/chaircard.css";
-// Datos de prueba
-import { pacientesData } from "../components/VITALSIGNS/pacientesData";
-import ChairCard from "../components/VITALSIGNS/chairs/ChairCard";
-
+// Datos de prueba para listar en la tabla
+import { pacientesData } from "../data/pacientesData";
 // Datos para las cards de modulos
+import { chairData } from "../data/datamodulesvitalsigns/data";
 
 export default function VitalSigns() {
   return (
@@ -25,8 +26,10 @@ export default function VitalSigns() {
       </div>
       <div className="vts-main">
         <div className="vts-main-left">
-          {/* Renderizamos múltiples tarjetas */}
-          <ChairCard title="Modulo" />
+          {/* Se renderizan multiples cards*/}
+          {chairData.map((chair, index) => (
+            <ChairCard key={index} id={`chair-${index}`} title={chair.title} />
+          ))}
         </div>
         <div className="vts-main-right">
           <ListTablePacients pacientes={pacientesData} />

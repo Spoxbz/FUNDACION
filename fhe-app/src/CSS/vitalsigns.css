@@ -1,6 +1,5 @@
 .container-vitalsigns {
-  border: 1px solid red;
-  /* background-color: white; */
+  background-color: white;
   width: 100%;
   height: fit-content;
   /* text-align: center; */
@@ -8,19 +7,15 @@
 
 /**********Estilos Encabezado***********/
 .vts-header {
-  /* background-color: yellow; */
   display: flex;
   align-items: center;
 }
 .vts-title {
-  /* background-color: yellowgreen; */
   text-align: center;
-  width: 70%;
+  width: 100%;
 }
 .vts-header-date {
-  background-color: lightblue;
-  /* width: 15%; */
-  margin: o !important;
+  margin: 0 !important;
   display: flex;
   justify-content: flex-end !important;
 }
@@ -36,23 +31,195 @@
   height: 100%;
 }
 
-/**********Estilos Sección Izquierda***********/
+/****************!!Estilos Sección Izquierda***********/
 .vts-main-left {
   background-color: lightblue;
   width: 50%;
-  padding: 0.5rem;
   display: flex;
   flex-direction: column;
 }
 .chair-card {
-  background-color: lightcoral !important;
+  background-color: #7081c0 !important;
   margin: 0.5rem;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+}
+.encabezado {
+  margin: 0px !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
 }
 
-/**********Estilos Sección Derecha***********/
+/******Estilos Info de turno******/
+.fields-turn-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/******Estilos Info de paciente******/
+.fields-patient-info {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: blue;
+  align-items: center;
+  gap: 10px; /* Espaciado uniforme */
+  padding: 10px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+/******Estilos Signos Vitales Paciente******/
+.fields-sign-info {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: red;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.field-signs {
+  background-color: purple;
+  align-items: center;
+  display: flex;
+}
+.field-signs-input {
+  width: 70px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+}
+#bloodPressure {
+  margin-left: 21px;
+}
+#pulse {
+  margin-left: 28px;
+}
+.field-signs-checkbox {
+  display: flex;
+  align-items: center;
+  background-color: #7081c0;
+  width: 160px;
+}
+#requiresEyeMeasurement {
+  width: 40%;
+  border: 1px solid black;
+}
+
+/******Estilos Medidas Ojos******/
+.fields-eyes {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: orange;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.fields-eyes-input {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+/******Estilos generales para campos******/
+.field {
+  background-color: gray;
+  width: 150px;
+  height: fit-content;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos */
+}
+
+#turno,
+#consultorio,
+#ci,
+#hc {
+  width: 70px; /* Asegura tamaños consistentes */
+  height: 25px;
+}
+
+#nombre,
+#medico,
+#edad,
+#genero {
+  width: auto; /* Ajusta para campos más largos */
+  height: 25px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.date-field,
+.time-field {
+  width: 190px;
+  height: fit-content;
+  align-items: center;
+}
+
+.MuiInputBase-root {
+  /* height: 25px !important; */
+  padding: 0px !important;
+}
+/*Estilos para dar un margen a los iconos de los calendarios en signos vitales*/
+.css-elo8k2-MuiInputAdornment-root {
+  margin-left: 0px !important;
+  margin-right: 10px !important;
+}
+
+/**********!!Estilos Sección Derecha***********/
 .vts-main-right {
   background-color: lightcoral;
   width: 50%;
   padding: 0.5rem;
+}
+
+/**********!Media queries**********/
+@media ((max-width: 1600px) and (max-height: 900px)) {
+  .dash-content {
+    margin-left: -6.5%;
+    width: 1000%;
+  }
+
+  .fields-turn-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-rows: repeat(3, 1fr); */
+    gap: 0px;
+    padding: 10px;
+  }
+  .fields-patient-info {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .fields-sign-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+  }
+  /*Estilos para separar el label y el input de los signos vitales*/
+  .field-signs {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .fields-eyes {
+    display: flex;
+  }
+
+  #nombre,
+  #medico,
+  #edad {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }

@@ -78,7 +78,9 @@ export default function LoginPage() {
                 required
                 fullWidth
                 className="input-field" // Aplica la clase para personalizar el tamaño
-                sx={{ marginBottom: "15px" }}
+                sx={{
+                  padding: "0px !important",
+                }}
               />
               <TextField
                 label="Contraseña"

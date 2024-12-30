@@ -1,15 +1,13 @@
+import PacientInfo from "./sections/PacientInfo";
+import SignInfo from "./sections/SignInfo";
+import TurnInfo from "./sections/TurnInfo";
+
 export default function ChairBodyCard() {
   return (
     <div className="sections">
-      <section>Turno</section>
-      <section>Paciente</section>
-      <section>
-        Signos
-        <div className="vts-actions-buttons">
-          <button className="vts-button">Guardar</button>
-          <button className="vts-button">Cancelar</button>
-        </div>
-      </section>
+      <TurnInfo />
+      <PacientInfo />
+      <SignInfo />
     </div>
   );
 }

@@ -55,13 +55,15 @@ const PacientesTabla: React.FC<Props> = ({ pacientes }) => {
         mb={2}
         component={Paper}
         p={2}
+        sx={{ height: "20px" }}
       >
         <TextField
           label="Buscar"
           placeholder="Buscar por turno, médico o paciente"
           value={search}
           onChange={handleSearchChange}
-          fullWidth
+          // fullWidth
+          sx={{ width: "50%" }}
         />
         <Box display="flex" alignItems="center">
           <Checkbox />

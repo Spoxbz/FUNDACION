@@ -1,21 +1,24 @@
 import * as React from "react";
 import dayjs, { Dayjs } from "dayjs";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DesktopDatePicker } from "@mui/x-date-pickers";
 
 export default function DatePickerValue() {
-  const [value, setValue] = React.useState<Dayjs | null>(dayjs("2022-04-17"));
+  const [dateValue, setDateValue] = React.useState<Dayjs | null>(
+    dayjs("2022-04-17")
+  );
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer
-        components={["DatePicker"]}
-        sx={{ width: 200, margin: "0", padding: "0" }}
-      >
-        <DatePicker value={value} onChange={(newValue) => setValue(newValue)} />
-      </DemoContainer>
-    </LocalizationProvider>
+    <div className="header-date">
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DesktopDatePicker
+          sx={{ width: "150px", marginRight: "0px" }}
+          value={dateValue}
+          onChange={(newValue) => setDateValue(newValue)}
+          className="custom-date-picker"
+        />
+      </LocalizationProvider>
+    </div>
   );
 }
