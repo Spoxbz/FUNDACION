@@ -23,6 +23,10 @@ export default function PacientInfo() {
       </div>
 
       <div className="field">
+        <label htmlFor="hc">H.C:</label>
+        <input id="hc" type="text" className="custom-input" value={"HC12345"} />
+      </div>
+      <div className="field">
         <label htmlFor="nombre">Nombre:</label>
         <input
           id="nombre"
@@ -31,12 +35,6 @@ export default function PacientInfo() {
           value={"Bravo Zhunio Bruno Esteban"}
         />
       </div>
-
-      <div className="field">
-        <label htmlFor="hc">H.C:</label>
-        <input id="hc" type="text" className="custom-input" value={"HC12345"} />
-      </div>
-
       <div className="field">
         <label htmlFor="genero">Género:</label>
         <select id="genero" className="custom-input">

@@ -30,10 +30,18 @@ const Topbar: React.FC<TopbarProps> = ({
 
         <div className="rigth-section">
           <Avatar
-            sx={{ width: "30px", height: "30px" }}
+            sx={{ width: "30px", height: "30px", marginRight: "10px" }}
             onClick={onMenuOpen}
             style={{ cursor: "pointer" }}
           />
+          <p
+            style={{
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            {username}
+          </p>
 
           {menuAnchorEl && (
             <div
@@ -41,8 +49,8 @@ const Topbar: React.FC<TopbarProps> = ({
               ref={menuRef}
               style={{
                 position: "absolute",
-                top: "50px",
-                right: "10px",
+                top: "35px",
+                borderRadius: "4px",
                 background: "white",
                 border: "1px solid #ddd",
                 boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",

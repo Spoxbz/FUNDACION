@@ -49,6 +49,7 @@ const PacientesTabla: React.FC<Props> = ({ pacientes }) => {
     <Box>
       {/* Barra de búsqueda y filtros */}
       <Box
+        className="bar-search-table-list"
         display="flex"
         alignItems="center"
         gap={2}
@@ -62,8 +63,7 @@ const PacientesTabla: React.FC<Props> = ({ pacientes }) => {
           placeholder="Buscar por turno, médico o paciente"
           value={search}
           onChange={handleSearchChange}
-          // fullWidth
-          sx={{ width: "50%" }}
+          sx={{ width: "50%", backgroundColor: "white", borderRadius: "4px" }}
         />
         <Box display="flex" alignItems="center">
           <Checkbox />
@@ -76,7 +76,7 @@ const PacientesTabla: React.FC<Props> = ({ pacientes }) => {
       </Box>
 
       {/* Tabla */}
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="tablePatient">
         <Table stickyHeader>
           <TableHead>
             <TableRow>

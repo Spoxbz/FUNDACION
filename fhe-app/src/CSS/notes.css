@@ -1,0 +1,64 @@
+/****** Estilos generales ******/
+body {
+  background-color: #f7f9fc; /* Fondo general */
+  color: #333; /* Texto principal */
+}
+
+/****** Estilos para encabezados ******/
+.vts-header {
+  background-color: #f0f4fa; /* Azul claro */
+  color: #2c3e50; /* Texto oscuro */
+}
+
+/****** Estilos para las tarjetas de los módulos ******/
+.chair-card {
+  background-color: #f0f4fa; /* Azul muy claro */
+  border: 1px solid #ccc; /* Bordes sutiles */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/****** Estilos para los campos de texto ******/
+.field {
+  background-color: #f7f9fc; /* Fondo claro */
+  color: #333; /* Texto oscuro */
+  border: 1px solid #ddd; /* Bordes suaves */
+}
+
+.field-signs {
+  background-color: #ffffff; /* Fondo blanco */
+  border: 1px solid #ccc; /* Bordes claros */
+  color: #333; /* Texto oscuro */
+}
+
+.field-signs-input {
+  background-color: #f0f4fa; /* Azul muy claro */
+  border: 1px solid #ccc; /* Bordes suaves */
+  color: #333; /* Texto oscuro */
+}
+
+.field-signs-checkbox {
+  background-color: #ffffff; /* Blanco */
+  border: 2px solid #5cb85c; /* Verde accesible */
+  color: #2c3e50; /* Azul oscuro */
+}
+
+/****** Estilos para tablas de la derecha ******/
+.vts-main-right {
+  background-color: #ffffff; /* Fondo blanco */
+  border: 1px solid #ccc; /* Bordes claros */
+}
+
+table {
+  background-color: #ffffff; /* Fondo blanco */
+  border: 1px solid #ddd; /* Bordes sutiles */
+}
+
+th {
+  background-color: #5cb85c; /* Verde accesible */
+  color: white; /* Texto blanco */
+}
+
+td {
+  background-color: #f7f9fc; /* Fondo claro */
+  color: #333; /* Texto oscuro */
+}

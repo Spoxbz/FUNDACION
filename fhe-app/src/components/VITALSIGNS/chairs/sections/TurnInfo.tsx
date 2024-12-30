@@ -39,7 +39,7 @@ export default function TurnInfo() {
           id="medico"
           type="text"
           className="custom-input"
-          value={"Zhunio Zhunio Maria Fernanda"}
+          value={"Sacaquirin Quizhpilema Eduardo Santiago"}
         />
       </div>
 
