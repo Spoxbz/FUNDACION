@@ -22,9 +22,6 @@ const modules = [
   // { title: "Farmacia", icon: pharmacy, route: "modules/pharmcy" },
   // { title: "Inventario", icon: inventory, route: "modules/inventory" },
   { title: "Example", icon: example, route: "modules/example" },
-  // { title: "Example", icon: example },
-  // { title: "Example", icon: example },
-  // { title: "Example", icon: example },
 ];
 
 export default function Modules({

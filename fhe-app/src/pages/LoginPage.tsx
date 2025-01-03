@@ -9,7 +9,7 @@ import {
 import "../css/loginpage.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { client } from "../api/client"; // Importa el cliente configurado
+import { client } from "../backend/api/client"; // Importa el cliente configurado
 
 export default function LoginPage() {
   const navigate = useNavigate();

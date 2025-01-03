@@ -8,9 +8,9 @@ import ChairCard from "../components/VITALSIGNS/chairs/ChairCard";
 import "../CSS/vitalsigns.css";
 import "../CSS/chaircard.css";
 // Datos de prueba para listar en la tabla
-import { pacientesData } from "../data/pacientesData";
+import { pacientesData } from "../backend/datas/pacientesData";
 // Datos para las cards de modulos
-import { chairData } from "../data/datamodulesvitalsigns/data";
+import { chairData } from "../backend/datas/datamodulesvitalsigns/datos";
 
 export default function VitalSigns() {
   return (

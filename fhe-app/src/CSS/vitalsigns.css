@@ -140,13 +140,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  /* gap: 10px; */
   border-radius: 4px;
 }
 .field,
 .field-signs {
-  /* background-color: #334893;*/
-  /* color: white; */
+  background-color: #334893;
+  color: white;
 }
 
 #turno,
@@ -198,6 +198,7 @@
   margin-right: 20%;
 }
 
+/* Clase para  el contenedor del componente de los campos calendario y hora */
 .MuiInputBase-root {
   height: 30px !important;
   background-color: white;
@@ -255,23 +256,38 @@
   }
 
   .fields-turn-info {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 0px;
-    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
+  .date-field,
+  .time-field {
+    width: 250px !important;
+  }
+
   .fields-patient-info {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 10px;
+    padding: 10px;
   }
+
+  .born-date-field {
+    width: 160px;
+  }
+
   #nombre,
   #medico,
   #edad {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+  }
+
+  .field-signs {
+    width: 170px !important;
+    height: fit-content;
+    align-items: center;
   }
 }

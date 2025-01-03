@@ -10,7 +10,7 @@ import {
   professionallist,
   Specialty,
   Profesional,
-} from "../data/datacalendar/listcontent";
+} from "../backend/datas/datacalendar/listcontent";
 
 // Estilos
 import "../CSS/calendar.css";

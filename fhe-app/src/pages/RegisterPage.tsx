@@ -1,6 +1,6 @@
 // src/pages/RegisterPage.tsx
 import React, { useState } from "react";
-import { client } from "../api/client"; // Importa el cliente de Supabase
+import { client } from "../backend/api/client"; // Importa el cliente de Supabase
 // Estilos
 import "../CSS/registerpage.css"; // Agrega esto al principio de tu archivo
 

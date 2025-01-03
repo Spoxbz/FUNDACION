@@ -3,10 +3,11 @@ import { Box } from "@mui/material";
 import Sidebar from "../components/SIDEBAR/SideBar";
 import Topbar from "../components/TOPBAR/Topbar";
 import Modules from "../pages/Modules";
-import { client } from "../api/client";
+import { client } from "../backend/api/client";
 import "../css/dashboard.css";
 import VitalSigns from "../pages/VitalSigns";
 import Calendar from "../pages/Calendar";
+import MedicalOffice from "../pages/MedicalOffice";
 
 export default function DashBoard() {
   const [open, setOpen] = useState(false); // Estado del sidebar
@@ -60,12 +61,13 @@ export default function DashBoard() {
   };
 
   const handleModuleClick = (moduleName: string) => {
+    // Aqui el nombre de los modulos debe coincidir con el nombre de las rutas, mayusculas y minusculas
     if (moduleName === "Emisor") {
       setCurrentModule(<Calendar />);
     } else if (moduleName === "Signos") {
       setCurrentModule(<VitalSigns />);
-    } else {
-      setCurrentModule(<div>Componente para {moduleName}</div>);
+    } else if (moduleName === "Consultorio") {
+      setCurrentModule(<MedicalOffice />);
     }
   };
 

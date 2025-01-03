@@ -26,7 +26,8 @@ export default function PacientInfo() {
         <label htmlFor="hc">H.C:</label>
         <input id="hc" type="text" className="custom-input" value={"HC12345"} />
       </div>
-      <div className="field">
+
+      <div className="field field-nombre">
         <label htmlFor="nombre">Nombre:</label>
         <input
           id="nombre"
@@ -44,7 +45,7 @@ export default function PacientInfo() {
         </select>
       </div>
 
-      <div className="field date-field">
+      <div className="field born-date-field">
         <label htmlFor="fecha">F.N:</label>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DesktopDatePicker
@@ -55,7 +56,7 @@ export default function PacientInfo() {
         </LocalizationProvider>
       </div>
 
-      <div className="field">
+      <div className="field field-edad">
         <label htmlFor="edad">Edad:</label>
         <input
           id="edad"

@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, Divider } from "@mui/material";
 import "../../CSS/calendar.css";
 import StickyListCard from "./StickyListCard";
-import { Profesional } from "../../data/datacalendar/listcontent";
+import { Profesional } from "../../backend/datas/datacalendar/listcontent";
 
 interface ProfessionalCardProps {
   professionals: Profesional[];
