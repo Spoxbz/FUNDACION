@@ -43,7 +43,7 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
       headerToolbar={{
         start: "title,prev,next,today",
         center: "timeGridDay,timeGridWeek,dayGridMonth",
-        end: "deleteEventButton,emitEventButton,rescheduleEventButton,reserveEventButton,openModalButton",
+        end: "deleteEventButton,emitEventButton,rescheduleEventButton,reserveEventButton,openModalButton,agregarTurno",
       }}
       customButtons={customButtons}
       views={{

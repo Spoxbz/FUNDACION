@@ -1,3 +1,5 @@
+// Estos son los datos de prueba que se utilizan en la tabla de pacientes en la página de Signos Vitales
+
 export const pacientesData = [
   {
     turno: "Mañana",

@@ -24,4 +24,8 @@ export const customButtons = (
     text: "Doctores No Asisten",
     click: () => openModalFunction(),
   },
+  agregarTurno: {
+    text: "Agregar Turno",
+    click: () => alert("Agregar turno"),
+  },
 });

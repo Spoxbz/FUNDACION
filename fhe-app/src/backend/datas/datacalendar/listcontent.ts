@@ -1,5 +1,6 @@
 //src\data\datacalendar\listcontent.ts
-
+// Estos son los tipos de datos que se utilizan en el calendario de citas de Emisor
+// Se utilizan para mostrar los datos en el calendario de citas de Emisor
 export interface Specialty {
   id: string;
   nombre: string;
