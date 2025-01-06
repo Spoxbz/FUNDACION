@@ -24,6 +24,12 @@ export default function RoutesComp() {
         <Route path="modules/calendar" element={<Calendar />} />
         <Route path="modules/signs" element={<VitalSigns />} />
         <Route path="modules/consultorio" element={<MedicalOffice />} />
+        {/* <Route path="modules/hospital" element={<InterfaceExample />} />
+        <Route path="modules/odontologia" element={<InterfaceExample />} />
+        <Route path="modules/optic" element={<InterfaceExample />} />
+        <Route path="modules/pharmacy" element={<InterfaceExample />} />
+        <Route path="modules/inventory" element={<InterfaceExample />} />
+        <Route path="modules/example" element={<InterfaceExample />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

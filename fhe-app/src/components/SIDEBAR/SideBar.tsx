@@ -8,11 +8,11 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
+import MailIcon from "@mui/icons-material/Mail";
+import { Home } from "@mui/icons-material";
 import "../../CSS/sidebar.css";
-import { Employee } from "../../backend/types/users/user_employee";
-import { sidebarOptions } from "../../backend/datas/DataUserOptions/data_sidebar_options";
 
-const drawerWidth = "170px"; // Ancho del drawer por defecto en 170px
+const drawerWidth = "180px"; // Ancho del drawer por defecto en 170px
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -38,16 +38,19 @@ const closedMixin = (theme: Theme): CSSObject => ({
 interface SidebarProps {
   open: boolean;
   handleDrawerClose: () => void;
-  user: Employee | null; // Añadimos el usuario autenticado como prop
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, user }) => {
+const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
 
-  // Filtramos las opciones según el rol del usuario
-  const filteredOptions = sidebarOptions.filter(
-    (option) => user && option.roles.includes(user.rol_id)
-  );
+  const listOptions: string[] = [
+    "Opción 1",
+    "Opción 2",
+    "Opción 3",
+    "Opción 4",
+    "Opción 5",
+    "Opción 6",
+  ];
 
   return (
     <MuiDrawer
@@ -96,9 +99,9 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, user }) => {
       </div>
 
       <List>
-        {filteredOptions.map((option, index) => (
+        {listOptions.map((text, index) => (
           <ListItem
-            key={option.title}
+            key={text}
             disablePadding
             sx={{
               display: "block",
@@ -113,7 +116,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, user }) => {
                 px: 2.5,
                 justifyContent: open ? "initial" : "center",
               }}
-              onClick={option.action} // Llamamos a la acción asociada
             >
               <ListItemIcon
                 sx={{
@@ -124,10 +126,10 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, user }) => {
                   marginRight: "5px",
                 }}
               >
-                {option.icon}
+                {index % 2 === 0 ? <Home /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText
-                primary={option.title}
+                primary={text}
                 sx={{
                   opacity: open ? 1 : 0,
                   display: "flex",

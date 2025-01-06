@@ -4,33 +4,26 @@ import Sidebar from "../components/SIDEBAR/SideBar";
 import Topbar from "../components/TOPBAR/Topbar";
 import Modules from "../pages/Modules";
 import "../css/dashboard.css";
-import { useNavigate } from "react-router-dom"; // Importa el hook useNavigate
-import { Employee } from "../backend/types/users/user_employee";
+import { client } from "../backend/api/client";
 import Calendar from "../pages/Calendar";
 import VitalSigns from "../pages/VitalSigns";
 import MedicalOffice from "../pages/MedicalOffice";
 
 export default function Dashboard() {
-  const [open, setOpen] = useState(false);
-  const sidebarRef = useRef<HTMLDivElement | null>(null);
-  const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
-  const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
-  const menuRef = useRef<HTMLDivElement | null>(null);
-  const [currentModule, setCurrentModule] = useState<React.ReactNode>(null);
-  const [loggedInUser, setLoggedInUser] = useState<Employee | null>(null);
-  const navigate = useNavigate(); // Usamos el hook useNavigate para redirigir
+  const [open, setOpen] = useState(false); // Estado del sidebar
+  const sidebarRef = useRef<HTMLDivElement | null>(null); // Referencia al sidebar
+  const toggleButtonRef = useRef<HTMLButtonElement | null>(null); // Referencia al botón de toggle
+  const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null); // Estado del menú desplegable
+  const menuRef = useRef<HTMLDivElement | null>(null); // Referencia al menú desplegable
+  const username = "Bruno Bravo"; // Nombre del usuario en sesión
+  const [currentModule, setCurrentModule] = useState<React.ReactNode>(null); // Estado para el módulo actual
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("loggedInUser");
-    if (storedUser) {
-      setLoggedInUser(JSON.parse(storedUser));
-    }
-  }, []);
-
+  // Alternar estado del sidebar
   const toggleSidebar = () => {
     setOpen((prev) => !prev);
   };
 
+  // Cerrar el sidebar al hacer clic fuera
   const handleClickOutside = (event: MouseEvent) => {
     const target = event.target as Node;
     if (
@@ -64,11 +57,11 @@ export default function Dashboard() {
 
   const handleLogout = () => {
     console.log("Cerrando sesión...");
-    localStorage.removeItem("loggedInUser"); // Borra el localStorage
-    navigate("/"); // Redirige a la página de inicio de sesión
+    client.auth.signOut();
   };
 
   const handleModuleClick = (moduleName: string) => {
+    // Aqui el nombre de los modulos debe coincidir con el nombre de las rutas, mayusculas y minusculas
     if (moduleName === "Emisor") {
       setCurrentModule(<Calendar />);
     } else if (moduleName === "Signos") {
@@ -79,37 +72,26 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    setCurrentModule(
-      <Modules handleModuleClick={handleModuleClick} user={loggedInUser} />
-    );
-  }, [loggedInUser]);
+    setCurrentModule(<Modules handleModuleClick={handleModuleClick} />);
+  }, []);
 
   return (
     <Box className="dashboardpage-container">
-      {loggedInUser && (
-        <>
-          <Topbar
-            onMenuClick={toggleSidebar}
-            onMenuOpen={handleMenuOpen}
-            username={loggedInUser.employe_name}
-            menuAnchorEl={menuAnchorEl}
-            onLogout={handleLogout}
-            toggleButtonRef={toggleButtonRef}
-            menuRef={menuRef}
-          />
+      <Topbar
+        onMenuClick={toggleSidebar}
+        onMenuOpen={handleMenuOpen}
+        username={username}
+        menuAnchorEl={menuAnchorEl}
+        onLogout={handleLogout}
+        toggleButtonRef={toggleButtonRef}
+        menuRef={menuRef}
+      />
 
-          <div ref={sidebarRef}>
-            <Sidebar
-              open={open}
-              handleDrawerClose={toggleSidebar}
-              user={loggedInUser}
-            />{" "}
-            {/* Pasamos el usuario autenticado */}
-          </div>
+      <div ref={sidebarRef}>
+        <Sidebar open={open} handleDrawerClose={toggleSidebar} />
+      </div>
 
-          <div className="dash-content">{currentModule}</div>
-        </>
-      )}
+      <div className="dash-content">{currentModule}</div>
     </Box>
   );
 }
