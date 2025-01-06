@@ -6,7 +6,7 @@ import StickyListCard from "./StickyListCard";
 import {
   listespecialities,
   Specialty,
-} from "../../backend/datas/datacalendar/listcontent";
+} from "../../backend/datas/Emisor/datacalendar/listcontent";
 
 interface SpecialtyCardProps {
   onSelectSpecialty: (specialty: Specialty) => void;

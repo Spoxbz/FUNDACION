@@ -28,12 +28,12 @@ const Topbar: React.FC<TopbarProps> = ({
           <h1>Fundación Hogar del Ecuador</h1>
         </div>
 
-        <div className="rigth-section">
-          <Avatar
-            sx={{ width: "30px", height: "30px", marginRight: "10px" }}
-            onClick={onMenuOpen}
-            style={{ cursor: "pointer" }}
-          />
+        <div
+          className="rigth-section"
+          onClick={onMenuOpen}
+          style={{ cursor: "pointer" }}
+        >
+          <Avatar sx={{ width: "30px", height: "30px", marginRight: "10px" }} />
           <p
             style={{
               width: "100%",
@@ -56,12 +56,19 @@ const Topbar: React.FC<TopbarProps> = ({
                 boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
                 padding: "10px",
                 zIndex: 1001,
+                width: "132px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               }}
             >
               <p>{username}</p>
               <button
                 onClick={onLogout}
-                style={{ display: "block", marginBottom: "10px" }}
+                style={{
+                  display: "block",
+                  marginTop: "10px",
+                }}
               >
                 Cerrar Sesión
               </button>

@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-const MedicalForm = () => {
+const MedicalOffice = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -123,7 +123,7 @@ const MedicalForm = () => {
   );
 };
 
-export default MedicalForm;
+export default MedicalOffice;
 
 // import { Box } from "@mui/material";
 // import PatientInfo from "../components/VITALSIGNS/chairs/sections/PacientInfo";

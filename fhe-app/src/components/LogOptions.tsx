@@ -4,14 +4,10 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 // Importa estilos
 import "../css/logoptions.css";
+// Import de intefaz de los modulos
+import { LogModulesProps } from "../backend/types/UserLoginModules/user_modules";
 
-interface LogOptionsProps {
-  title: string;
-  icon: string;
-  onClick: (moduleName: string) => void;
-}
-
-export default function LogOptions({ title, icon, onClick }: LogOptionsProps) {
+export default function LogOptions({ title, icon, onClick }: LogModulesProps) {
   const handleNavigation = () => {
     onClick(title);
   };

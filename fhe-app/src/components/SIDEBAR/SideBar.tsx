@@ -1,3 +1,4 @@
+// Sidebar.tsx
 import React from "react";
 import { useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
@@ -7,11 +8,11 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
-import MailIcon from "@mui/icons-material/Mail";
-import { Home } from "@mui/icons-material";
 import "../../CSS/sidebar.css";
+import { Employee } from "../../backend/types/users/user_employee";
+import { sidebarOptions } from "../../backend/datas/DataUserOptions/data_sidebar_options";
 
-const drawerWidth = 150; // Ancho del drawer
+const drawerWidth = "170px"; // Ancho del drawer por defecto en 170px
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -37,18 +38,16 @@ const closedMixin = (theme: Theme): CSSObject => ({
 interface SidebarProps {
   open: boolean;
   handleDrawerClose: () => void;
+  user: Employee | null; // Añadimos el usuario autenticado como prop
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, user }) => {
   const theme = useTheme();
-  const listOptions: string[] = [
-    "Opción 1",
-    "Opción 2",
-    "Opción 3",
-    "Opción 4",
-    "Opción 5",
-    "Opción 6",
-  ];
+
+  // Filtramos las opciones según el rol del usuario
+  const filteredOptions = sidebarOptions.filter(
+    (option) => user && option.roles.includes(user.rol_id)
+  );
 
   return (
     <MuiDrawer
@@ -68,7 +67,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
         }),
       }}
     >
-      {/* Botón de hamburguesa */}
       <div
         style={{
           display: "flex",
@@ -79,7 +77,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
           marginRight: "10px",
           position: "sticky",
           width: "50px",
-          // width: open ? "30%" : "60%",
           textAlign: "initial",
         }}
       >
@@ -98,10 +95,17 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
         </button>
       </div>
 
-      {/* Lista de opciones */}
       <List>
-        {listOptions.map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+        {filteredOptions.map((option, index) => (
+          <ListItem
+            key={option.title}
+            disablePadding
+            sx={{
+              display: "block",
+              height: "40px",
+              width: "100%",
+            }}
+          >
             <ListItemButton
               style={{ color: "white" }}
               sx={{
@@ -109,6 +113,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
                 px: 2.5,
                 justifyContent: open ? "initial" : "center",
               }}
+              onClick={option.action} // Llamamos a la acción asociada
             >
               <ListItemIcon
                 sx={{
@@ -116,11 +121,20 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
                   justifyContent: "center",
                   mr: open ? 3 : "auto",
                   color: "white",
+                  marginRight: "5px",
                 }}
               >
-                {index % 2 === 0 ? <Home /> : <MailIcon />}
+                {option.icon}
               </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary={option.title}
+                sx={{
+                  opacity: open ? 1 : 0,
+                  display: "flex",
+                  flexWrap: "wrap",
+                  fontSize: "14px",
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -130,3 +144,136 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
 };
 
 export default Sidebar;
+
+// import React from "react";
+// import { useTheme, Theme, CSSObject } from "@mui/material/styles";
+// import MuiDrawer from "@mui/material/Drawer";
+// import List from "@mui/material/List";
+// import ListItem from "@mui/material/ListItem";
+// import ListItemButton from "@mui/material/ListItemButton";
+// import ListItemIcon from "@mui/material/ListItemIcon";
+// import ListItemText from "@mui/material/ListItemText";
+// import MenuIcon from "@mui/icons-material/Menu";
+// import MailIcon from "@mui/icons-material/Mail";
+// import { Home } from "@mui/icons-material";
+// import "../../CSS/sidebar.css";
+
+// const drawerWidth = 150; // Ancho del drawer
+
+// const openedMixin = (theme: Theme): CSSObject => ({
+//   width: drawerWidth,
+//   transition: theme.transitions.create("width", {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.enteringScreen,
+//   }),
+//   overflowX: "hidden",
+// });
+
+// const closedMixin = (theme: Theme): CSSObject => ({
+//   transition: theme.transitions.create("width", {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   overflowX: "hidden",
+//   width: `calc(${theme.spacing(7)} + 1px)`,
+//   [theme.breakpoints.up("sm")]: {
+//     width: `calc(${theme.spacing(8)} + 1px)`,
+//   },
+// });
+
+// interface SidebarProps {
+//   open: boolean;
+//   handleDrawerClose: () => void;
+// }
+
+// const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
+//   const theme = useTheme();
+//   const listOptions: string[] = [
+//     "Opción 1",
+//     "Opción 2",
+//     "Opción 3",
+//     "Opción 4",
+//     "Opción 5",
+//     "Opción 6",
+//   ];
+
+//   return (
+//     <MuiDrawer
+//       className="barra-lateral"
+//       variant="permanent"
+//       open={open}
+//       sx={{
+//         width: drawerWidth,
+//         flexShrink: 0,
+//         whiteSpace: "nowrap",
+//         boxSizing: "border-box",
+//         ...(open && {
+//           "& .MuiDrawer-paper": openedMixin(theme),
+//         }),
+//         ...(!open && {
+//           "& .MuiDrawer-paper": closedMixin(theme),
+//         }),
+//       }}
+//     >
+//       {/* Botón de hamburguesa */}
+//       <div
+//         style={{
+//           display: "flex",
+//           padding: "0px",
+//           marginTop: "10px",
+//           marginBottom: "0px",
+//           marginLeft: "15px",
+//           marginRight: "10px",
+//           position: "sticky",
+//           width: "50px",
+//           // width: open ? "30%" : "60%",
+//           textAlign: "initial",
+//         }}
+//       >
+//         <button
+//           onClick={handleDrawerClose}
+//           aria-label="toggle drawer"
+//           style={{
+//             background: "transparent",
+//             border: "none",
+//             cursor: "pointer",
+//             fontSize: "1.5rem",
+//             color: "white",
+//           }}
+//         >
+//           <MenuIcon />
+//         </button>
+//       </div>
+
+//       {/* Lista de opciones */}
+//       <List>
+//         {listOptions.map((text, index) => (
+//           <ListItem key={text} disablePadding sx={{ display: "block" }}>
+//             <ListItemButton
+//               style={{ color: "white" }}
+//               sx={{
+//                 minHeight: 48,
+//                 px: 2.5,
+//                 justifyContent: open ? "initial" : "center",
+//               }}
+//             >
+//               <ListItemIcon
+//                 sx={{
+//                   minWidth: 0,
+//                   justifyContent: "center",
+//                   mr: open ? 3 : "auto",
+//                   color: "white",
+//                 }}
+//               >
+//                 {index % 2 === 0 ? <Home /> : <MailIcon />}
+//               </ListItemIcon>
+//               <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+//             </ListItemButton>
+//           </ListItem>
+//         ))}
+//       </List>
+//     </MuiDrawer>
+//   );
+// };
+
+// export default Sidebar;

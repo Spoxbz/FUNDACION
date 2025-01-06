@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { Box, Modal, Typography, Button } from "@mui/material";
-
-interface DoctorAbsence {
-  specialty: string;
-  doctor: string;
-  start: string;
-  end: string;
-  observations: string;
-  user: string;
-}
+// import interfaz de doctores no asisten
+import { DoctorAbsence } from "../../../backend/types/Emisor/DoctorAbsence";
 
 const style = {
   position: "absolute" as const,
@@ -40,7 +33,6 @@ const dummyData: DoctorAbsence[] = [
     observations: "ra. estará de vacaciones",
     user: "DIANA BARROS",
   },
-  // Puedes agregar más datos aquí...
 ];
 
 interface ModalProps {
