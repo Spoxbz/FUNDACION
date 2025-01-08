@@ -1,9 +1,9 @@
 // src/components/StickyCards/ProfessionalCard.tsx
 
 import { Card, CardContent, CardHeader, Divider } from "@mui/material";
-import "../../CSS/calendar.css";
+import "../../../CSS/calendar.css";
 import StickyListCard from "./StickyListCard";
-import { Profesional } from "../../backend/datas/Emisor/datacalendar/listcontent";
+import { Profesional } from "../../../backend/datas/Emisor/datacalendar/listcontent";
 
 interface ProfessionalCardProps {
   professionals: Profesional[];

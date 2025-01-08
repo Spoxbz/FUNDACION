@@ -4,10 +4,10 @@ import Sidebar from "../components/SIDEBAR/SideBar";
 import Topbar from "../components/TOPBAR/Topbar";
 import Modules from "../pages/Modules";
 import "../css/dashboard.css";
-import { client } from "../backend/api/client";
 import Calendar from "../pages/Calendar";
 import VitalSigns from "../pages/VitalSigns";
 import MedicalOffice from "../pages/MedicalOffice";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false); // Estado del sidebar
@@ -17,6 +17,7 @@ export default function Dashboard() {
   const menuRef = useRef<HTMLDivElement | null>(null); // Referencia al menú desplegable
   const username = "Bruno Bravo"; // Nombre del usuario en sesión
   const [currentModule, setCurrentModule] = useState<React.ReactNode>(null); // Estado para el módulo actual
+  const navigate = useNavigate();
 
   // Alternar estado del sidebar
   const toggleSidebar = () => {
@@ -57,7 +58,7 @@ export default function Dashboard() {
 
   const handleLogout = () => {
     console.log("Cerrando sesión...");
-    client.auth.signOut();
+    navigate("/");
   };
 
   const handleModuleClick = (moduleName: string) => {

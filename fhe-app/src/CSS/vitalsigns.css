@@ -1,8 +1,8 @@
 .container-vitalsigns {
   width: 100%;
   height: fit-content;
+  margin-left: 2%;
 }
-
 /**********Estilos Encabezado***********/
 .vts-header {
   display: flex;
@@ -251,7 +251,7 @@
 /**********!Media queries**********/
 @media ((max-width: 1600px) and (max-height: 900px)) {
   .dash-content {
-    margin-left: -6.5%;
+    margin-left: 8%;
     width: 1000%;
   }
 

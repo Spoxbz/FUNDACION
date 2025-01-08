@@ -3,17 +3,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 // Importa estilos
-import "../css/logoptions.css";
+import "../../CSS/logoptions.css";
+// Import de la interfaz para los modulos de usuario cuando inicia sesion
+import { modulesStructureTypes } from "../../backend/types/UserLogginModules/user_loggin_modules";
 
-interface LogOptionsProps {
-  title: string;
-  icon: string;
-  onClick: (moduleName: string) => void;
-}
-
-export default function LogOptions({ title, icon, onClick }: LogOptionsProps) {
+export default function LogginModulesCard({
+  title,
+  icon,
+  onClick,
+}: modulesStructureTypes) {
   const handleNavigation = () => {
-    onClick(title);
+    onClick(title); // Utiliza la acción definida en la interfaz
   };
 
   return (

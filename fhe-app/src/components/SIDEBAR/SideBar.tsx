@@ -12,7 +12,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import { Home } from "@mui/icons-material";
 import "../../CSS/sidebar.css";
 
-const drawerWidth = "180px"; // Ancho del drawer por defecto en 170px
+const drawerWidth = "auto"; // Ancho del drawer por defecto en 170px
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,

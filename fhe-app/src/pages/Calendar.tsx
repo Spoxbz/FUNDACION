@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SpecialtyCard from "../components/StickyCards/SpecialtyCard";
-import ProfessionalCard from "../components/StickyCards/ProfessionalCard";
-import StickyCalendar from "../components/StickyCalendar";
+import SpecialtyCard from "../components/FULLCALENDAR/StickyCards/SpecialtyCard";
+import ProfessionalCard from "../components/FULLCALENDAR/StickyCards/ProfessionalCard";
+import StickyCalendar from "../components/FULLCALENDAR/StickyCalendar";
 import FullCalendarEmisor from "../components/FULLCALENDAR/FullCalendarEmisor";
 import DoctorsAbsenceModal from "../components/FULLCALENDAR/modal/DoctorsAbsenceModal";
 import { customButtons } from "../components/FULLCALENDAR/custombuttons/CustomButtons";
