@@ -1,9 +1,9 @@
-import { Employee } from "../../types/users/user_employee";
+import { Employee } from "../../types/tables";
 
 export const employees: Employee[] = [
   {
     id_employee: 1,
-    employe_name: "Jaime",
+    employee_name: "Jaime",
     employee_lastname: "Leon",
     employee_ci: "0203040506",
     employee_gender: "male",
@@ -15,11 +15,21 @@ export const employees: Employee[] = [
     employee_email: "jaime.leon@example.com",
     employee_password: "1234",
     pin: "1231",
-    rol_id: 1,
+    role_id: 1,
+    role: {
+      id_role: 1,
+      role_name: "admin",
+      role_details: {
+        id_role_details: 1,
+        employee_id: 1,
+        role_id: 1,
+        details: null,
+      },
+    },
   },
   {
     id_employee: 2,
-    employe_name: "Bruno Esteban",
+    employee_name: "Bruno Esteban",
     employee_lastname: "Bravo Zhunio",
     employee_ci: "0107425761",
     employee_gender: "hombre",
@@ -31,11 +41,21 @@ export const employees: Employee[] = [
     employee_email: "bebravo@example.com",
     employee_password: "1234",
     pin: "1231",
-    rol_id: 1,
+    role_id: 1,
+    role: {
+      id_role: 1,
+      role_name: "admin",
+      role_details: {
+        id_role_details: 2,
+        employee_id: 2,
+        role_id: 1,
+        details: null,
+      },
+    },
   },
   {
     id_employee: 3,
-    employe_name: "María Fernanda",
+    employee_name: "María Fernanda",
     employee_lastname: "Bravo Zhunio",
     employee_ci: "0123456789",
     employee_gender: "mujer",
@@ -47,11 +67,21 @@ export const employees: Employee[] = [
     employee_email: "mfbravo@example.com",
     employee_password: "1234",
     pin: "1231",
-    rol_id: 2,
+    role_id: 2,
+    role: {
+      id_role: 2,
+      role_name: "emisor",
+      role_details: {
+        id_role_details: 3,
+        employee_id: 3,
+        role_id: 1,
+        details: null,
+      },
+    },
   },
   {
     id_employee: 4,
-    employe_name: "Bernarda Salome",
+    employee_name: "Bernarda Salome",
     employee_lastname: "Bravo Zhunio",
     employee_ci: "0987654321",
     employee_gender: "mujer",
@@ -63,11 +93,21 @@ export const employees: Employee[] = [
     employee_email: "bsbravo@example.com",
     employee_password: "1234",
     pin: "1231",
-    rol_id: 4,
+    role_id: 4,
+    role: {
+      id_role: 1,
+      role_name: "admin",
+      role_details: {
+        id_role_details: 1,
+        employee_id: 1,
+        role_id: 1,
+        details: null,
+      },
+    },
   },
   {
     id_employee: 5,
-    employe_name: "María Eduarda",
+    employee_name: "María Eduarda",
     employee_lastname: "Bravo Zhunio",
     employee_ci: "0543216789",
     employee_gender: "mujer",
@@ -79,6 +119,16 @@ export const employees: Employee[] = [
     employee_email: "mebravo@example.com",
     employee_password: "1234",
     pin: "1231",
-    rol_id: 3,
+    role_id: 3,
+    role: {
+      id_role: 1,
+      role_name: "admin",
+      role_details: {
+        id_role_details: 1,
+        employee_id: 1,
+        role_id: 1,
+        details: null,
+      },
+    },
   },
 ];

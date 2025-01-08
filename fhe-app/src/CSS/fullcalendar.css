@@ -2,6 +2,10 @@
   /* border: 1px solid black; */
   background-color: #374fa7;
 }
+.fc {
+  overflow-y: scroll; /* Añadir desplazamiento vertical */
+  height: 100vh; /* Ajustar a la altura deseada */
+}
 
 /******Estilos Botones personalizados del headertoolbar*******/
 .fc-toolbar-chunk {
@@ -80,6 +84,24 @@
   font-weight: bold;
   color: white;
 }
+
+/*******************Estilos Eventos***************************/
+.fc-event {
+  white-space: normal !important;
+  height: auto !important;
+  min-height: 30px; /* Ajusta el mínimo de altura según prefieras */
+  line-height: 1.2;
+  display: flex !important;
+}
+.fc-time-grid-event .fc-content {
+  white-space: normal;
+}
+/*Estilos para el contenedor del contenido del evento*/
+.fc-event-main {
+  background-color: aqua !important;
+  width: 100% !important;
+}
+
 /*******************Estilos Responsive***************************/
 @media (max-width: 768px) {
   .fc-daygrid-day {

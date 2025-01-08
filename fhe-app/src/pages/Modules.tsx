@@ -1,6 +1,6 @@
 /**
  *! Componente Modules.tsx
- *? Este componente mediante el uso del ".map" renderiza el componente LogginModulesCard usando para ello data de los modulos que se apega a los tipos de la interfaz modulesStructureTypes
+ *? Este componente mediante el uso del ".map" renderiza el componente LogginModulesCard usando para ello mockdata de los modulos que se apega a los tipos de la interfaz modulesStructureTypes
  */
 
 // Import componente que es la carta de los modulos
@@ -12,11 +12,7 @@ import { modulesData } from "../backend/datas/UserLoginModules/data_login_module
 // Estilos
 import "../css/modules.css";
 
-export default function Modules({
-  handleModuleClick,
-}: {
-  handleModuleClick: (moduleName: string) => void;
-}) {
+export default function Modules({ handleModuleClick }: { handleModuleClick: (moduleName: string) => void }) {
   const handleModuleNavigation = (moduleName: string) => {
     const routes: { [key: string]: string } = {
       Emisor: "modules/schedule",

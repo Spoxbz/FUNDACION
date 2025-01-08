@@ -6,23 +6,15 @@ import FullCalendarEmisor from "../components/FULLCALENDAR/FullCalendarEmisor";
 import DoctorsAbsenceModal from "../components/FULLCALENDAR/modal/DoctorsAbsenceModal";
 import { customButtons } from "../components/FULLCALENDAR/custombuttons/CustomButtons";
 import { Box } from "@mui/material";
-import {
-  professionallist,
-  Specialty,
-  Profesional,
-} from "../backend/datas/Emisor/datacalendar/listcontent";
+import { professionallist, Specialty, Profesional } from "../backend/datas/Emisor/datacalendar/listcontent";
 
 // Estilos
 import "../CSS/calendar.css";
 
 const Calendar: React.FC = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const [selectedSpecialty, setSelectedSpecialty] = useState<Specialty | null>(
-    null
-  );
-  const [filteredProfessionals, setFilteredProfessionals] = useState<
-    Profesional[]
-  >([]);
+  const [selectedSpecialty, setSelectedSpecialty] = useState<Specialty | null>(null);
+  const [filteredProfessionals, setFilteredProfessionals] = useState<Profesional[]>([]);
 
   useEffect(() => {
     // Muestra el modal cuando el componente se monta
@@ -35,11 +27,7 @@ const Calendar: React.FC = () => {
   useEffect(() => {
     // Filtrar los profesionales según la especialidad seleccionada
     if (selectedSpecialty) {
-      setFilteredProfessionals(
-        professionallist.filter(
-          (pro) => pro.specialtyId === selectedSpecialty.id
-        )
-      );
+      setFilteredProfessionals(professionallist.filter((pro) => pro.specialtyId === selectedSpecialty.id));
     } else {
       setFilteredProfessionals([]);
     }

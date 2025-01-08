@@ -1,9 +1,7 @@
 // components/FULLCALENDAR/custombuttons/CustomButtons.tsx
-import { CustomButtons } from "./CustomButtonTypes"; // Importar la interfaz si está en un archivo separado
+import { CustomButtons } from "./CustomButtonTypes";
 
-export const customButtons = (
-  openModalFunction: () => void
-): CustomButtons => ({
+export const customButtons = (openModalFunction: () => void): CustomButtons => ({
   deleteEventButton: {
     text: "Eliminar",
     click: () => alert("Eliminar turno seleccionado"),
