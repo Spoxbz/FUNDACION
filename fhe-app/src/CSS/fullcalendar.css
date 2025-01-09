@@ -98,8 +98,39 @@
 }
 /*Estilos para el contenedor del contenido del evento*/
 .fc-event-main {
-  background-color: aqua !important;
+  /* background-color: aqua !important; */
   width: 100% !important;
+}
+/*Estilos para el contenedor que tiene la propiedad de drag&drop de los eventos*/
+.fc-event-draggable {
+  padding: 0px !important;
+}
+
+/*Estilos para el div con la informacion de eventos en vista diaria*/
+.event-view-day {
+  width: 100% !important;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  font-weight: 10px !important;
+}
+/*Estilos para el div con la informacion de eventos en vista semanal*/
+.event-view-week {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  height: fit-content;
+}
+
+/*Estilos para los eventos en vista mensual*/
+.event-view-month {
+  background-color: rgb(55, 136, 216);
+  display: flex;
+  width: 100% !important;
+  justify-content: space-between;
+  border-radius: 4px;
+  margin: 0px !important;
 }
 
 /*******************Estilos Responsive***************************/
@@ -112,3 +143,6 @@
     height: 40px; /* Ajusta la altura de las franjas horarias */
   }
 }
+/*! Las dimensiones de pantalla mas grandes son de 1920x1040*/
+/*! Las dimensiones de pantalla medianas son de 1600x500*/
+/*! Las dimensiones de pantalla mas pequeñas son de 1200x800*/

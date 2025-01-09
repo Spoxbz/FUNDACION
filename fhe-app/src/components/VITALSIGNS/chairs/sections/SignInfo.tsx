@@ -183,7 +183,7 @@ export default function SignInfo() {
             />
           </div>
 
-          <div className="fields-eyes-input" style={{ fontSize: "0.9rem" }}>
+          <div className="fields-eyes-input" style={{ fontSize: "1rem" }}>
             <label htmlFor="avScOd">Agudeza Visual S/C (OD):</label>
             <input
               id="avScOd"
@@ -220,7 +220,9 @@ export default function SignInfo() {
           </div>
 
           <div className="fields-eyes-input">
-            <label htmlFor="avCcOs">Agudeza Visual C/C (OS):</label>
+            <label htmlFor="avCcOs" style={{ fontSize: "1rem" }}>
+              Agudeza Visual C/C (OS):
+            </label>
             <input
               id="avCcOs"
               type="text"

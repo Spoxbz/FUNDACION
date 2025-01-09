@@ -1,66 +1,78 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
-import { getFixedEvents, getDynamicEvents } from "./events"; // Lógica separada
-//Estilos
-import "../../CSS/fullcalendar.css";
+import { getFixedEvents } from "./events";
 import { CustomButtons } from "./custombuttons/CustomButtonTypes";
 
+//Estilos
+import "../../CSS/fullcalendar.css";
+
 interface Props {
-  customButtons: CustomButtons; // Personaliza el tipo si lo prefieres
+  customButtons: CustomButtons;
 }
 
 const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
   const [fixedEvents] = useState(getFixedEvents());
-  const [dynamicEvents, setDynamicEvents] = useState<{ title: string; date: string }[]>([]);
-
-  useEffect(() => {
-    setDynamicEvents(getDynamicEvents());
-  }, []);
 
   const renderEventContent = (eventInfo: any) => {
-    const { duration, doctor, patient, turno, consultorio } = eventInfo.event.extendedProps;
+    const { patient, cedula, phone, turno, consultorio } = eventInfo.event.extendedProps;
+    //const { duration, doctor, patient, cedula, phone, turno, consultorio } = eventInfo.event.extendedProps;
 
-    if (eventInfo.view.type === "timeGridDay" || eventInfo.view.type === "timeGridWeek") {
+    if (eventInfo.view.type === "timeGridDay") {
       return (
-        <div>
-          {" "}
-          <b>{eventInfo.timeText}</b>
-          <br />
-          {duration && <div>{`Duración: ${duration}`}</div>}
-          {doctor && <div>{`Doctor: ${doctor}`}</div>}
-          {patient && <div>{`Paciente: ${patient}`}</div>}
-          {turno && <div>{`Turno: ${turno}`}</div>}
-          {consultorio && <div>{`Consultorio: ${consultorio}`}</div>}
+        <>
+          <div className="event-view-day">
+            {/* <b>{eventInfo.timeText}</b> */}
+            {/* {duration && <div>{`Duración: ${duration}`}</div>} */}
+            {turno && <div>{`${turno}`}</div>}
+            {consultorio && <div>{`${consultorio}`}</div>}
+            {cedula && (
+              <div>
+                <input type="text" placeholder={`${cedula}`} />
+              </div>
+            )}
+            {patient && (
+              <div>
+                {`${patient}`} {`${phone}`}
+              </div>
+            )}
+          </div>
+        </>
+      );
+    } else if (eventInfo.view.type === "timeGridWeek") {
+      return (
+        <div className="event-view-week">
+          {turno && <div>{`${turno}`}</div>}
+          {cedula && <div>{`${cedula}`}</div>}
+          {patient && (
+            <div style={{ textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap" }}>{`${patient}`}</div>
+          )}
+          <div style={{ display: "flex", gap: 10 }}>{phone && <div>{`${phone}`}</div>}</div>
         </div>
       );
     } else if (eventInfo.view.type === "dayGridMonth") {
       return (
-        <div>
-          {" "}
+        <div className="event-view-month">
           <b>{eventInfo.timeText}</b>
-          <br />
-          {doctor && <div>{`Doctor: ${doctor}`}</div>}
-          {patient && <div>{`Paciente: ${patient}`}</div>}
+          {turno && <div>{`Turno: ${turno}`}</div>}
         </div>
       );
     }
     return (
       <div>
-        {" "}
         <b>{eventInfo.timeText}</b> <br /> {eventInfo.event.title}{" "}
       </div>
     );
   };
-  const handleEventClick = (eventClickInfo: any) => {
-    const event = eventClickInfo.event;
-    const turnoId = event.extendedProps.turno;
-    alert(`Turno seleccionado: ${turnoId}`);
-    event.setProp("title", "Turno Modificado");
-    event.setExtendedProp("doctor", "Dr. Modificado");
+
+  const handleEventDrop = (eventDropInfo: any) => {
+    const event = eventDropInfo.event;
+    const newStart = event.start;
+    const newEnd = event.end;
+    alert(`Evento movido a nueva fecha: ${newStart} hasta: ${newEnd}`);
   };
 
   const timeGridDayView = {
@@ -75,121 +87,42 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
   const dayGridMonthView = { allDaySlot: false, dayMaxEventRows: false };
 
   return (
-    <FullCalendar
-      locale={esLocale}
-      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-      initialView="timeGridDay"
-      headerToolbar={{
-        start: "title,prev,next,today",
-        center: "timeGridDay,timeGridWeek,dayGridMonth",
-        end: "deleteEventButton,emitEventButton,rescheduleEventButton,reserveEventButton,openModalButton,agregarTurno",
-      }}
-      customButtons={customButtons}
-      views={{
-        timeGridDay: timeGridDayView,
-        timeGridWeek: timeGridWeekView,
-        dayGridMonth: dayGridMonthView,
-      }}
-      editable={true}
-      selectable={true}
-      weekends={false}
-      aspectRatio={1}
-      height="auto"
-      events={[...fixedEvents, ...dynamicEvents]}
-      scrollTime="08:00:00"
-      slotMinTime="07:00:00"
-      slotMaxTime="17:30:00"
-      allDaySlot={false}
-      eventContent={renderEventContent}
-      eventClick={handleEventClick}
-    />
+    <>
+      <FullCalendar
+        locale={esLocale}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        initialView="timeGridDay"
+        headerToolbar={{
+          start: "title,prev,next,today",
+          center: "timeGridDay,timeGridWeek,dayGridMonth",
+          end: "openModalButton",
+          // end: "deleteEventButton,emitEventButton,rescheduleEventButton,reserveEventButton,openModalButton,agregarTurno",
+        }}
+        customButtons={customButtons}
+        views={{
+          timeGridDay: timeGridDayView,
+          timeGridWeek: timeGridWeekView,
+          dayGridMonth: dayGridMonthView,
+        }}
+        editable={true}
+        eventDurationEditable={false}
+        selectable={true}
+        weekends={true}
+        hiddenDays={[0]}
+        aspectRatio={1}
+        height="auto"
+        events={[...fixedEvents]}
+        scrollTime="08:00:00"
+        slotMinTime="07:00:00"
+        slotMaxTime="17:30:00"
+        allDaySlot={true}
+        duration={4}
+        eventDrop={handleEventDrop}
+        eventContent={renderEventContent}
+        dayMaxEvents={2}
+        moreLinkClick={"popover"}
+      />
+    </>
   );
 };
 export default FullCalendarEmisor;
-
-// const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
-//   const [fixedEvents] = useState(getFixedEvents());
-//   const [dynamicEvents, setDynamicEvents] = useState<
-//     { title: string; date: string }[]
-//   >([]);
-
-//   useEffect(() => {
-//     setDynamicEvents(getDynamicEvents());
-//   }, []);
-
-//   const renderEventContent = (eventInfo: any) => {
-//     const { duration, doctor, patient, turno, consultorio } =
-//       eventInfo.event.extendedProps;
-//     const isTallEnough =
-//       eventInfo.view.type === "timeGridDay" &&
-//       eventInfo.event._def.ui.height > 50;
-
-//     return (
-//       <div>
-//         <b>{eventInfo.timeText}</b> <br />
-//         {isTallEnough && (
-//           <>
-//             <div>{`Duración: ${duration}`}</div>
-//             <div>{`Doctor: ${doctor}`}</div>
-//             <div>{`Paciente: ${patient}`}</div>
-//             <div>{`Turno: ${turno}`}</div>
-//             <div>{`Consultorio: ${consultorio}`}</div>
-//           </>
-//         )}
-//       </div>
-//     );
-//   };
-
-//   const handleEventClick = (eventClickInfo: any) => {
-//     const event = eventClickInfo.event;
-//     const turnoId = event.extendedProps.turno;
-
-//     alert(`Turno seleccionado: ${turnoId}`);
-//     event.setProp("title", "Turno Modificado");
-//     event.setExtendedProp("doctor", "Dr. Modificado");
-//   };
-
-//   const timeGridDayView = {
-//     slotDuration: "00:05:00",
-//     slotLabelFormat: { hour: "2-digit", minute: "2-digit" } as const, // Agregado "as const" para garantizar el tipo correcto
-//   };
-
-//   const timeGridWeekView = {
-//     slotDuration: "00:05:00",
-//     slotLabelFormat: { hour: "2-digit", minute: "2-digit" } as const, // Igual que arriba
-//   };
-
-//   const dayGridMonthView = {};
-
-//   return (
-//     <FullCalendar
-//       locale={esLocale}
-//       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-//       initialView="timeGridDay"
-//       headerToolbar={{
-//         start: "title,prev,next,today",
-//         center: "timeGridDay,timeGridWeek,dayGridMonth",
-//         end: "deleteEventButton,emitEventButton,rescheduleEventButton,reserveEventButton,openModalButton,agregarTurno",
-//       }}
-//       customButtons={customButtons}
-//       views={{
-//         timeGridDay: timeGridDayView,
-//         timeGridWeek: timeGridWeekView,
-//         dayGridMonth: dayGridMonthView,
-//       }}
-//       editable={true}
-//       selectable={true}
-//       weekends={false}
-//       aspectRatio={1}
-//       height="auto"
-//       events={[...fixedEvents, ...dynamicEvents]}
-//       scrollTime="08:00:00"
-//       slotMinTime="06:30:00"
-//       slotMaxTime="17:30:00"
-//       eventContent={renderEventContent}
-//       eventClick={handleEventClick}
-//     />
-//   );
-// };
-
-// export default FullCalendarEmisor;
