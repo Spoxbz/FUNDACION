@@ -2,7 +2,6 @@
 export const getFixedEvents = () => {
   return [
     {
-      id: "1",
       title: "Turno 1",
       date: "2025-01-06",
       start: "2025-01-06T07:00:00",
