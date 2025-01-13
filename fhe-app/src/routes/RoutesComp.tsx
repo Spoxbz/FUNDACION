@@ -9,6 +9,7 @@ import Modules from "../pages/Modules";
 // import InterfaceExample from "../pages/InterfaceExample";
 import RegisterPage from "../pages/RegisterPage";
 import MedicalOffice from "../pages/MedicalOffice";
+import TurnModal from "../components/FULLCALENDAR/modal/TurnModal";
 
 export default function RoutesComp() {
   return (
@@ -17,13 +18,11 @@ export default function RoutesComp() {
         <Route path="/" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route
-          path="modules"
-          element={<Modules handleModuleClick={Calendar} />}
-        />
+        <Route path="modules" element={<Modules handleModuleClick={Calendar} />} />
         <Route path="modules/calendar" element={<Calendar />} />
         <Route path="modules/signs" element={<VitalSigns />} />
         <Route path="modules/consultorio" element={<MedicalOffice />} />
+        <Route path="turnmodal" element={<TurnModal />} />
         {/* <Route path="modules/hospital" element={<InterfaceExample />} />
         <Route path="modules/odontologia" element={<InterfaceExample />} />
         <Route path="modules/optic" element={<InterfaceExample />} />

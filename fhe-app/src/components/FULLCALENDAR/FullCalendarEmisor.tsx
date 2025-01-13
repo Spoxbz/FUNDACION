@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+//Estilos
+import "../../CSS/fullcalendar.css";
+// Componentes
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -6,17 +9,26 @@ import interactionPlugin from "@fullcalendar/interaction";
 import esLocale from "@fullcalendar/core/locales/es";
 import { getFixedEvents } from "./events";
 import { CustomButtons } from "./custombuttons/CustomButtonTypes";
-
-//Estilos
-import "../../CSS/fullcalendar.css";
+import { EventClickArg, DateSelectArg } from "@fullcalendar/core";
+// Vistas del clanedario
+import { timeGridDayView } from "./customviews/CustomViews";
+import { timeGridWeekView } from "./customviews/CustomViews";
+import { dayGridMonthView } from "./customviews/CustomViews";
+// Modal
+import TurnModal from "./modal/TurnModal";
 
 interface Props {
   customButtons: CustomButtons;
 }
 
 const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
-  const [fixedEvents] = useState(getFixedEvents());
+  const [fixedEvents, setFixedEvents] = useState(getFixedEvents());
+  // variables para el modal
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [isNewEvent, setIsNewEvent] = useState(false);
 
+  // Función para renderizar un evento dependiendo la vista
   const renderEventContent = (eventInfo: any) => {
     const { patient, cedula, phone, turno, consultorio } = eventInfo.event.extendedProps;
     //const { duration, doctor, patient, cedula, phone, turno, consultorio } = eventInfo.event.extendedProps;
@@ -75,16 +87,45 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
     alert(`Evento movido a nueva fecha: ${newStart} hasta: ${newEnd}`);
   };
 
-  const timeGridDayView = {
-    slotDuration: "00:05:00",
-    slotLabelFormat: { hour: "2-digit", minute: "2-digit" } as const,
+  // Mostrar eventos creados en el modal
+  const handleDateClick = (info: DateSelectArg) => {
+    setSelectedEvent({
+      turno: `Turno ${info.startStr}`,
+      consultorio: "",
+      cedula: "",
+      patient: "",
+      phone: "",
+      doctor: "",
+      start: info.startStr,
+      end: info.endStr,
+    });
+    setIsNewEvent(true);
+    setModalOpen(true);
   };
 
-  const timeGridWeekView = {
-    slotDuration: "00:05:00",
-    slotLabelFormat: { hour: "2-digit", minute: "2-digit" } as const,
+  // Crear Eventos con el modal
+  const handleEventClick = (info: EventClickArg) => {
+    const { title, extendedProps, start, end } = info.event;
+    setSelectedEvent({
+      title,
+      ...extendedProps,
+      start,
+      end,
+    });
+    setIsNewEvent(false);
+    setModalOpen(true);
   };
-  const dayGridMonthView = { allDaySlot: false, dayMaxEventRows: false };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedEvent(null);
+  };
+
+  const handleSaveEvent = (newEventData: any) => {
+    // Aquí puedes agregar lógica para actualizar el calendario con el nuevo evento
+    console.log("Nuevo evento guardado:", newEventData);
+    closeModal();
+  };
 
   return (
     <>
@@ -121,6 +162,17 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
         eventContent={renderEventContent}
         dayMaxEvents={2}
         moreLinkClick={"popover"}
+        // Llmar a la funcion que muestra el evento en el modal
+        select={handleDateClick}
+        // Llamar a la función que crea el evento
+        eventClick={handleEventClick}
+      />
+      <TurnModal
+        open={modalOpen}
+        onClose={closeModal}
+        eventData={selectedEvent}
+        isNewEvent={isNewEvent}
+        onSave={handleSaveEvent}
       />
     </>
   );

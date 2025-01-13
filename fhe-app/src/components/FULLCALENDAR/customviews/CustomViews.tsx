@@ -1,16 +1,16 @@
 // components/CustomViews.tsx
 
-// Vista de dia
+// Vista diaria
 export const timeGridDayView = {
   slotDuration: "00:05:00",
-  slotLabelFormat: { hour: "2-digit", minute: "2-digit" },
+  slotLabelFormat: { hour: "2-digit", minute: "2-digit" } as const,
 };
 
-// Vista de Semana
+// Vista semanal
 export const timeGridWeekView = {
   slotDuration: "00:05:00",
-  slotLabelFormat: { hour: "2-digit", minute: "2-digit" },
+  slotLabelFormat: { hour: "2-digit", minute: "2-digit" } as const,
 };
 
-// Vista de Mes
-export const dayGridMonthView = {};
+// Vista mensual
+export const dayGridMonthView = { allDaySlot: false, dayMaxEventRows: false };
