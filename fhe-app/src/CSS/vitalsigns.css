@@ -199,8 +199,9 @@
 }
 
 /* Clase para  el contenedor del componente de los campos calendario y hora */
+/* Este estilo va de la mano con el definito en loginpage.css para los labels*/
 .MuiInputBase-root {
-  height: 30px !important;
+  /* height: 30px !important; */
   background-color: white;
 }
 

@@ -133,6 +133,40 @@
   margin: 0px !important;
 }
 
+/*******************Estilos Casilla de todo el día***************************/
+/* .fc-all-day-cell {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between;
+} */
+/* .fc-daygrid-day-frame {
+  background-color: transparent !important;
+}
+.fc-scrollgrid-sync-inner {
+  background-color: transparent !important;
+  z-index: -300px;
+}
+.custom-all-day-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0;
+  z-index: 2000px;
+}
+
+.header-cell {
+  padding: 5px;
+  border-right: 1px solid #ddd;
+  z-index: 100px;
+}
+
+.header-cell:last-child {
+  border-right: none;
+} */
+
 /*******************Estilos Responsive***************************/
 @media (max-width: 768px) {
   .fc-daygrid-day {

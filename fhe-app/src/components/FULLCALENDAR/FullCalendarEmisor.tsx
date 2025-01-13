@@ -30,8 +30,19 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
 
   // Función para renderizar un evento dependiendo la vista
   const renderEventContent = (eventInfo: any) => {
-    const { patient, cedula, phone, turno, consultorio } = eventInfo.event.extendedProps;
+    const { patient, cedula, phone, turno, consultorio, remarks } = eventInfo.event.extendedProps;
     //const { duration, doctor, patient, cedula, phone, turno, consultorio } = eventInfo.event.extendedProps;
+    const { allDay } = eventInfo.event;
+
+    if (allDay && eventInfo.view.type === "timeGridDay") {
+      return (
+        <div className="event-view-allday">
+          <b>Evento Todo el Día</b>
+          <div>{eventInfo.event.title}</div>
+        </div>
+      );
+    }
+    // Rest of the code for other views...
 
     if (eventInfo.view.type === "timeGridDay") {
       return (
@@ -51,6 +62,7 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
                 {`${patient}`} {`${phone}`}
               </div>
             )}
+            {remarks && <div>{`${remarks}`}</div>}
           </div>
         </>
       );
@@ -127,6 +139,8 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
         locale={esLocale}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="timeGridDay"
+        // propiedad para navegar a un dia desde el calendario
+        navLinks={true}
         headerToolbar={{
           start: "title,prev,next,today",
           center: "timeGridDay,timeGridWeek,dayGridMonth",
@@ -148,9 +162,9 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
         height="auto"
         events={[...fixedEvents]}
         scrollTime="08:00:00"
-        slotMinTime="07:00:00"
+        slotMinTime="06:45:00"
         slotMaxTime="17:30:00"
-        allDaySlot={true}
+        allDaySlot={false}
         duration={4}
         eventDrop={handleEventDrop}
         eventContent={renderEventContent}
