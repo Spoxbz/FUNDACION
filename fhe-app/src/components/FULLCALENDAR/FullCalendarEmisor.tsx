@@ -22,7 +22,7 @@ interface Props {
 }
 
 const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
-  const [fixedEvents, setFixedEvents] = useState(getFixedEvents());
+  const [fixedEvents] = useState(getFixedEvents());
   // variables para el modal
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
@@ -121,12 +121,6 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
     setSelectedEvent(null);
   };
 
-  const handleSaveEvent = (newEventData: any) => {
-    // Aquí puedes agregar lógica para actualizar el calendario con el nuevo evento
-    console.log("Nuevo evento guardado:", newEventData);
-    closeModal();
-  };
-
   return (
     <>
       <FullCalendar
@@ -167,13 +161,7 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
         // Llamar a la función que crea el evento
         eventClick={handleEventClick}
       />
-      <TurnModal
-        open={modalOpen}
-        onClose={closeModal}
-        eventData={selectedEvent}
-        isNewEvent={isNewEvent}
-        onSave={handleSaveEvent}
-      />
+      <TurnModal open={modalOpen} onClose={closeModal} eventData={selectedEvent} isNewEvent={isNewEvent} />
     </>
   );
 };

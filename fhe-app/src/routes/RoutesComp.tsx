@@ -9,7 +9,8 @@ import Modules from "../pages/Modules";
 // import InterfaceExample from "../pages/InterfaceExample";
 import RegisterPage from "../pages/RegisterPage";
 import MedicalOffice from "../pages/MedicalOffice";
-import TurnModal from "../components/FULLCALENDAR/modal/TurnModal";
+
+import TurnoForm from "../components/FULLCALENDAR/forms/TurnoForm";
 
 export default function RoutesComp() {
   return (
@@ -22,7 +23,7 @@ export default function RoutesComp() {
         <Route path="modules/calendar" element={<Calendar />} />
         <Route path="modules/signs" element={<VitalSigns />} />
         <Route path="modules/consultorio" element={<MedicalOffice />} />
-        <Route path="turnmodal" element={<TurnModal />} />
+        <Route path="turnmodal" element={<TurnoForm />} />
         {/* <Route path="modules/hospital" element={<InterfaceExample />} />
         <Route path="modules/odontologia" element={<InterfaceExample />} />
         <Route path="modules/optic" element={<InterfaceExample />} />
