@@ -177,6 +177,12 @@
     height: 40px; /* Ajusta la altura de las franjas horarias */
   }
 }
+@media (max-width: 1340px) {
+  .dash-content {
+    margin-left: -10%;
+    background-color: gray;
+  }
+}
 /*! Las dimensiones de pantalla mas grandes son de 1920x1040*/
 /*! Las dimensiones de pantalla medianas son de 1600x500*/
 /*! Las dimensiones de pantalla mas pequeñas son de 1200x800*/

@@ -12,27 +12,17 @@ interface TopbarProps {
   menuRef: React.RefObject<HTMLDivElement>;
 }
 
-const Topbar: React.FC<TopbarProps> = ({
-  onMenuOpen,
-  username,
-  menuAnchorEl,
-  onLogout,
-  menuRef,
-}) => {
+const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onLogout, menuRef }) => {
   return (
     <header className="appbar-container">
       <div className="toolbar-content">
         <div className="left-section"></div>
         <div className="midle-section">
           <img className="img-logo" src="Logo.avif" alt="Logo" />
-          <h1>Fundación Hogar del Ecuador</h1>
+          <h2>Fundación Hogar del Ecuador</h2>
         </div>
 
-        <div
-          className="rigth-section"
-          onClick={onMenuOpen}
-          style={{ cursor: "pointer" }}
-        >
+        <div className="rigth-section" onClick={onMenuOpen} style={{ cursor: "pointer" }}>
           <Avatar sx={{ width: "30px", height: "30px", marginRight: "10px" }} />
           <p
             style={{

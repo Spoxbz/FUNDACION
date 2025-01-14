@@ -29,8 +29,7 @@ type Props = {
 
 const PacientesTabla: React.FC<Props> = ({ pacientes }) => {
   const [search, setSearch] = useState("");
-  const [filteredPacientes, setFilteredPacientes] =
-    useState<Paciente[]>(pacientes);
+  const [filteredPacientes, setFilteredPacientes] = useState<Paciente[]>(pacientes);
 
   // Manejar la lógica de filtrado
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,6 +63,7 @@ const PacientesTabla: React.FC<Props> = ({ pacientes }) => {
           value={search}
           onChange={handleSearchChange}
           sx={{ width: "50%", backgroundColor: "white", borderRadius: "4px" }}
+          size="small"
         />
         <Box display="flex" alignItems="center">
           <Checkbox />

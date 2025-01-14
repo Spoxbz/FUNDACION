@@ -52,11 +52,7 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
             {/* {duration && <div>{`Duración: ${duration}`}</div>} */}
             {turno && <div>{`${turno}`}</div>}
             {consultorio && <div>{`${consultorio}`}</div>}
-            {cedula && (
-              <div>
-                <input type="text" placeholder={`${cedula}`} />
-              </div>
-            )}
+            {cedula && <div>{`${cedula}`}</div>}
             {patient && (
               <div>
                 {`${patient}`} {`${phone}`}
@@ -162,7 +158,7 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
         height="auto"
         events={[...fixedEvents]}
         scrollTime="08:00:00"
-        slotMinTime="06:45:00"
+        slotMinTime="07:00:00"
         slotMaxTime="17:30:00"
         allDaySlot={false}
         duration={4}
