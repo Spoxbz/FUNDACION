@@ -7,7 +7,7 @@ import "../css/dashboard.css";
 import Calendar from "../pages/Calendar";
 import VitalSigns from "../pages/VitalSigns";
 import MedicalOffice from "../pages/MedicalOffice";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false); // Estado del sidebar
@@ -87,12 +87,12 @@ export default function Dashboard() {
         toggleButtonRef={toggleButtonRef}
         menuRef={menuRef}
       />
+      <Outlet></Outlet>
 
       <div ref={sidebarRef}>
         <Sidebar open={open} handleDrawerClose={toggleSidebar} />
       </div>
-
-      <div className="dash-content">{currentModule}</div>
+      {/* <div className="dash-content">{currentModule}</div> */}
     </Box>
   );
 }

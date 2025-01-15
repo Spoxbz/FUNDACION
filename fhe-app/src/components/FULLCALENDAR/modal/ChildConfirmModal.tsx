@@ -24,10 +24,10 @@ const ChildConfirmModal: React.FC<ChildConfirmModalProps> = ({ open, onClose, on
     <Modal open={open} onClose={onClose} aria-labelledby="confirm-title" aria-describedby="confirm-description">
       <Box sx={style}>
         <Typography id="confirm-title" variant="h6" gutterBottom>
-          Confirmar cancelación
+          Confirmar acción
         </Typography>
         <Typography id="confirm-description" gutterBottom>
-          ¿Desea cancelar los cambios?
+          ¿Desea <b>guardar</b> los cambios?
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: 2 }}>
           <Button variant="outlined" color="primary" onClick={onClose}>

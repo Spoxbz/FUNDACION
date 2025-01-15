@@ -160,7 +160,7 @@ const FullCalendarEmisor: React.FC<Props> = ({ customButtons }) => {
         scrollTime="08:00:00"
         slotMinTime="07:00:00"
         slotMaxTime="17:30:00"
-        allDaySlot={false}
+        allDaySlot={true}
         duration={4}
         eventDrop={handleEventDrop}
         eventContent={renderEventContent}

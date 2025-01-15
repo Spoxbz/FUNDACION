@@ -11,6 +11,7 @@ import RegisterPage from "../pages/RegisterPage";
 import MedicalOffice from "../pages/MedicalOffice";
 
 import TurnoForm from "../components/FULLCALENDAR/forms/TurnoForm";
+import ROUTES from "../enviroment/routes";
 
 export default function RoutesComp() {
   return (
@@ -18,7 +19,10 @@ export default function RoutesComp() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path={ROUTES.DASHBOARD.BASE} element={<Dashboard />} />
+        <Route path="/padre" element={<Dashboard />}>
+          <Route path="/padre/hijouno" element={<Calendar />} />
+        </Route>
         <Route path="modules" element={<Modules handleModuleClick={Calendar} />} />
         <Route path="modules/calendar" element={<Calendar />} />
         <Route path="modules/signs" element={<VitalSigns />} />
