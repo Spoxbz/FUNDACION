@@ -8,9 +8,10 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
-import MailIcon from "@mui/icons-material/Mail";
-import { Home } from "@mui/icons-material";
 import "../../CSS/sidebar.css";
+// Import de las opciones
+import { listOptions } from "./sidebaroptions";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = "auto"; // Ancho del drawer por defecto en 170px
 
@@ -42,15 +43,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
-
-  const listOptions: string[] = [
-    "Opción 1",
-    "Opción 2",
-    "Opción 3",
-    "Opción 4",
-    "Opción 5",
-    "Opción 6",
-  ];
+  const navigate = useNavigate();
 
   return (
     <MuiDrawer
@@ -99,22 +92,14 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
       </div>
 
       <List>
-        {listOptions.map((text, index) => (
-          <ListItem
-            key={text}
-            disablePadding
-            sx={{
-              display: "block",
-              height: "40px",
-              width: "100%",
-            }}
-          >
+        {listOptions.map(({ label, icon, route }, index) => (
+          <ListItem key={label} disablePadding>
             <ListItemButton
-              style={{ color: "white" }}
+              onClick={() => navigate(route)}
               sx={{
                 minHeight: 48,
-                px: 2.5,
                 justifyContent: open ? "initial" : "center",
+                px: 2.5,
               }}
             >
               <ListItemIcon
@@ -123,20 +108,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
                   justifyContent: "center",
                   mr: open ? 3 : "auto",
                   color: "white",
-                  marginRight: "5px",
                 }}
               >
-                {index % 2 === 0 ? <Home /> : <MailIcon />}
+                {icon}
               </ListItemIcon>
-              <ListItemText
-                primary={text}
-                sx={{
-                  opacity: open ? 1 : 0,
-                  display: "flex",
-                  flexWrap: "wrap",
-                  fontSize: "14px",
-                }}
-              />
+              <ListItemText primary={label} sx={{ opacity: open ? 1 : 0, color: "white" }} />
             </ListItemButton>
           </ListItem>
         ))}

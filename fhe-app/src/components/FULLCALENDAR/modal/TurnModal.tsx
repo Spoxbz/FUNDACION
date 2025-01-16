@@ -99,6 +99,7 @@ const TurnModal: React.FC<TurnModalProps> = ({ open, onClose, eventData, isNewEv
   // Funciones de cierre modal hijo
   const handleConfirmClose = () => {
     setConfirmOpen(false);
+    onClose();
   };
   const handleConfirmYes = () => {
     setConfirmOpen(false);

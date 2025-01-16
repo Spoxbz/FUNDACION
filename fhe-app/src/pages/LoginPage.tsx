@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Box,
-  Button,
-  Paper,
-  Typography,
-  TextField,
-} from "@mui/material";
+import { Container, Box, Button, Paper, Typography, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { employees } from "../backend/datas/users/data_employee"; // Importa la data local de empleados
 import "../css/loginpage.css";
+// Import del logo
+import Logo from "../assets/Logo.avif";
+// Import de las rutas
+import ROUTES from "../enviroment/variables_routes";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -22,9 +19,7 @@ export default function LoginPage() {
 
     // Busca al empleado con el nombre de usuario y la contraseña proporcionados
     const foundEmployee = employees.find(
-      (employee) =>
-        employee.username === username &&
-        employee.employee_password === password
+      (employee) => employee.username === username && employee.employee_password === password
     );
 
     if (!foundEmployee) {
@@ -37,7 +32,8 @@ export default function LoginPage() {
     localStorage.setItem("loggedInUser", JSON.stringify(foundEmployee));
 
     // Redirige al Dashboard después de un inicio de sesión exitoso
-    navigate("/dashboard");
+    navigate(ROUTES.DASHBOARD.FCHILD);
+    // navigate("/dashboard");
   };
 
   return (
@@ -48,11 +44,7 @@ export default function LoginPage() {
             <Typography variant="h5" align="center" gutterBottom>
               Bienvenido, Inicie Sesión
             </Typography>
-            <img
-              style={{ marginBottom: "15px", width: "120px", height: "100px" }}
-              src="Logo.avif"
-              alt="Logo FHE"
-            />
+            <img style={{ marginBottom: "15px", width: "120px", height: "100px" }} src={Logo} alt="Logo FHE" />
             <Box
               component="form"
               onSubmit={handleLogin}
@@ -86,12 +78,7 @@ export default function LoginPage() {
                   {errorMessage}
                 </Typography>
               )}
-              <Button
-                className="button-login"
-                variant="contained"
-                type="submit"
-                color="primary"
-              >
+              <Button className="button-login" variant="contained" type="submit" color="primary">
                 Login
               </Button>
             </Box>

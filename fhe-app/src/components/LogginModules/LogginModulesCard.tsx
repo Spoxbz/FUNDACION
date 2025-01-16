@@ -7,11 +7,7 @@ import "../../CSS/logoptions.css";
 // Import de la interfaz para los modulos de usuario cuando inicia sesion
 import { modulesStructureTypes } from "../../backend/types/UserLogginModules/user_loggin_modules";
 
-export default function LogginModulesCard({
-  title,
-  icon,
-  onClick,
-}: modulesStructureTypes) {
+export default function LogginModulesCard({ title, icon, onClick }: modulesStructureTypes) {
   const handleNavigation = () => {
     onClick(title); // Utiliza la acción definida en la interfaz
   };
@@ -32,12 +28,7 @@ export default function LogginModulesCard({
           }}
         />
         <CardContent>
-          <Typography
-            gutterBottom
-            variant="h6"
-            component="div"
-            className="title-card"
-          >
+          <Typography gutterBottom variant="h6" component="div" className="title-card">
             {title}
           </Typography>
         </CardContent>

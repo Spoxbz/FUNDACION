@@ -179,8 +179,7 @@
 }
 @media (max-width: 1340px) {
   .dash-content {
-    margin-left: -10%;
-    background-color: gray;
+    margin-left: -20%;
   }
 }
 /*! Las dimensiones de pantalla mas grandes son de 1920x1040*/

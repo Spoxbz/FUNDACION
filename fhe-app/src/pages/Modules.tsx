@@ -11,20 +11,27 @@ import { modulesStructureTypes } from "../backend/types/UserLogginModules/user_l
 import { modulesData } from "../backend/datas/UserLoginModules/data_login_modules";
 // Estilos
 import "../css/modules.css";
+// Import de variable de las rutas
+import ROUTES from "../enviroment/variables_routes";
 
-export default function Modules({ handleModuleClick }: { handleModuleClick: (moduleName: string) => void }) {
+import { useNavigate } from "react-router-dom";
+
+export default function Modules() {
+  const navigate = useNavigate();
+
   const handleModuleNavigation = (moduleName: string) => {
     const routes: { [key: string]: string } = {
-      Emisor: "modules/schedule",
-      Signos: "modules/signs",
-      Consultorio: "modules/consultorio",
-      Example: "modules/example",
+      Emisor: ROUTES.MODULES.MFCHILD,
+      Signos: ROUTES.MODULES.MSCHILD,
+      Consultorio: ROUTES.MODULES.MTCHILD,
+      Example: ROUTES.MODULES.M5CHILD,
     };
 
     const route = routes[moduleName];
     if (route) {
-      console.log(`Navigate to: ${route}`);
-      handleModuleClick(moduleName);
+      navigate(route); // Navega a la ruta específica del módulo
+    } else {
+      console.warn(`No se encontró una ruta para el módulo: ${moduleName}`);
     }
   };
 
@@ -37,7 +44,7 @@ export default function Modules({ handleModuleClick }: { handleModuleClick: (mod
         {modulesData.map((module) => {
           const moduleWithAction: modulesStructureTypes = {
             ...module,
-            onClick: handleModuleNavigation, // Agrega la acción
+            onClick: handleModuleNavigation, // Agrega la acción de navegación
           };
           return (
             <LogginModulesCard
@@ -50,3 +57,42 @@ export default function Modules({ handleModuleClick }: { handleModuleClick: (mod
     </div>
   );
 }
+
+// export default function Modules({ handleModuleClick }: { handleModuleClick: (moduleName: string) => void }) {
+//   const handleModuleNavigation = (moduleName: string) => {
+//     const routes: { [key: string]: string } = {
+//       Emisor: ROUTES.MODULES.MFCHILD,
+//       Signos: ROUTES.MODULES.MSCHILD,
+//       Consultorio: ROUTES.MODULES.MTCHILD,
+//       Example: "modules/example",
+//     };
+
+//     const route = routes[moduleName];
+//     if (route) {
+//       console.log(`Navigate to: ${route}`);
+//       handleModuleClick(moduleName);
+//     }
+//   };
+
+//   return (
+//     <div className="cont-modules">
+//       <header className="headerModulesPage">
+//         <h1 className="titleHeaderModules">Sus Módulos</h1>
+//       </header>
+//       <div className="main">
+//         {modulesData.map((module) => {
+//           const moduleWithAction: modulesStructureTypes = {
+//             ...module,
+//             onClick: handleModuleNavigation, // Agrega la acción
+//           };
+//           return (
+//             <LogginModulesCard
+//               key={module.title}
+//               {...moduleWithAction} // Pasa el módulo completo como props
+//             />
+//           );
+//         })}
+//       </div>
+//     </div>
+//   );
+// }

@@ -1,6 +1,7 @@
 import React from "react";
 import "../../CSS/topbar.css";
 import { Avatar } from "@mui/material";
+import Logo from "../../assets/Logo.avif";
 
 interface TopbarProps {
   onMenuClick: () => void;
@@ -18,7 +19,7 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
       <div className="toolbar-content">
         <div className="left-section"></div>
         <div className="midle-section">
-          <img className="img-logo" src="Logo.avif" alt="Logo" />
+          <img className="img-logo" src={Logo} alt="Logo" />
           <h2>Fundación Hogar del Ecuador</h2>
         </div>
 
