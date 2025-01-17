@@ -1,0 +1,72 @@
+/**
+ * De acuerdo, vamos a detenernos un momento aquí, y vamos a comenzar a desarrollar el backend. Recuerda que estoy usando react-vite, material ui y typescript
+ * Para eso he creado una carpeta llamada bakcendTwo y dentro tengo 4 carpetas:
+ * - api:client.ts
+ * - controller
+ * - model
+ * - service
+ * 
+ * me estoy manejando de esta forma para al menos tener un backend ordenado
+ * 
+ * y dentro de mi proyecto he definido las variables de entorno para la conexión con supabase: Archivo .env.local
+ * VITE_SUPABASE_URL=https://pnhoracwzafcaghwjigx.supabase.co
+ * VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBuaG9yYWN3emFmY2FnaHdqaWd4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU4NTE1NzAsImV4cCI6MjA1MTQyNzU3MH0.z7Z4w51JhvtIUMujMWDA2h1mPtXed8OV3ZVpN-YhNDw
+
+ En client.ts tengo la siguiente información:
+ import { createClient } from "@supabase/supabase-js";
+ 
+ // Obtener las variables de entorno
+ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+ const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+ 
+ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+   throw new Error(
+     "Faltan las variables de entorno VITE_SUPABASE_URL o VITE_SUPABASE_ANON_KEY"
+   );
+ }
+ 
+ export const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+ Entonces, tengo entendido lo siguiente:
+ - que en la carpeta model iría todas las representaciones de las tablas de mi base de datos solo que en lenguaje de typescript
+ - que en la carpeta service va a a ir todos los archivos con la lógica de validaciones y peticiones a la base de datos
+ - que en la carpeta controller iría especificado los endpoints de acceso, aunque eso yo lo estaría manejando con mi componente RoutesComp.tsx verdad?
+ import { BrowserRouter, Route } from "react-router-dom";
+import { Routes } from "react-router-dom";
+import NotFound from "../pages/NotFound";
+import LoginPage from "../pages/LoginPage";
+import Dashboard from "../layouts/DashBoard";
+import Calendar from "../pages/Calendar";
+import VitalSigns from "../pages/VitalSigns";
+import Modules from "../pages/Modules";
+import InterfaceExample from "../pages/InterfaceExample";
+import RegisterPage from "../pages/RegisterPage";
+import MedicalOffice from "../pages/MedicalOffice";
+import ROUTES from "../enviroment/variables_routes";
+
+export default function RoutesComp() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path={ROUTES.LOGIN.BASE} element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        {/*Definicion de ruta padre */}
+        <Route path={ROUTES.DASHBOARD.BASE2} element={<Dashboard />}>
+          <Route path={ROUTES.MODULES.BASE3} element={<Modules />}></Route>
+          <Route path={ROUTES.MODULES.MFCHILD} element={<Calendar />} />
+          <Route path={ROUTES.MODULES.MSCHILD} element={<VitalSigns />} />
+          <Route path={ROUTES.MODULES.MTCHILD} element={<MedicalOffice />} />
+          <Route path={ROUTES.MODULES.M5CHILD} element={<InterfaceExample />} />
+        </Route>
+
+        {/*En caso de que no se encuentre una ruta, esta sera la pagina que se mostrara */}
+        <Route path={ROUTES.NOTFOUND.BASE4} element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+*/
+
+Entiendo, en ese caso no podría omitir la carpeta de controller? ya que si requiero integrar los servicios con los componentes que tengo, sería mejor directamente manejarme con mis componentes en vez de duplicar la logica, así que la carpeta controller la descarto.
+
+Y otra consulta, no es mejor que en los archivos .service.ts maneje toda la logica de errores peticiones y demas y que en los componentes solo haga uso de la información capturada o traida, ya que para enviar si o si tendría que desde el mismo componente de react, capturar la info ingresada y entonces eso se manda a los archivos service.ts y esots hacen las peticiones o validaciones al backend verdad?
