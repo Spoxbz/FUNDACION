@@ -33,6 +33,18 @@ export default function LoginPage() {
     navigate(ROUTES.DASHBOARD.FCHILD);
   };
 
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value;
+
+    // Valida que el input no contenga números
+    if (/^[^\d]*$/.test(input)) {
+      setUsername(input); // Actualiza el estado si es válido
+      setErrorMessage(""); // Limpia el mensaje de error
+    } else {
+      setErrorMessage("Por favor, ingresa solo texto.");
+    }
+  };
+
   return (
     <div className="main-container">
       <Container className="form-login">
@@ -52,7 +64,8 @@ export default function LoginPage() {
                 label="Usuario"
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                // onChange={(e) => setUsername(e.target.value)}
+                onChange={handleUsernameChange}
                 variant="outlined"
                 required
                 fullWidth
