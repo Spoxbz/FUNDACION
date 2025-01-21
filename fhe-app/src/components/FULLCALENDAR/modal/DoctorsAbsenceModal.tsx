@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Modal, Typography, Button } from "@mui/material";
 // import interfaz de doctores no asisten
-import { DoctorAbsence } from "../../../backend/types/Emisor/DoctorAbsence";
+import { DoctorAbsence } from "../../../backendMuckData/types/Emisor/DoctorAbsence";
 
 const style = {
   position: "absolute" as const,
@@ -68,57 +68,29 @@ const DoctorsAbsenceModal: React.FC<ModalProps> = ({ open, onClose }) => {
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr style={{ backgroundColor: "#f0f0f0" }}>
-                <th style={{ padding: "8px", border: "1px solid #ccc" }}>
-                  Especialidad
-                </th>
-                <th style={{ padding: "8px", border: "1px solid #ccc" }}>
-                  Médico
-                </th>
-                <th style={{ padding: "8px", border: "1px solid #ccc" }}>
-                  Inicio
-                </th>
-                <th style={{ padding: "8px", border: "1px solid #ccc" }}>
-                  Fin
-                </th>
-                <th style={{ padding: "8px", border: "1px solid #ccc" }}>
-                  Observaciones
-                </th>
-                <th style={{ padding: "8px", border: "1px solid #ccc" }}>
-                  Usuario
-                </th>
+                <th style={{ padding: "8px", border: "1px solid #ccc" }}>Especialidad</th>
+                <th style={{ padding: "8px", border: "1px solid #ccc" }}>Médico</th>
+                <th style={{ padding: "8px", border: "1px solid #ccc" }}>Inicio</th>
+                <th style={{ padding: "8px", border: "1px solid #ccc" }}>Fin</th>
+                <th style={{ padding: "8px", border: "1px solid #ccc" }}>Observaciones</th>
+                <th style={{ padding: "8px", border: "1px solid #ccc" }}>Usuario</th>
               </tr>
             </thead>
             <tbody>
               {data.map((item, index) => (
                 <tr key={index} style={{ textAlign: "center" }}>
-                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>
-                    {item.specialty}
-                  </td>
-                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>
-                    {item.doctor}
-                  </td>
-                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>
-                    {item.start}
-                  </td>
-                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>
-                    {item.end}
-                  </td>
-                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>
-                    {item.observations}
-                  </td>
-                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>
-                    {item.user}
-                  </td>
+                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>{item.specialty}</td>
+                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>{item.doctor}</td>
+                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>{item.start}</td>
+                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>{item.end}</td>
+                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>{item.observations}</td>
+                  <td style={{ padding: "8px", border: "1px solid #ccc" }}>{item.user}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </Box>
-        <Button
-          onClick={onClose}
-          variant="contained"
-          sx={{ mt: 2, display: "block", marginLeft: "auto" }}
-        >
+        <Button onClick={onClose} variant="contained" sx={{ mt: 2, display: "block", marginLeft: "auto" }}>
           Cerrar
         </Button>
       </Box>

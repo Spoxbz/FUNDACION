@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 // Importa estilos
 import "../../CSS/logoptions.css";
 // Import de la interfaz para los modulos de usuario cuando inicia sesion
-import { modulesStructureTypes } from "../../backend/types/UserLogginModules/user_loggin_modules";
+import { modulesStructureTypes } from "../../backendMuckData/types/UserLogginModules/user_loggin_modules";
 
 export default function LogginModulesCard({ title, icon, onClick }: modulesStructureTypes) {
   const handleNavigation = () => {

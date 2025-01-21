@@ -3,15 +3,13 @@
 import { Card, CardContent, CardHeader, Divider } from "@mui/material";
 import "../../../CSS/calendar.css";
 import StickyListCard from "./StickyListCard";
-import { Profesional } from "../../../backend/datas/Emisor/datacalendar/listcontent";
+import { Profesional } from "../../../backendMuckData/datas/Emisor/datacalendar/listcontent";
 
 interface ProfessionalCardProps {
   professionals: Profesional[];
 }
 
-export default function ProfessionalCard({
-  professionals,
-}: ProfessionalCardProps) {
+export default function ProfessionalCard({ professionals }: ProfessionalCardProps) {
   return (
     <>
       <Card className="tarjetas" sx={{ marginRight: "20px" }}>

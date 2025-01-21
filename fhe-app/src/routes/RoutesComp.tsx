@@ -7,7 +7,7 @@ import Calendar from "../pages/Calendar";
 import VitalSigns from "../pages/VitalSigns";
 import Modules from "../pages/Modules";
 import InterfaceExample from "../pages/InterfaceExample";
-import RegisterPage from "../pages/RegisterPage";
+// import RegisterPage from "../pages/RegisterPage";
 import MedicalOffice from "../pages/MedicalOffice";
 import ROUTES from "../enviroment/variables_routes";
 
@@ -16,7 +16,7 @@ export default function RoutesComp() {
     <BrowserRouter>
       <Routes>
         <Route path={ROUTES.LOGIN.BASE} element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        {/* <Route path="register" element={<RegisterPage />} /> */}
         {/*Definicion de ruta padre */}
         <Route path={ROUTES.DASHBOARD.BASE2} element={<Dashboard />}>
           <Route path={ROUTES.MODULES.BASE3} element={<Modules />}></Route>

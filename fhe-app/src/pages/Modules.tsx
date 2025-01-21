@@ -6,9 +6,9 @@
 // Import componente que es la carta de los modulos
 import LogginModulesCard from "../components/LogginModules/LogginModulesCard";
 // Import de la interfaz que define la estructura e informacion visual de las cards para modulos
-import { modulesStructureTypes } from "../backend/types/UserLogginModules/user_loggin_modules";
+import { modulesStructureTypes } from "../backendMuckData/types/UserLogginModules/user_loggin_modules";
 // Import de la data para los modulos en las cards
-import { modulesData } from "../backend/datas/UserLoginModules/data_login_modules";
+import { modulesData } from "../backendMuckData/datas/UserLoginModules/data_login_modules";
 // Estilos
 import "../css/modules.css";
 // Import de variable de las rutas

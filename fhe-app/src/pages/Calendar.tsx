@@ -6,7 +6,7 @@ import FullCalendarEmisor from "../components/FULLCALENDAR/FullCalendarEmisor";
 import DoctorsAbsenceModal from "../components/FULLCALENDAR/modal/DoctorsAbsenceModal";
 import { customButtons } from "../components/FULLCALENDAR/custombuttons/CustomButtons";
 import { Box } from "@mui/material";
-import { professionallist, Specialty, Profesional } from "../backend/datas/Emisor/datacalendar/listcontent";
+import { professionallist, Specialty, Profesional } from "../backendMuckData/datas/Emisor/datacalendar/listcontent";
 
 // Estilos
 import "../CSS/calendar.css";
