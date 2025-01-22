@@ -1,5 +1,7 @@
 // Sidebar.tsx
 import React from "react";
+// Estilos
+import "../../CSS/sidebar.css";
 import { useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -8,10 +10,10 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
-import "../../CSS/sidebar.css";
-// Import de las opciones
-import { listOptions } from "./sidebaroptions";
 import { useNavigate } from "react-router-dom";
+// Uso de zustand para mostrar opciones segun el rol
+import { useAuthStore } from "../../backendTwo/zustand/authStore"; // Importa el estado global de Zustand
+import { getMenuOptionsByRole } from "../../backendTwo/service/rolSidebarOptionsService"; // Función para obtener opciones del sidebar segun rol
 
 const drawerWidth = "auto"; // Ancho del drawer por defecto en 170px
 
@@ -44,6 +46,10 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const { user } = useAuthStore(); // Obtiene el usuario desde Zustand
+
+  // Obtiene las opciones de menú dinámicamente según el rol del usuario
+  const menuItems = getMenuOptionsByRole(user);
 
   return (
     <MuiDrawer
@@ -92,7 +98,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
       </div>
 
       <List>
-        {listOptions.map(({ label, icon, route }, index) => (
+        {menuItems.map(({ label, icon, route }, index) => (
           <ListItem key={label} disablePadding>
             <ListItemButton
               onClick={() => navigate(route)}
