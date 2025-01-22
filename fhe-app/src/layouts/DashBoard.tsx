@@ -4,6 +4,8 @@ import Sidebar from "../components/SIDEBAR/SideBar";
 import Topbar from "../components/TOPBAR/Topbar";
 import "../css/dashboard.css";
 import { Outlet, useNavigate } from "react-router-dom";
+// Import del contexto global del usuario logueado con authservice y almancenado con zustand
+import { useAuthStore } from "../backendTwo/zustand/authStore";
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false); // Estado del sidebar
@@ -11,8 +13,9 @@ export default function Dashboard() {
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null); // Referencia al botón de toggle
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null); // Estado del menú desplegable
   const menuRef = useRef<HTMLDivElement | null>(null); // Referencia al menú desplegable
-  const username = "Bruno Bravo"; // Nombre del usuario en sesión
   const navigate = useNavigate();
+  // Zustand
+  const { user, logout } = useAuthStore();
 
   // Alternar estado del sidebar
   const toggleSidebar = () => {
@@ -52,7 +55,7 @@ export default function Dashboard() {
   };
 
   const handleLogout = () => {
-    console.log("Cerrando sesión...");
+    logout();
     navigate("/");
   };
 
@@ -61,7 +64,7 @@ export default function Dashboard() {
       <Topbar
         onMenuClick={toggleSidebar}
         onMenuOpen={handleMenuOpen}
-        username={username}
+        username={user?.employee_name || "Usuario"} // Muestra el nombre del usuario
         menuAnchorEl={menuAnchorEl}
         onLogout={handleLogout}
         toggleButtonRef={toggleButtonRef}
@@ -72,8 +75,6 @@ export default function Dashboard() {
         <Sidebar open={open} handleDrawerClose={toggleSidebar} />
       </div>
       <Outlet></Outlet>
-
-      {/* <div className="dash-content"></div> */}
     </Box>
   );
 }

@@ -7,6 +7,8 @@ import "../css/loginpage.css";
 import Logo from "../assets/Logo.avif";
 // Import de las rutas
 import ROUTES from "../enviroment/variables_routes";
+// Import de zustand para almacenar el usuario logueado
+import { useAuthStore } from "../backendTwo/zustand/authStore";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -29,10 +31,14 @@ export default function LoginPage() {
     // Guarda el empleado en localStorage
     localStorage.setItem("loggedInUser", JSON.stringify(employee));
 
+    // Guarda el empleado en zustand
+    useAuthStore.getState().login(employee);
+
     // Redirige al Dashboard después de un inicio de sesión exitoso
     navigate(ROUTES.DASHBOARD.FCHILD);
   };
 
+  // Validacion para que el campo de username no acepte numeros
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value;
 
