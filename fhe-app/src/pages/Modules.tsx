@@ -13,11 +13,25 @@ import { modulesData } from "../backendMuckData/datas/UserLoginModules/data_logi
 import "../css/modules.css";
 // Import de variable de las rutas
 import ROUTES from "../enviroment/variables_routes";
+// import de zustand para retomar el usuario en sesion
+import { useAuthStore } from "../backendTwo/zustand/authStore";
 
 import { useNavigate } from "react-router-dom";
 
 export default function Modules() {
   const navigate = useNavigate();
+  const { user } = useAuthStore();
+
+  // Recoger nombre y apellido
+  const firstName = user?.employee_name?.split(" ")[0] || "";
+  const lastName = user?.employee_lastname?.split(" ")[0] || "";
+
+  const showGrettingMessage = () => {
+    if (user?.rol_id === 4) {
+      return `!Bienvenido, Dr.${firstName} ${lastName}!`;
+    }
+    return `!Bienvenido, ${firstName} ${lastName}!`;
+  };
 
   const handleModuleNavigation = (moduleName: string) => {
     const routes: { [key: string]: string } = {
@@ -38,7 +52,9 @@ export default function Modules() {
   return (
     <div className="cont-modules">
       <header className="headerModulesPage">
-        <h1 className="titleHeaderModules">Sus Módulos</h1>
+        <h1 className="titleHeaderModules">{showGrettingMessage()}</h1>
+        <br />
+        <h2 className="titleHeaderModules">Sus Módulos</h2>
       </header>
       <div className="main">
         {modulesData.map((module) => {

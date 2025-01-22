@@ -48,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
   const navigate = useNavigate();
   const { user } = useAuthStore(); // Obtiene el usuario desde Zustand
 
-  // Obtiene las opciones de menú dinámicamente según el rol del usuario
+  // Obtiene las opciones del menu lateral dinámicamente según el rol del usuario
   const menuItems = getMenuOptionsByRole(user);
 
   return (
@@ -98,30 +98,36 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
       </div>
 
       <List>
-        {menuItems.map(({ label, icon, route }, index) => (
-          <ListItem key={label} disablePadding>
-            <ListItemButton
-              onClick={() => navigate(route)}
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
+        {/*Usa las opciones laterales */}
+        {menuItems.map(
+          (
+            { label, icon, title, route } // Aqui puedo usar un index
+          ) => (
+            <ListItem key={label} disablePadding>
+              <ListItemButton
+                title={title}
+                onClick={() => navigate(route)}
                 sx={{
-                  minWidth: 0,
-                  justifyContent: "center",
-                  mr: open ? 3 : "auto",
-                  color: "white",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
                 }}
               >
-                {icon}
-              </ListItemIcon>
-              <ListItemText primary={label} sx={{ opacity: open ? 1 : 0, color: "white" }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    justifyContent: "center",
+                    mr: open ? 3 : "auto",
+                    color: "white",
+                  }}
+                >
+                  {icon}
+                </ListItemIcon>
+                <ListItemText primary={label} sx={{ opacity: open ? 1 : 0, color: "white" }} />
+              </ListItemButton>
+            </ListItem>
+          )
+        )}
       </List>
     </MuiDrawer>
   );
