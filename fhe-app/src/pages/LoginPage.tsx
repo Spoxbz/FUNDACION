@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Container, Box, Button, Paper, Typography, TextField } from "@mui/material";
+import {
+  Container,
+  Box,
+  Button,
+  Paper,
+  Typography,
+  InputAdornment,
+  OutlinedInput,
+  InputLabel,
+  FormControl,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../backendTwo/service/authService"; // Importa la función de inicio de sesión personalizada
 import "../css/loginpage.css";
@@ -9,6 +19,7 @@ import Logo from "../assets/Logo.avif";
 import ROUTES from "../enviroment/variables_routes";
 // Import de zustand para almacenar el usuario logueado
 import { useAuthStore } from "../backendTwo/zustand/authStore";
+import { AccountBox, Login, Password } from "@mui/icons-material";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -59,26 +70,71 @@ export default function LoginPage() {
             <Typography variant="h5" align="center" gutterBottom>
               Bienvenido, Inicie Sesión
             </Typography>
-            <img style={{ marginBottom: "15px", width: "120px", height: "100px" }} src={Logo} alt="Logo FHE" />
+            <img
+              style={{ marginTop: "15px", marginBottom: "15px", width: "120px", height: "100px" }}
+              src={Logo}
+              alt="Logo FHE"
+            />
             <Box
               component="form"
               onSubmit={handleLogin}
               sx={{ display: "flex", flexDirection: "column", gap: 2 }}
               className="input-areas"
             >
-              <TextField
+              <FormControl>
+                <InputLabel htmlFor="campo-user" sx={{ marginLeft: "-5%" }}>
+                  Usuario
+                </InputLabel>
+                <br />
+                <OutlinedInput
+                  id="campo-user"
+                  type="text"
+                  value={username}
+                  onChange={handleUsernameChange}
+                  required
+                  fullWidth
+                  className="input-field"
+                  sx={{ height: "50px" }}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <AccountBox />
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+              {/* <TextField
                 label="Usuario"
                 type="text"
                 value={username}
-                // onChange={(e) => setUsername(e.target.value)}
                 onChange={handleUsernameChange}
                 variant="outlined"
                 required
                 fullWidth
                 className="input-field"
                 sx={{ padding: "0px !important" }}
-              />
-              <TextField
+              /> */}
+              <FormControl>
+                <InputLabel htmlFor="campo-password" sx={{ marginLeft: "-5%" }}>
+                  Contraseña
+                </InputLabel>
+                <br />
+                <OutlinedInput
+                  id="campo-password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  fullWidth
+                  className="input-field"
+                  sx={{ marginBottom: "15px", marginTop: "10px", height: "50px" }}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <Password />
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+              {/* <TextField
                 label="Contraseña"
                 type="password"
                 value={password}
@@ -87,15 +143,31 @@ export default function LoginPage() {
                 required
                 fullWidth
                 className="input-field"
-                sx={{ marginBottom: "15px" }}
-              />
+                sx={{ marginBottom: "15px", height: "30px", background: "black" }}
+              /> */}
               {errorMessage && (
-                <Typography color="error" align="center">
+                <Typography
+                  color="error"
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    width: "250px",
+                    textAlign: "center",
+                    // paddingLeft: "30px",
+                  }}
+                >
                   {errorMessage}
                 </Typography>
               )}
-              <Button className="button-login" variant="contained" type="submit" color="primary">
-                Login
+              <Button
+                className="button-login"
+                variant="contained"
+                type="submit"
+                color="primary"
+                endIcon={<Login />}
+                sx={{ display: "flex" }}
+              >
+                <p style={{ width: "100%" }}>Login</p>
               </Button>
             </Box>
           </Box>
@@ -104,94 +176,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-// import React, { useState } from "react";
-// import { Container, Box, Button, Paper, Typography, TextField } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
-// import { employees } from "../backend/datas/users/data_employee"; // Importa la data local de empleados
-// import "../css/loginpage.css";
-// // Import del logo
-// import Logo from "../assets/Logo.avif";
-// // Import de las rutas
-// import ROUTES from "../enviroment/variables_routes";
-
-// export default function LoginPage() {
-//   const navigate = useNavigate();
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [errorMessage, setErrorMessage] = useState("");
-
-//   const handleLogin = (e: React.FormEvent) => {
-//     e.preventDefault();
-
-//     // Busca al empleado con el nombre de usuario y la contraseña proporcionados
-//     const foundEmployee = employees.find(
-//       (employee) => employee.username === username && employee.employee_password === password
-//     );
-
-//     if (!foundEmployee) {
-//       // Si no encuentra coincidencias, muestra un mensaje de error
-//       setErrorMessage("Credenciales incorrectas o usuario no encontrado");
-//       return;
-//     }
-
-//     // Guarda el empleado en localStorage
-//     localStorage.setItem("loggedInUser", JSON.stringify(foundEmployee));
-
-//     // Redirige al Dashboard después de un inicio de sesión exitoso
-//     navigate(ROUTES.DASHBOARD.FCHILD);
-//     // navigate("/dashboard");
-//   };
-
-//   return (
-//     <div className="main-container">
-//       <Container className="form-login">
-//         <Paper elevation={3} sx={{ p: 4 }}>
-//           <Box className="Form">
-//             <Typography variant="h5" align="center" gutterBottom>
-//               Bienvenido, Inicie Sesión
-//             </Typography>
-//             <img style={{ marginBottom: "15px", width: "120px", height: "100px" }} src={Logo} alt="Logo FHE" />
-//             <Box
-//               component="form"
-//               onSubmit={handleLogin}
-//               sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-//               className="input-areas"
-//             >
-//               <TextField
-//                 label="Usuario"
-//                 type="text"
-//                 value={username}
-//                 onChange={(e) => setUsername(e.target.value)}
-//                 variant="outlined"
-//                 required
-//                 fullWidth
-//                 className="input-field"
-//                 sx={{ padding: "0px !important" }}
-//               />
-//               <TextField
-//                 label="Contraseña"
-//                 type="password"
-//                 value={password}
-//                 onChange={(e) => setPassword(e.target.value)}
-//                 variant="outlined"
-//                 required
-//                 fullWidth
-//                 className="input-field"
-//                 sx={{ marginBottom: "15px" }}
-//               />
-//               {errorMessage && (
-//                 <Typography color="error" align="center">
-//                   {errorMessage}
-//                 </Typography>
-//               )}
-//               <Button className="button-login" variant="contained" type="submit" color="primary">
-//                 Login
-//               </Button>
-//             </Box>
-//           </Box>
-//         </Paper>
-//       </Container>
-//     </div>
-//   );
-// }

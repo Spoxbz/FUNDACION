@@ -7,10 +7,10 @@
 import React, { ReactElement } from "react";
 import {
   CalendarMonth,
+  ConfirmationNumber,
   EditCalendar,
   HealthAndSafety,
   Home,
-  Mail,
   MedicalServices,
   PersonAdd,
   PersonAddAlt,
@@ -124,7 +124,12 @@ export const listOptionsEmisor: typesSidebarOptions[] = [
 // Medico rol_id 4
 export const listOptionsMedico: typesSidebarOptions[] = [
   { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
-  { label: "Turnos", icon: React.createElement(Mail), title: "Ver turnos", route: ROUTES.DASHBOARD.FCHILD },
+  {
+    label: "Turnos",
+    icon: React.createElement(ConfirmationNumber),
+    title: "Ver turnos",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
   {
     label: "Agenda",
     icon: React.createElement(CalendarMonth),

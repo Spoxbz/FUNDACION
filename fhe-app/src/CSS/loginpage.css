@@ -20,7 +20,7 @@
   background-color: white;
   border-radius: 10px;
   min-height: 200px;
-  height: 350px;
+  height: 400px;
   max-height: 350;
   padding: 20px;
 }
@@ -28,6 +28,10 @@
 .input-areas {
   height: 100%;
   margin-top: 10px;
+}
+
+.css-fplxkc-MuiFormLabel-root-MuiInputLabel-root {
+  transform: translate(20px, 30px) !important;
 }
 
 .login {
