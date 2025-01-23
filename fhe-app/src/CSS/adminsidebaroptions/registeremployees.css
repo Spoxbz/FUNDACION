@@ -1,0 +1,40 @@
+/*! Estilos para el contendor que tiene el formulario*/
+.cont-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 600px;
+  background-color: aliceblue;
+  border-radius: 4px;
+  box-shadow: 24;
+  padding: 10px;
+}
+
+/*! Estilos  contenedor de los campos de creacion de usuario*/
+.title-cont-camps-employee {
+  margin-bottom: 10px !important;
+  width: 100% !important;
+  border: 1px solid black;
+}
+.cont-camps-employee {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%;
+  background-color: gray;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+/*! Estilos campos del formulario*/
+.camps {
+  width: 80%;
+  height: 50px;
+}
+
+/*! Estilos seccion asignar especialidad al  medico en creacion*/
+.cont-select-specialty {
+  background-color: gray;
+}
