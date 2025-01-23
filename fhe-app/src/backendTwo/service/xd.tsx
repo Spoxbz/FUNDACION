@@ -1,11 +1,9 @@
-// src/components/StickyCards/StickyListCard.tsx
-
 import { Box, List, ListItem, ListItemText } from "@mui/material";
 import { useState } from "react";
 
 interface StickyListCardProps<T> {
   data: T[];
-  onItemSelect?: (item: T) => void; // Hacemos que onItemSelect sea opcional
+  onItemSelect?: (item: T) => void;
 }
 
 export default function StickyListCard<T extends { nombre: string }>({ data, onItemSelect }: StickyListCardProps<T>) {

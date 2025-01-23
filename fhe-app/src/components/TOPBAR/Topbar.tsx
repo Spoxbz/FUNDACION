@@ -18,6 +18,7 @@ interface TopbarProps {
 
 const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onLogout, menuRef }) => {
   const { user, roleName, loadUserRole } = useAuthStore();
+
   /* Separa los nombres y apellidos y toma el primero de cada uno, con verificación de existencia*/
   const firstName = user?.employee_name?.split(" ")[0] || "";
   const lastName = user?.employee_lastname?.split(" ")[0] || "";
@@ -108,7 +109,6 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
                   width: "80px",
                   height: "80px",
                   marginRight: "10px",
-                  cursor: "pointer",
                   fontSize: "30px",
                   background: "#1A369A",
                 }}
@@ -116,11 +116,9 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
                 {`${name.split(" ")[0][0]}${name.split(" ")[1][0]}`}
               </Avatar>
               {/*Titulo de bienvenida al usuario */}
-              <p style={{ fontSize: "40px", marginBottom: "10px", textAlign: "center" }}>
-                {`Hola, ${firstName}`}
-                <p style={{ fontSize: "15px", margin: "0px", padding: "0px" }}>
-                  {user ? `Usted es ${roleName + "/a" || "Cargando..."}` : "No autenticado"}
-                </p>
+              <p style={{ fontSize: "40px", textAlign: "center" }}>{`Hola, ${firstName}`}</p>
+              <p style={{ fontSize: "15px", margin: "0px", padding: "0px", marginBottom: "20px" }}>
+                {user ? `Usted es ${roleName + "/a" || "Cargando..."}` : "No autenticado"}
               </p>
 
               <div className="options-user-menu">

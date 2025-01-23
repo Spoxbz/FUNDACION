@@ -6,12 +6,16 @@
  */
 import React, { ReactElement } from "react";
 import {
+  CalendarMonth,
   EditCalendar,
   HealthAndSafety,
   Home,
   Mail,
   MedicalServices,
+  PersonAdd,
   PersonAddAlt,
+  PersonOff,
+  PostAdd,
   RecentActors,
 } from "@mui/icons-material";
 // Import de rutas
@@ -28,9 +32,9 @@ interface typesSidebarOptions {
 export const listOptionsAdmin: typesSidebarOptions[] = [
   { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
   {
-    label: "Crear usuario",
-    icon: React.createElement(PersonAddAlt),
-    title: "Crear Usuario",
+    label: "Reg. Empleado",
+    icon: React.createElement(PersonAdd),
+    title: "Registrar Empleado",
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
@@ -40,9 +44,9 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
-    label: "Listar usuarios",
+    label: "Listar empleados",
     icon: React.createElement(RecentActors),
-    title: "Crear Usuario",
+    title: "Listar empleados",
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
@@ -51,26 +55,80 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
     title: "Crear Horario Médico",
     route: ROUTES.DASHBOARD.FCHILD,
   },
-  { label: "Crear Especialidad", icon: React.createElement(HealthAndSafety), route: ROUTES.DASHBOARD.FCHILD },
+  {
+    label: "Crear Especialidad",
+    icon: React.createElement(HealthAndSafety),
+    title: "Crear Especialidad",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
+  {
+    label: "Reg. Paciente",
+    icon: React.createElement(PersonAddAlt),
+    title: "Registrar Paciente",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
+  {
+    label: "Bloquear Médico",
+    icon: React.createElement(PersonOff),
+    title: "Bloquea Médico",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
 ];
 
 // Asistente rol_id 2
 export const listOptionsAsistente: typesSidebarOptions[] = [
-  { label: "Inicio", icon: React.createElement(Home), route: ROUTES.DASHBOARD.FCHILD },
-  { label: "Bloquear Médico", icon: React.createElement(Mail), route: ROUTES.DASHBOARD.FCHILD },
+  { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
+  {
+    label: "Bloquear Médico",
+    icon: React.createElement(PersonOff),
+    title: "Bloquea Médico",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
+  {
+    label: "Reg. Paciente",
+    icon: React.createElement(PersonAddAlt),
+    title: "Registrar Paciente",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
+  {
+    label: "Agregar Turno",
+    icon: React.createElement(PostAdd),
+    title: "Agregar Turno",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
 ];
 
 // Emisor rol_id 3
 export const listOptionsEmisor: typesSidebarOptions[] = [
-  { label: "Inicio", icon: React.createElement(Home), route: ROUTES.DASHBOARD.FCHILD },
-  { label: "Bloquear Médico", icon: React.createElement(Mail), route: ROUTES.DASHBOARD.FCHILD },
+  { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
+  {
+    label: "Bloquear Médico",
+    icon: React.createElement(PersonOff),
+    title: "Bloquea Médico",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
+  {
+    label: "Reg. Paciente",
+    icon: React.createElement(PersonAddAlt),
+    title: "Registrar Paciente",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
+  {
+    label: "Agregar Turno",
+    icon: React.createElement(PostAdd),
+    title: "Agregar Turno",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
 ];
 
 // Medico rol_id 4
 export const listOptionsMedico: typesSidebarOptions[] = [
-  { label: "Inicio", icon: React.createElement(Home), route: ROUTES.DASHBOARD.FCHILD },
-  { label: "Medico 1", icon: React.createElement(Mail), route: ROUTES.DASHBOARD.FCHILD },
-  { label: "Medico 2", icon: React.createElement(Mail), route: ROUTES.DASHBOARD.FCHILD },
-  { label: "Medico 3", icon: React.createElement(Home), route: ROUTES.DASHBOARD.FCHILD },
-  { label: "Medico 4", icon: React.createElement(Mail), route: ROUTES.DASHBOARD.FCHILD },
+  { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
+  { label: "Turnos", icon: React.createElement(Mail), title: "Ver turnos", route: ROUTES.DASHBOARD.FCHILD },
+  {
+    label: "Agenda",
+    icon: React.createElement(CalendarMonth),
+    title: "Revisar Agenda",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
 ];

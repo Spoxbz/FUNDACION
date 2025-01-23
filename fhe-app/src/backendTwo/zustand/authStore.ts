@@ -1,10 +1,3 @@
-/**
- * Este archivo es para poder almacenar todo el registro de incio de sesión de un usuario
- * Aqui almaceno el json del empleado logueado y uso el model de employee para el tipado
- * También asigno a el loggin del sistema y se actualiza con el nombre del rol
- * To do el texto anterior es de mentira
- */
-
 import { create } from "zustand";
 import { Employee } from "../model/model.employee";
 import { fetchRoleNameById } from "../service/roleService";
