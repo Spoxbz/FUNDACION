@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, Divider } from "@mui/material";
 import "../../../CSS/calendar.css";
 import StickyListCard from "./StickyListCard";
-import { Employee } from "../../../backendTwo/model/model.employee"; // Asegúrate de tener la interfaz `Employee` importada
+import { Employee } from "../../../backendTwo/model/model.employee";
 
 interface ProfessionalCardProps {
   professionals: Employee[];
