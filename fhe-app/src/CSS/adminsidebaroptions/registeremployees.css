@@ -16,16 +16,17 @@
 .title-cont-camps-employee {
   margin-bottom: 10px !important;
   width: 100% !important;
-  border: 1px solid black;
 }
 .cont-camps-employee {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  width: 100%;
-  background-color: gray;
+  grid-template-rows: repeat(5, 1fr);
+  width: auto;
+  background-color: #c6cde6;
+  border-radius: 4px;
   gap: 5px;
   margin-bottom: 10px;
+  padding: 10px;
 }
 
 /*! Estilos campos del formulario*/
@@ -35,6 +36,17 @@
 }
 
 /*! Estilos seccion asignar especialidad al  medico en creacion*/
-.cont-select-specialty {
-  background-color: gray;
+.cont-camps-select-specialty {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  background-color: #c6cde6;
+  border-radius: 4px;
+  gap: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+/*Estilos campo seleccionable*/
+.select-specialty {
+  width: 230px;
 }

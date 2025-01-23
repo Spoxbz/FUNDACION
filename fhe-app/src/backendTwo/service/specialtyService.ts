@@ -9,7 +9,7 @@ const TABLE_NAME = "specialty";
 export const fetchProfessionalsBySpecialty = async (specialtyId: number): Promise<Employee[]> => {
   // Obtener los employee_id asociados a specialty_id
   const { data: medicalSpecialties, error } = await client
-    .from<MedicalSpecialty>("medical_specialty") /*No hay problema, sin funciona con normalidad */
+    .from<MedicalSpecialty>("medical_specialty") /*No hay problema, si funciona con normalidad */
     .select("employee_id")
     .eq("specialty_id", specialtyId);
 
@@ -18,7 +18,7 @@ export const fetchProfessionalsBySpecialty = async (specialtyId: number): Promis
   // Obtener los empleados con los employee_id obtenidos
   const employeeIds = medicalSpecialties.map((item) => item.employee_id);
   const { data: employees, error: employeeError } = await client
-    .from<Employee>("employee") /*No hay problema, sin funciona con normalidad */
+    .from<Employee>("employee") /*No hay problema, si funciona con normalidad */
     .select("*")
     .in("employee_id", employeeIds);
 
