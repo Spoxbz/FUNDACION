@@ -32,7 +32,7 @@ const ROUTES = {
   },
   /*Ruta tercer padre para mostrar la pagina cuando no hay una ruta*/
   NOTFOUND: {
-    BASE4: "*",
+    LASTBASE: "*",
   },
 };
 

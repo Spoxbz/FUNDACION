@@ -7,11 +7,8 @@ import Calendar from "../pages/Calendar";
 import VitalSigns from "../pages/VitalSigns";
 import Modules from "../pages/Modules";
 import InterfaceExample from "../pages/InterfaceExample";
-// import RegisterPage from "../pages/RegisterPage";
 import MedicalOffice from "../pages/MedicalOffice";
 import ROUTES from "../enviroment/variables_routes";
-// Formularios en modales a los cuales podra acceder el administrador
-import RegisterEmployees from "../components/REGISTER/RegisterEmployees";
 
 export default function RoutesComp() {
   return (
@@ -27,10 +24,9 @@ export default function RoutesComp() {
           <Route path={ROUTES.MODULES.MTCHILD} element={<MedicalOffice />} />
           <Route path={ROUTES.MODULES.M5CHILD} element={<InterfaceExample />} />
         </Route>
-        <Route path="/regisempleados" element={<RegisterEmployees />} />
 
         {/*En caso de que no se encuentre una ruta, esta sera la pagina que se mostrara */}
-        <Route path={ROUTES.NOTFOUND.BASE4} element={<NotFound />} />
+        <Route path={ROUTES.NOTFOUND.LASTBASE} element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

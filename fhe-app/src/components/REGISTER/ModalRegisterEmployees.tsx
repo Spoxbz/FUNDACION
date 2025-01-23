@@ -12,7 +12,7 @@ import { client } from "../../backendTwo/api/client";
 // Import para traer funciona de listado especialidades
 // import { fetchAllSpecialties } from "../../backendTwo/service/specialtyService";
 
-export default function RegisterEmployees() {
+export default function ModalRegisterEmployees() {
   const [open, setOpen] = useState(false);
   // Constantes para listar especialidades
   const [specialty, setSpecialty] = useState("");
