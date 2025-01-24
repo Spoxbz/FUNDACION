@@ -20,7 +20,10 @@ export const fetchEmployeeById = async (employee_id: number): Promise<Employee |
 // Crear un nuevo empleado
 export const createEmployee = async (employee: Omit<Employee, "employee_id">): Promise<Employee> => {
   const { data, error } = await client.from(TABLE_NAME).insert(employee).select().single();
-  if (error) throw new Error(`Error creando empleado: ${error.message}`);
+
+  if (error) {
+    throw new Error(`Error creando empleado: ${error.message}`);
+  }
   return data as Employee;
 };
 

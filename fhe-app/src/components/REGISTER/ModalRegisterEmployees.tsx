@@ -1,24 +1,25 @@
+/**
+ * * Este modal sera para cuando el usuario adminitrador requiera crear/registrar un nuevo empleado en el sistema
+ * * Este modal form es usado por ConfEmployeePage.tsx --> C:\Users\Usuario\Desktop\TESIS\DEVELOPMENT\FUNDACION\fhe-app\src\pages\admin\ConfEmployeePage.tsx
+ * * Este modal form usa la funcion createEmployee declarada en employeeService.tsx
+ */
+
 import { useState } from "react";
+// Estilos
+import "../../CSS/adminsidebaroptions/registeremployees.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-// Estilos
-import "../../CSS/adminsidebaroptions/registeremployees.css";
-import { FormControl, InputAdornment, InputLabel, MenuItem, OutlinedInput, Typography } from "@mui/material";
+import { FormControl, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
 import { Mail, Person } from "@mui/icons-material";
-// Import para usar selects desplegables
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { client } from "../../backendTwo/api/client";
-// Import para traer funciona de listado especialidades
-// import { fetchAllSpecialties } from "../../backendTwo/service/specialtyService";
+// Import para traer la funcion que registra empleados
+import { createEmployee } from "../../backendTwo/service/employeeService"; // Asegúrate de que la ruta sea correcta
 
 export default function ModalRegisterEmployees() {
   const [open, setOpen] = useState(false);
-  // Constantes para listar especialidades
-  const [specialty, setSpecialty] = useState("");
-  // Constante para registrar empleados
-  const [employeeData, setEmployeeData] = useState({
-    employee_id: "",
+
+  // Estado para los datos del formulario
+  const [formData, setFormData] = useState({
     employee_name: "",
     employee_lastname: "",
     employee_ci: "",
@@ -34,30 +35,44 @@ export default function ModalRegisterEmployees() {
     rol_id: "",
   });
 
+  // Estado para manejar mensaje de exito o error
+  const [message, setMessage] = useState<string | null>(null);
+
+  // Manejar cambios en los campos del formulario
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Manejar el envío del formulario
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Evitar recargar la página
+    try {
+      // Llamar al servicio con los datos del formulario
+      const newEmployee = await createEmployee(formData);
+      setMessage(`Empleado creado con éxito: ${newEmployee.employee_name}`);
+      setFormData({
+        employee_name: "",
+        employee_lastname: "",
+        employee_ci: "",
+        employee_gender: "",
+        employee_born_date: "",
+        employee_age: "",
+        employee_phone_number: "",
+        employee_cellphone_number: "",
+        employee_email: "",
+        username: "",
+        password: "",
+        employee_address: "",
+        rol_id: "",
+      }); // Resetear el formulario
+    } catch (error) {
+      setMessage(`Error al crear el empleado: ${(error as Error).message}`);
+    }
+  };
+
   // constantes para abrir/cerrar el modal
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  //Funcion para listar las especialides
-  const handleChange = (event: SelectChangeEvent) => {
-    setSpecialty(event.target.value as string);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmployeeData({ ...employeeData, [e.target.name]: e.target.value });
-  };
-
-  // Funcion para registrar el empleado
-  const handleSubmit = async () => {
-    const { error } = await client.from("employee").insert([employeeData]);
-
-    if (error) {
-      console.error("Error al crear el usuario:", error.message);
-    } else {
-      console.log("Usuario creado exitosamente");
-      handleClose(); // Cerrar el modal después de una inserción exitosa
-    }
-  };
 
   return (
     <div>
@@ -74,15 +89,19 @@ export default function ModalRegisterEmployees() {
             <Typography className="title-cont-camps-employee" variant="h6">
               Registrar Usuario
             </Typography>
-            <div className="cont-camps-employee">
+            {message && <p>{message}</p>}
+            <div onSubmit={handleSubmit} className="cont-camps-employee">
               {/* Campo para los nombres*/}
               <FormControl variant="outlined">
                 <InputLabel htmlFor="camp-employee-name">Nombres</InputLabel>
                 <OutlinedInput
+                  className="camps"
                   label="Nombres"
+                  type="text"
                   id="camp-employee-name"
                   name="employee_name"
-                  className="camps"
+                  value={formData.employee_name}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Person />
@@ -92,7 +111,6 @@ export default function ModalRegisterEmployees() {
                   inputProps={{
                     "aria-label": "nombres empleado",
                   }}
-                  onChange={handleInputChange}
                 />
               </FormControl>
               {/* Campo para los apellidos*/}
@@ -103,6 +121,8 @@ export default function ModalRegisterEmployees() {
                   id="camp-employee-lastname"
                   name="employee_lastname"
                   className="camps"
+                  value={formData.employee_lastname}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Person />
@@ -122,6 +142,8 @@ export default function ModalRegisterEmployees() {
                   id="camp-employee-ci"
                   name="employee_ci"
                   className="camps"
+                  value={formData.employee_ci}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Person />
@@ -141,6 +163,8 @@ export default function ModalRegisterEmployees() {
                   id="camp-employee-gender"
                   name="employee_gender"
                   className="camps"
+                  value={formData.employee_gender}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Person />
@@ -160,6 +184,8 @@ export default function ModalRegisterEmployees() {
                   id="camp-employee-borndate"
                   name="employee_born_date"
                   className="camps"
+                  value={formData.employee_born_date}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Person />
@@ -179,6 +205,8 @@ export default function ModalRegisterEmployees() {
                   id="camp-employee-edad"
                   name="employee_age"
                   className="camps"
+                  value={formData.employee_age}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Person />
@@ -198,6 +226,8 @@ export default function ModalRegisterEmployees() {
                   id="camp-employee-cellphone"
                   name="employee_cellphone_number"
                   className="camps"
+                  value={formData.employee_cellphone_number}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Person />
@@ -217,6 +247,8 @@ export default function ModalRegisterEmployees() {
                   id="camp-employee-phone"
                   name="employee_phone_number"
                   className="camps"
+                  value={formData.employee_phone_number}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Person />
@@ -232,10 +264,12 @@ export default function ModalRegisterEmployees() {
               <FormControl variant="outlined">
                 <InputLabel htmlFor="camp-employee-email">Correo electrónico</InputLabel>
                 <OutlinedInput
+                  className="camps"
                   label="Correo electrónico"
                   id="camp-employee-email"
-                  name="empoyee_email"
-                  className="camps"
+                  name="employee_email"
+                  value={formData.employee_email}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Mail />
@@ -253,8 +287,10 @@ export default function ModalRegisterEmployees() {
                 <OutlinedInput
                   label="Nombre de usuario"
                   id="camp-employee-username"
-                  name="employee_username"
+                  name="username"
                   className="camps"
+                  value={formData.username}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Mail />
@@ -272,8 +308,10 @@ export default function ModalRegisterEmployees() {
                 <OutlinedInput
                   label="Contraseña"
                   id="camp-employee-password"
-                  name="employee_password"
+                  name="password"
                   className="camps"
+                  value={formData.password}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Mail />
@@ -293,6 +331,8 @@ export default function ModalRegisterEmployees() {
                   id="camp-employee-address"
                   name="employee_address"
                   className="camps"
+                  value={formData.employee_address}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Mail />
@@ -310,7 +350,10 @@ export default function ModalRegisterEmployees() {
                 <OutlinedInput
                   label="Rol"
                   id="camp-employee-role"
+                  name="rol_id"
                   className="camps"
+                  value={formData.rol_id}
+                  onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
                       <Mail />
@@ -348,19 +391,13 @@ export default function ModalRegisterEmployees() {
               </FormControl>
               <Box sx={{ minWidth: 120 }}>
                 <FormControl>
-                  <InputLabel id="demo-simple-select-label">Especialidad</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={specialty}
+                  <InputLabel htmlFor="demo-simple-select-label">Especialidad</InputLabel>
+                  <OutlinedInput
+                    id="demo-simple-select-label"
                     label="Especialidad"
                     onChange={handleChange}
                     className="select-specialty"
-                  >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
+                  />
                 </FormControl>
               </Box>
             </div>
@@ -371,98 +408,48 @@ export default function ModalRegisterEmployees() {
   );
 }
 
-// export default function RegisterEmployees() {
-//     const [open, setOpen] = useState(false);
-//     const [specialty, setSpecialty] = useState("");
-//     const [employeeData, setEmployeeData] = useState({
-//       name: "",
-//       lastname: "",
-//       ci: "",
-//       gender: "",
-//       borndate: "",
-//       edad: "",
-//       cellphone: "",
-//       username: "",
-//       password: "",
-//       role: ""
-//     });
-
-//     const handleOpen = () => setOpen(true);
-//     const handleClose = () => setOpen(false);
-
-//     const handleChange = (event) => {
-//       setSpecialty(event.target.value);
-//     };
-
-//     const handleInputChange = (e) => {
-//       setEmployeeData({ ...employeeData, [e.target.name]: e.target.value });
-//     };
-
-//     const handleSubmit = async () => {
-//       const { error } = await client
-//         .from('employee')
-//         .insert([employeeData]);
-
-//       if (error) {
-//         console.error("Error al crear el usuario:", error.message);
-//       } else {
-//         console.log("Usuario creado exitosamente");
-//         handleClose(); // Cerrar el modal después de una inserción exitosa
-//       }
-//     };
-
-//     return (
-//       <div>
-//         <Button onClick={handleOpen}>Registrar empleados</Button>
-//         <Modal
-//           open={open}
-//           onClose={handleClose}
-//           aria-labelledby="modal-modal-title"
-//           aria-describedby="modal-modal-description"
-//           disableEscapeKeyDown
-//         >
-//           <Box className="cont-form">
-//             <div>
-//               <Typography className="title-cont-camps-employee" variant="h6">
-//                 Registrar Usuario
-//               </Typography>
-//               <div className="cont-camps-employee">
-//                 {/* Campo para los nombres*/}
-//                 <FormControl variant="outlined">
-//                   <InputLabel htmlFor="camp-employee-name">Nombres</InputLabel>
-//                   <OutlinedInput
-//                     label="Nombres"
-//                     id="camp-employee-name"
-//                     name="name"
-//                     className="camps"
-//                     endAdornment={<InputAdornment position="end"><Person /></InputAdornment>}
-//                     aria-describedby="outlined-employee-helper-text"
-//                     inputProps={{ "aria-label": "nombres empleado" }}
-//                     onChange={handleInputChange}
-//                   />
-//                 </FormControl>
-
-//                 {/* Resto de los campos... */}
-
-//                 {/* Campo para username*/}
-//                 <FormControl variant="outlined">
-//                   <InputLabel htmlFor="camp-employee-username">Nombre de usuario</InputLabel>
-//                   <OutlinedInput
-//                     id="camp-employee-username"
-//                     name="username"
-//                     className="camps"
-//                     endAdornment={<InputAdornment position="end"><Mail /></InputAdornment>}
-//                     aria-describedby="outlined-employee-helper-text"
-//                     inputProps={{ "aria-label": "nombre de usuario empleado" }}
-//                     onChange={handleInputChange}
-//                   />
-//                 </FormControl>
-
-//                 <Button onClick={handleSubmit}>Crear Usuario</Button>
-//               </div>
-//             </div>
-//           </Box>
-//         </Modal>
-//       </div>
-//     );
-//   }
+/**
+ <div>
+      <h2>Registrar Nuevo Empleado</h2>
+      {message && <p>{message}</p>}
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>
+            Nombre:
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Correo Electrónico:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Rol:
+            <input
+              type="text"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              required
+            />
+          </label>
+        </div>
+        <button type="submit">Registrar Empleado</button>
+      </form>
+    </div>
+ */
