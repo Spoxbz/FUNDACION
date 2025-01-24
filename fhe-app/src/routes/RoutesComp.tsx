@@ -9,6 +9,8 @@ import Modules from "../pages/Modules";
 import InterfaceExample from "../pages/InterfaceExample";
 import MedicalOffice from "../pages/MedicalOffice";
 import ROUTES from "../enviroment/variables_routes";
+import ConfEmployeePage from "../pages/admin/ConfEmployeePage";
+import ConfSpecialtiesPage from "../pages/admin/ConfSpecialtiesPage";
 
 export default function RoutesComp() {
   return (
@@ -23,6 +25,11 @@ export default function RoutesComp() {
           <Route path={ROUTES.MODULES.MSCHILD} element={<VitalSigns />} />
           <Route path={ROUTES.MODULES.MTCHILD} element={<MedicalOffice />} />
           <Route path={ROUTES.MODULES.M5CHILD} element={<InterfaceExample />} />
+        </Route>
+
+        <Route path={ROUTES.ADMIN.BASE4} element={<Dashboard />}>
+          <Route path={ROUTES.ADMIN.ADMINPAGEMPLOYEE} element={<ConfEmployeePage />} />
+          <Route path={ROUTES.ADMIN.ADMINPAGESPECIALTIES} element={<ConfSpecialtiesPage />} />
         </Route>
 
         {/*En caso de que no se encuentre una ruta, esta sera la pagina que se mostrara */}

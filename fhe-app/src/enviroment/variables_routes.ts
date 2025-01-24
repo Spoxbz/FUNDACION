@@ -30,6 +30,17 @@ const ROUTES = {
       return `${this.BASE3}/example`;
     },
   },
+  /*Ruta para las paginas de administracion del rol "admin" */
+  ADMIN: {
+    BASE4: "/dashboard/admin",
+    get ADMINPAGEMPLOYEE() {
+      return `${this.BASE4}/conf-Employees`;
+    },
+    get ADMINPAGESPECIALTIES() {
+      return `${this.BASE4}/conf-Specialties`;
+    },
+  },
+
   /*Ruta tercer padre para mostrar la pagina cuando no hay una ruta*/
   NOTFOUND: {
     LASTBASE: "*",

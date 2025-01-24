@@ -35,7 +35,7 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
     label: "Reg. Empleado",
     icon: React.createElement(PersonAdd),
     title: "Registrar Empleado",
-    route: ROUTES.DASHBOARD.FCHILD,
+    route: ROUTES.ADMIN.ADMINPAGEMPLOYEE,
   },
   {
     label: "Crear Consultorio",
