@@ -32,15 +32,15 @@ interface typesSidebarOptions {
 export const listOptionsAdmin: typesSidebarOptions[] = [
   { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
   {
-    label: "Reg. Empleado",
+    label: "Conf. Empleados",
     icon: React.createElement(PersonAdd),
-    title: "Registrar Empleado",
+    title: "Configuracion Empleados",
     route: ROUTES.ADMIN.ADMINPAGEMPLOYEE,
   },
   {
-    label: "Crear Consultorio",
+    label: "Conf. Consultorio",
     icon: React.createElement(MedicalServices),
-    title: "Crear Consultorio",
+    title: "Configuración Consultorio",
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {

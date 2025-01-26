@@ -27,6 +27,7 @@ export default function RoutesComp() {
           <Route path={ROUTES.MODULES.M5CHILD} element={<InterfaceExample />} />
         </Route>
 
+        {/*Segundo ruta padre para las paginas de administrador */}
         <Route path={ROUTES.ADMIN.BASE4} element={<Dashboard />}>
           <Route path={ROUTES.ADMIN.ADMINPAGEMPLOYEE} element={<ConfEmployeePage />} />
           <Route path={ROUTES.ADMIN.ADMINPAGESPECIALTIES} element={<ConfSpecialtiesPage />} />

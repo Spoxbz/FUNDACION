@@ -22,17 +22,17 @@ export default function ModalRegisterEmployees() {
   const [formData, setFormData] = useState({
     employee_name: "",
     employee_lastname: "",
-    employee_ci: "",
+    employee_ci: 0,
     employee_gender: "",
     employee_born_date: "",
-    employee_age: "",
-    employee_phone_number: "",
-    employee_cellphone_number: "",
+    employee_age: 0,
+    employee_phone_number: 0,
+    employee_cellphone_number: 0,
     employee_email: "",
     username: "",
     password: "",
     employee_address: "",
-    rol_id: "",
+    rol_id: 0,
   });
 
   // Estado para manejar mensaje de exito o error
@@ -53,17 +53,17 @@ export default function ModalRegisterEmployees() {
       setFormData({
         employee_name: "",
         employee_lastname: "",
-        employee_ci: "",
+        employee_ci: 0,
         employee_gender: "",
         employee_born_date: "",
-        employee_age: "",
-        employee_phone_number: "",
-        employee_cellphone_number: "",
+        employee_age: 0,
+        employee_phone_number: 0,
+        employee_cellphone_number: 0,
         employee_email: "",
         username: "",
         password: "",
         employee_address: "",
-        rol_id: "",
+        rol_id: 0,
       }); // Resetear el formulario
     } catch (error) {
       setMessage(`Error al crear el empleado: ${(error as Error).message}`);
