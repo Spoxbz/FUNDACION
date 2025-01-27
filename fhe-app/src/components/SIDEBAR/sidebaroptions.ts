@@ -16,7 +16,7 @@ import {
   PersonAddAlt,
   PersonOff,
   PostAdd,
-  RecentActors,
+  // RecentActors,
 } from "@mui/icons-material";
 // Import de rutas
 import ROUTES from "../../enviroment/variables_routes";
@@ -43,34 +43,40 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
     title: "Configuración Consultorio",
     route: ROUTES.DASHBOARD.FCHILD,
   },
+  // {
+  //   label: "Listar empleados",
+  //   icon: React.createElement(RecentActors),
+  //   title: "Listar empleados",
+  //   route: ROUTES.DASHBOARD.FCHILD,
+  // },
   {
-    label: "Listar empleados",
-    icon: React.createElement(RecentActors),
-    title: "Listar empleados",
-    route: ROUTES.DASHBOARD.FCHILD,
-  },
-  {
-    label: "Crear H. Médico",
+    label: "Crear Hor. Médico",
     icon: React.createElement(EditCalendar),
     title: "Crear Horario Médico",
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
-    label: "Crear Especialidad",
+    label: "Conf. Especialidad",
     icon: React.createElement(HealthAndSafety),
-    title: "Crear Especialidad",
+    title: "Configurar Especialidad",
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
-    label: "Reg. Paciente",
+    label: "Conf. Paciente",
     icon: React.createElement(PersonAddAlt),
-    title: "Registrar Paciente",
+    title: "Configurar Paciente",
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Bloquear Médico",
     icon: React.createElement(PersonOff),
     title: "Bloquea Médico",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
+  {
+    label: "Agregar Turno",
+    icon: React.createElement(PostAdd),
+    title: "Agregar Turno",
     route: ROUTES.DASHBOARD.FCHILD,
   },
 ];
@@ -85,9 +91,9 @@ export const listOptionsAsistente: typesSidebarOptions[] = [
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
-    label: "Reg. Paciente",
+    label: "Conf. Paciente",
     icon: React.createElement(PersonAddAlt),
-    title: "Registrar Paciente",
+    title: "Configurar Paciente",
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
@@ -108,9 +114,9 @@ export const listOptionsEmisor: typesSidebarOptions[] = [
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
-    label: "Reg. Paciente",
+    label: "Conf. Paciente",
     icon: React.createElement(PersonAddAlt),
-    title: "Registrar Paciente",
+    title: "Configurar Paciente",
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
