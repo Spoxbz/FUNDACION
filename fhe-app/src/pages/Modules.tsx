@@ -13,25 +13,19 @@ import { modulesData } from "../backendMuckData/datas/UserLoginModules/data_logi
 import "../css/modules.css";
 // Import de variable de las rutas
 import ROUTES from "../enviroment/variables_routes";
-// import de zustand para retomar el usuario en sesion
-import { useAuthStore } from "../backendTwo/zustand/authStore";
-
 import { useNavigate } from "react-router-dom";
+import { Skeleton } from "@mui/material";
+import { useEffect, useState } from "react";
 
 export default function Modules() {
   const navigate = useNavigate();
-  const { user } = useAuthStore();
+  // Skeleton
+  const [loading, setLoading] = useState(true);
 
-  // Recoger nombre y apellido
-  const firstName = user?.employee_name?.split(" ")[0] || "";
-  const lastName = user?.employee_lastname?.split(" ")[0] || "";
-
-  const showGrettingMessage = () => {
-    if (user?.rol_id === 1) {
-      return `${firstName} ${lastName}, ha ingresado como administrador`;
-    }
-    return ``;
-  };
+  useEffect(() => {
+    // Simula la carga por 2 segundos
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
 
   const handleModuleNavigation = (moduleName: string) => {
     const routes: { [key: string]: string } = {
@@ -52,23 +46,36 @@ export default function Modules() {
   return (
     <div className="cont-modules">
       <header className="headerModulesPage">
-        <h1 className="titleHeaderModules">{showGrettingMessage()}</h1>
         <br />
         <h1 className="titleHeaderModules">Sus Módulos</h1>
       </header>
       <div className="main">
-        {modulesData.map((module) => {
-          const moduleWithAction: modulesStructureTypes = {
-            ...module,
-            onClick: handleModuleNavigation, // Agrega la acción de navegación
-          };
-          return (
-            <LogginModulesCard
-              key={module.title}
-              {...moduleWithAction} // Pasa el módulo completo como props
-            />
-          );
-        })}
+        {loading
+          ? Array.from({ length: 4 }).map((_, index) => (
+              <Skeleton
+                key={index}
+                variant="rectangular"
+                width={200}
+                height={200}
+                sx={{
+                  margin: "10px",
+                  borderRadius: "10px",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                }}
+              />
+            ))
+          : modulesData.map((module) => {
+              const moduleWithAction: modulesStructureTypes = {
+                ...module,
+                onClick: handleModuleNavigation, // Agrega la acción de navegación
+              };
+              return (
+                <LogginModulesCard
+                  key={module.title}
+                  {...moduleWithAction} // Pasa el módulo completo como props
+                />
+              );
+            })}
       </div>
     </div>
   );

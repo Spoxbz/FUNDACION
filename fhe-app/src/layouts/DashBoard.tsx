@@ -72,7 +72,7 @@ export default function Dashboard() {
       />
 
       <div ref={sidebarRef}>
-        <Sidebar open={open} handleDrawerClose={toggleSidebar} />
+        <Sidebar open={open} handleDrawerClose={toggleSidebar} toggleButtonRef={toggleButtonRef} />
       </div>
       <Outlet></Outlet>
     </Box>

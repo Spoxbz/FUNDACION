@@ -1,5 +1,5 @@
 // Sidebar.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Estilos
 import "../../CSS/sidebar.css";
 import { useTheme, Theme, CSSObject } from "@mui/material/styles";
@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 // Uso de zustand para mostrar opciones segun el rol
 import { useAuthStore } from "../../backendTwo/zustand/authStore"; // Importa el estado global de Zustand
 import { getMenuOptionsByRole } from "../../backendTwo/service/rolSidebarOptionsService"; // Función para obtener opciones del sidebar segun rol
+import { Skeleton } from "@mui/material";
 
 const drawerWidth = "auto"; // Ancho del drawer por defecto en 170px
 
@@ -41,15 +42,37 @@ const closedMixin = (theme: Theme): CSSObject => ({
 interface SidebarProps {
   open: boolean;
   handleDrawerClose: () => void;
+  toggleButtonRef: React.RefObject<HTMLButtonElement>;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButtonRef }) => {
   const theme = useTheme();
   const navigate = useNavigate();
   const { user } = useAuthStore(); // Obtiene el usuario desde Zustand
 
-  // Obtiene las opciones del menu lateral dinámicamente según el rol del usuario
-  const menuItems = getMenuOptionsByRole(user);
+  // constantes de skeleton
+  const [loading, setLoading] = useState(true); // Estado para manejar el loading
+  interface MenuItem {
+    label: string;
+    icon: React.ReactNode;
+    title: string;
+    route: string;
+  }
+
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+
+  useEffect(() => {
+    // Simula la carga de datos
+    setTimeout(() => {
+      const options = getMenuOptionsByRole(user);
+      const formattedOptions = options.map((option) => ({
+        ...option,
+        title: option.title || "",
+      }));
+      setMenuItems(formattedOptions);
+      setLoading(false); // Finaliza la carga
+    }, 2000); // Ajusta el tiempo de simulación de carga
+  }, [user]);
 
   return (
     <MuiDrawer
@@ -83,6 +106,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
         }}
       >
         <button
+          ref={toggleButtonRef}
           onClick={handleDrawerClose}
           aria-label="toggle drawer"
           style={{
@@ -99,35 +123,49 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose }) => {
 
       <List>
         {/*Usa las opciones laterales */}
-        {menuItems.map(
-          (
-            { label, icon, title, route } // Aqui puedo usar un index
-          ) => (
-            <ListItem key={label} disablePadding>
-              <ListItemButton
-                title={title}
-                onClick={() => navigate(route)}
+        {loading
+          ? // Mostrar Skeleton mientras se cargan los datos
+            Array.from({ length: 5 }).map((_, index) => (
+              <Skeleton
+                key={index}
+                variant="rectangular"
+                height={48}
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
+                  marginBottom: 2,
+                  marginLeft: open ? "0px" : "auto",
+                  marginRight: open ? "10px" : "auto",
+                  width: open ? "90%" : "40px",
+                  borderRadius: "4px",
+                  backgroundColor: "rgba(12, 5, 5, 0.17)",
                 }}
-              >
-                <ListItemIcon
+              />
+            ))
+          : // Mostrar contenido real cuando se complete la carga
+            menuItems.map(({ label, icon, title, route }) => (
+              <ListItem key={label} disablePadding>
+                <ListItemButton
+                  title={title}
+                  onClick={() => navigate(route)}
                   sx={{
-                    minWidth: 0,
-                    justifyContent: "center",
-                    mr: open ? 3 : "auto",
-                    color: "white",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  {icon}
-                </ListItemIcon>
-                <ListItemText primary={label} sx={{ opacity: open ? 1 : 0, color: "white" }} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      justifyContent: "center",
+                      mr: open ? 3 : "auto",
+                      color: "white",
+                    }}
+                  >
+                    {icon}
+                  </ListItemIcon>
+                  <ListItemText primary={label} sx={{ opacity: open ? 1 : 0, color: "white" }} />
+                </ListItemButton>
+              </ListItem>
+            ))}
       </List>
     </MuiDrawer>
   );
