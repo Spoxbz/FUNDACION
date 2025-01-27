@@ -1,27 +1,26 @@
-/**
- *! Componente Modules.tsx
- *? Este componente mediante el uso del ".map" renderiza el componente LogginModulesCard usando para ello mockdata de los modulos que se apega a los tipos de la interfaz modulesStructureTypes
- */
+Para filtrar los módulos según el rol del usuario logueado, puedes modificar tu componente `Modules` para que utilice el estado del rol desde el `authStore`. Aquí te dejo los pasos y el código ajustado:
 
-// Import componente que es la carta de los modulos
+### Cambios necesarios
+
+1. **Acceso al `authStore`**: Importa y utiliza `useAuthStore` para obtener el rol del usuario logueado.
+2. **Filtrar los módulos**: Utiliza una lógica que filtre los módulos según el `rol_id`.
+3. **Ajustar el renderizado**: Asegúrate de que solo se rendericen los módulos correspondientes al rol.
+
+### Código ajustado del componente `Modules`
+
+```tsx
 import LogginModulesCard from "../components/LogginModules/LogginModulesCard";
-// Import de la interfaz que define la estructura e informacion visual de las cards para modulos
 import { modulesStructureTypes } from "../backendMuckData/types/UserLogginModules/user_loggin_modules";
-// Import de la data para los modulos en las cards
 import { modulesData } from "../backendMuckData/datas/UserLoginModules/data_login_modules";
-// Estilos
 import "../css/modules.css";
-// Import de variable de las rutas
 import ROUTES from "../enviroment/variables_routes";
 import { useNavigate } from "react-router-dom";
 import { Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
-// Import para mostrar modulos segun el rol
-import { useAuthStore } from "../backendTwo/zustand/authStore";
+import { useAuthStore } from "../store/authStore";
 
 export default function Modules() {
   const navigate = useNavigate();
-  // Skeleton
   const [loading, setLoading] = useState(true);
 
   // Obtener rol del usuario desde el store
@@ -39,14 +38,11 @@ export default function Modules() {
 
     switch (user.rol_id) {
       case 1: // Mostrar todos los módulos
-        console.log(`${roleName}, Mostrar todos los módulos`);
         return true;
       case 2: // Mostrar Emisor, Signos y Consultorio
       case 3:
-        console.log(`${roleName}, Mostrar Emisor, Signos y Consultorio`);
         return ["Emisor", "Signos", "Consultorio"].includes(module.title);
       case 4: // Mostrar solo Consultorio
-        console.log(`${roleName}, Mostrar solo Consultorio`);
         return module.title === "Consultorio";
       default: // Por defecto no mostrar módulos
         return false;
@@ -106,3 +102,29 @@ export default function Modules() {
     </div>
   );
 }
+```
+
+---
+
+### Explicación de los cambios
+
+1. **Filtro de módulos**:
+   - Se utiliza la propiedad `user.rol_id` para determinar qué módulos deben mostrarse.
+   - Los `rol_id` se manejan con un `switch` para definir las reglas según tu descripción:
+     - `rol_id === 1`: Muestra todos los módulos.
+     - `rol_id === 2` o `rol_id === 3`: Muestra "Emisor", "Signos" y "Consultorio".
+     - `rol_id === 4`: Muestra solo "Consultorio".
+   
+2. **Acceso al estado global**:
+   - Se utiliza el hook `useAuthStore` para obtener la información del usuario y su rol.
+
+3. **Manejo de módulos filtrados**:
+   - Se crea un nuevo array `filteredModules` que contiene únicamente los módulos permitidos para el rol del usuario.
+
+4. **Skeletons**:
+   - Se mantienen para simular una carga inicial, pero solo se renderizan antes de completar el filtrado.
+
+5. **Acción de navegación**:
+   - Sigue funcionando con el `onClick` definido en `LogginModulesCard`.
+
+Prueba este código y verifica que los módulos se muestren según los roles especificados. Si necesitas ajustes, avísame. 😊
