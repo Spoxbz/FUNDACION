@@ -29,7 +29,11 @@
 
 .fc-button {
   margin: 5px !important;
-  padding: 0 !important;
+  padding: 0px !important;
+}
+/*Estilos boton customizados --> Docotes no Asisten*/
+.fc-openModalButton-button {
+  padding: 5px !important;
 }
 
 /* .fc-reserveEventButton-button {

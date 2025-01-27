@@ -11,9 +11,7 @@ import { getFixedEvents } from "./events";
 import { CustomButtons } from "./custombuttons/CustomButtonTypes";
 import { EventClickArg, DateSelectArg } from "@fullcalendar/core";
 // Vistas del clanedario
-import { timeGridDayView } from "./customviews/CustomViews";
-import { timeGridWeekView } from "./customviews/CustomViews";
-import { dayGridMonthView } from "./customviews/CustomViews";
+import { timeGridDayView, timeGridWeekView, dayGridMonthView } from "./customviews/CustomViews";
 // Modal
 import TurnModal from "./modal/TurnModal";
 
