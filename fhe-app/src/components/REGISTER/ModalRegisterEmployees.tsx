@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { FormControl, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
-import { Mail, Person } from "@mui/icons-material";
+import { AddCircleOutline, Mail, Person } from "@mui/icons-material";
 // Import para traer la funcion que registra empleados
 import { createEmployee } from "../../backendTwo/service/employeeService"; // Asegúrate de que la ruta sea correcta
 
@@ -76,7 +76,10 @@ export default function ModalRegisterEmployees() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Registrar emleados</Button>
+      <Button className="btn-modal-regEmployee" onClick={handleOpen}>
+        <AddCircleOutline />
+        Nuevo
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -407,49 +410,3 @@ export default function ModalRegisterEmployees() {
     </div>
   );
 }
-
-/**
- <div>
-      <h2>Registrar Nuevo Empleado</h2>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Nombre:
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Correo Electrónico:
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Rol:
-            <input
-              type="text"
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              required
-            />
-          </label>
-        </div>
-        <button type="submit">Registrar Empleado</button>
-      </form>
-    </div>
- */
