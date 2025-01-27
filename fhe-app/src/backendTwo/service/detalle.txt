@@ -1,4 +1,0 @@
-Gracias pero ahora mira, este es mi componente padre que uso para renderizar las cards que listan tanto especialidades como medicos
-La cosa es aqui, que cuando yo seleccione una especialidad, esta me tendrá que listar en la segunda card el listado de los employees que tengan el rol_id 4 que se refiere a los médicos.
-
-Componente padre

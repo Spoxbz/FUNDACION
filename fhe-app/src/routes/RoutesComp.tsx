@@ -9,8 +9,10 @@ import Modules from "../pages/Modules";
 import InterfaceExample from "../pages/InterfaceExample";
 import MedicalOffice from "../pages/MedicalOffice";
 import ROUTES from "../enviroment/variables_routes";
+// componentes de administrador
 import ConfEmployeePage from "../pages/admin/ConfEmployeePage";
 import ConfSpecialtiesPage from "../pages/admin/ConfSpecialtiesPage";
+import ConfOfficePage from "../pages/admin/ConfOfficePage";
 
 export default function RoutesComp() {
   return (
@@ -30,6 +32,7 @@ export default function RoutesComp() {
         {/*Segundo ruta padre para las paginas de administrador */}
         <Route path={ROUTES.ADMIN.BASE4} element={<Dashboard />}>
           <Route path={ROUTES.ADMIN.ADMINPAGEMPLOYEE} element={<ConfEmployeePage />} />
+          <Route path={ROUTES.ADMIN.ADMINPAGEOFFICE} element={<ConfOfficePage />} />
           <Route path={ROUTES.ADMIN.ADMINPAGESPECIALTIES} element={<ConfSpecialtiesPage />} />
         </Route>
 

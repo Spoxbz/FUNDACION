@@ -1,130 +1,294 @@
-Para filtrar los módulos según el rol del usuario logueado, puedes modificar tu componente `Modules` para que utilice el estado del rol desde el `authStore`. Aquí te dejo los pasos y el código ajustado:
+Hola, ahora requiero que me ayudes con algo del mismo proyecto
+Recuerda por favor eel authStore que te proporcione y demas aspectos
 
-### Cambios necesarios
+he creado una pagina de mantenimiento de empleados en la cual se listaran todos los empleados registrados. Para ello usa el employeeservice.ts 
 
-1. **Acceso al `authStore`**: Importa y utiliza `useAuthStore` para obtener el rol del usuario logueado.
-2. **Filtrar los módulos**: Utiliza una lógica que filtre los módulos según el `rol_id`.
-3. **Ajustar el renderizado**: Asegúrate de que solo se rendericen los módulos correspondientes al rol.
 
-### Código ajustado del componente `Modules`
+import { client } from "../api/client";
+import { Employee } from "../model/model.employee";
+
+const TABLE_NAME = "employee";
+
+// Obtener todos los empleados
+export const fetchEmployees = async (): Promise<Employee[]> => {
+  const { data, error } = await client.from(TABLE_NAME).select("*");
+  if (error) throw new Error(`Error obteniendo empleados: ${error.message}`);
+  return data as Employee[];
+};
+
+// Obtener un empleado por ID
+export const fetchEmployeeById = async (employee_id: number): Promise<Employee | null> => {
+  const { data, error } = await client.from(TABLE_NAME).select("*").eq("employee_id", employee_id).single();
+  if (error) throw new Error(`Error obteniendo empleado: ${error.message}`);
+  return data as Employee;
+};
+
+// Crear un nuevo empleado
+export const createEmployee = async (employee: Omit<Employee, "employee_id">): Promise<Employee> => {
+  const { data, error } = await client.from(TABLE_NAME).insert(employee).select().single();
+
+  if (error) {
+    throw new Error(`Error creando empleado: ${error.message}`);
+  }
+  return data as Employee;
+};
+
+// Actualizar un empleado por ID
+export const updateEmployee = async (employee_id: number, updatedEmployee: Partial<Employee>): Promise<Employee> => {
+  const { data, error } = await client
+    .from(TABLE_NAME)
+    .update(updatedEmployee)
+    .eq("employee_id", employee_id)
+    .select()
+    .single();
+  if (error) throw new Error(`Error actualizando empleado: ${error.message}`);
+  return data as Employee;
+};
+
+// Eliminar un empleado por ID
+export const deleteEmployee = async (employee_id: number): Promise<void> => {
+  const { error } = await client.from(TABLE_NAME).delete().eq("employee_id", employee_id);
+  if (error) throw new Error(`Error eliminando empleado: ${error.message}`);
+};
+
+Este es mi pagina de configuracion de empleados
+/**
+ * * Esta pagina sirve para poder listar todos los empleados registrados y poder crearlos, editarlos y eliminarlos
+ * * Cuando se quiera crear un empleado, el boton que corresponda a esa accion, abrira un modal --> ModalRegisterEmployees.tsx (C:\Users\Usuario\Desktop\TESIS\DEVELOPMENT\FUNDACION\fhe-app\src\components\REGISTER\ModalRegisterEmployees.tsx)
+ * * Este componente usa una tabla para listar los empleados,
+ * * la tabla es la misma que la de jose
+ */
+// Import de los estilos
+import "../../CSS/admin/confemployeepage.css";
+import ModalRegisterEmployees from "../../components/REGISTER/ModalRegisterEmployees";
+import ModalDeleteEmployees from "../../components/REGISTER/ModalDeleteEmployee";
+// Import de componentes de la tabla
+import EmployeeTable from "../../components/ADMIN/EmployeeTable";
+import { TextField } from "@mui/material";
+import { Paper } from "@mui/material";
+
+export default function ConfEmployeePage() {
+  return (
+    <>
+      <Paper className="container-emp-page">
+        <header className="header-emp-page">
+          <h1>Mantenimiento Empleados</h1>
+          <div className="cont-searchbar-emp-page">
+            <TextField
+              className="searchbar-emp-page"
+              id="searchbar-emp-page"
+              label="Buscar"
+              placeholder="Buscar Empleado"
+              size="small"
+            />
+          </div>
+          <div className="container-button">
+            <ModalDeleteEmployees />
+            <ModalRegisterEmployees />
+          </div>
+        </header>
+        <div className="container-table">
+          <div className="sub-container-table">
+            <EmployeeTable />
+          </div>
+        </div>
+      </Paper>
+    </>
+  );
+}
+
+Y esta es la tabla que lista los empleados
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import Paper from "@mui/material/Paper";
+import { Edit } from "@mui/icons-material";
+
+const columns: GridColDef[] = [
+  { field: "id", headerName: "ID", width: 70 },
+  { field: "firstName", headerName: "Nombres", width: 130 },
+  { field: "lastName", headerName: "Apellidos", width: 130 },
+  { field: "ci", headerName: "C.I", width: 130 },
+  { field: "gender", headerName: "Género", width: 130 },
+  { field: "employee_born_date", headerName: "F. Nacimiento", width: 130 },
+  { field: "employee_phone_number", headerName: "Teléfono", width: 130 },
+  { field: "employee_cellphone_number", headerName: "Celular", width: 130 },
+  { field: "employee_email", headerName: "Correo", width: 130 },
+  { field: "username", headerName: "Usuario", width: 130 },
+  { field: "password", headerName: "Contraseña", width: 130 },
+  { field: "employee_address", headerName: "Dirección", width: 130 },
+  { field: "rol_id", headerName: "Rol", width: 130 },
+  {
+    field: "age",
+    headerName: "Edad",
+    type: "number",
+    width: 90,
+  },
+  {
+    field: "edit",
+    headerName: "Editar",
+    description: "This column has a value getter and is not sortable.",
+    sortable: false,
+    width: 130,
+    renderCell: () => (
+      <div>
+        <Edit />
+      </div>
+    ),
+  },
+];
+
+const rows = [
+  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
+  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
+  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
+  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
+  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
+  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
+  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+  { id: 10, lastName: "Roxie", firstName: "Harvey", age: 65 },
+];
+
+const paginationModel = { page: 0, pageSize: 5 };
+
+export default function DataTable() {
+  return (
+    <Paper sx={{ height: 600, width: "100%" }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        initialState={{ pagination: { paginationModel } }}
+        pageSizeOptions={[5, 10]}
+        checkboxSelection
+        sx={{ border: 0 }}
+      />
+    </Paper>
+  );
+}
+
+
+¡Perfecto! Vamos a integrar los datos de empleados desde Supabase en tu tabla paso a paso. A continuación, ajustaremos el código para que el componente `DataTable` cargue los empleados dinámicamente.
+
+### **1. Configurar el fetch de empleados**
+En tu archivo `employeeservice.ts`, ya tienes la función `fetchEmployees`. La usaremos para obtener los datos.
+
+### **2. Actualizar el componente `DataTable`**
+Vamos a modificar `DataTable` para que use `fetchEmployees` y cargue los datos dinámicamente. Utilizaremos `useEffect` para hacer la llamada al servicio y `useState` para manejar los datos y el estado de carga.
 
 ```tsx
-import LogginModulesCard from "../components/LogginModules/LogginModulesCard";
-import { modulesStructureTypes } from "../backendMuckData/types/UserLogginModules/user_loggin_modules";
-import { modulesData } from "../backendMuckData/datas/UserLoginModules/data_login_modules";
-import "../css/modules.css";
-import ROUTES from "../enviroment/variables_routes";
-import { useNavigate } from "react-router-dom";
-import { Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useAuthStore } from "../store/authStore";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import Paper from "@mui/material/Paper";
+import { Edit } from "@mui/icons-material";
+import { fetchEmployees } from "../../services/employeeservice"; // Asegúrate de que la ruta sea correcta
+import { Employee } from "../../model/model.employee";
 
-export default function Modules() {
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+const columns: GridColDef[] = [
+  { field: "employee_id", headerName: "ID", width: 70 },
+  { field: "first_name", headerName: "Nombres", width: 130 },
+  { field: "last_name", headerName: "Apellidos", width: 130 },
+  { field: "ci", headerName: "C.I", width: 130 },
+  { field: "gender", headerName: "Género", width: 130 },
+  { field: "employee_born_date", headerName: "F. Nacimiento", width: 130 },
+  { field: "employee_phone_number", headerName: "Teléfono", width: 130 },
+  { field: "employee_cellphone_number", headerName: "Celular", width: 130 },
+  { field: "employee_email", headerName: "Correo", width: 130 },
+  { field: "username", headerName: "Usuario", width: 130 },
+  { field: "employee_address", headerName: "Dirección", width: 130 },
+  { field: "rol_id", headerName: "Rol", width: 130 },
+  {
+    field: "edit",
+    headerName: "Editar",
+    description: "Editar este empleado",
+    sortable: false,
+    width: 130,
+    renderCell: (params) => (
+      <div>
+        <Edit />
+      </div>
+    ),
+  },
+];
 
-  // Obtener rol del usuario desde el store
-  const roleName = useAuthStore((state) => state.roleName);
-  const user = useAuthStore((state) => state.user);
+export default function DataTable() {
+  const [employees, setEmployees] = useState<Employee[]>([]); // Estado para los empleados
+  const [loading, setLoading] = useState<boolean>(true); // Estado para la carga
 
   useEffect(() => {
-    // Simula la carga por 2 segundos
-    setTimeout(() => setLoading(false), 2000);
+    const loadEmployees = async () => {
+      try {
+        const data = await fetchEmployees(); // Llamar al servicio
+        setEmployees(data); // Actualizar los empleados
+      } catch (error) {
+        console.error("Error cargando empleados:", error);
+      } finally {
+        setLoading(false); // Detener la carga
+      }
+    };
+    loadEmployees();
   }, []);
 
-  // Filtrar módulos según el rol del usuario
-  const filteredModules = modulesData.filter((module) => {
-    if (!user || !user.rol_id) return false;
-
-    switch (user.rol_id) {
-      case 1: // Mostrar todos los módulos
-        return true;
-      case 2: // Mostrar Emisor, Signos y Consultorio
-      case 3:
-        return ["Emisor", "Signos", "Consultorio"].includes(module.title);
-      case 4: // Mostrar solo Consultorio
-        return module.title === "Consultorio";
-      default: // Por defecto no mostrar módulos
-        return false;
-    }
-  });
-
-  const handleModuleNavigation = (moduleName: string) => {
-    const routes: { [key: string]: string } = {
-      Emisor: ROUTES.MODULES.MFCHILD,
-      Signos: ROUTES.MODULES.MSCHILD,
-      Consultorio: ROUTES.MODULES.MTCHILD,
-      Example: ROUTES.MODULES.M5CHILD,
-    };
-
-    const route = routes[moduleName];
-    if (route) {
-      navigate(route); // Navega a la ruta específica del módulo
-    } else {
-      console.warn(`No se encontró una ruta para el módulo: ${moduleName}`);
-    }
-  };
-
   return (
-    <div className="cont-modules">
-      <header className="headerModulesPage">
-        <br />
-        <h1 className="titleHeaderModules">Sus Módulos</h1>
-      </header>
-      <div className="main">
-        {loading
-          ? Array.from({ length: 4 }).map((_, index) => (
-              <Skeleton
-                key={index}
-                variant="rectangular"
-                width={200}
-                height={200}
-                sx={{
-                  margin: "10px",
-                  borderRadius: "10px",
-                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-                }}
-              />
-            ))
-          : filteredModules.map((module) => {
-              const moduleWithAction: modulesStructureTypes = {
-                ...module,
-                onClick: handleModuleNavigation, // Agrega la acción de navegación
-              };
-              return (
-                <LogginModulesCard
-                  key={module.title}
-                  {...moduleWithAction} // Pasa el módulo completo como props
-                />
-              );
-            })}
-      </div>
-    </div>
+    <Paper sx={{ height: 600, width: "100%" }}>
+      <DataGrid
+        rows={employees.map((emp) => ({
+          ...emp,
+          id: emp.employee_id, // Mapeamos `employee_id` a `id`, necesario para DataGrid
+        }))}
+        columns={columns}
+        loading={loading}
+        pageSizeOptions={[5, 10]}
+        checkboxSelection
+        sx={{ border: 0 }}
+      />
+    </Paper>
   );
 }
 ```
 
 ---
 
-### Explicación de los cambios
+### **3. Explicación del Código**
+1. **Cargar empleados dinámicamente:**
+   - Usamos la función `fetchEmployees` para obtener los empleados de Supabase.
+   - El estado `employees` almacena los datos obtenidos.
+   - `loading` muestra un indicador de carga en la tabla mientras los datos se fetchan.
 
-1. **Filtro de módulos**:
-   - Se utiliza la propiedad `user.rol_id` para determinar qué módulos deben mostrarse.
-   - Los `rol_id` se manejan con un `switch` para definir las reglas según tu descripción:
-     - `rol_id === 1`: Muestra todos los módulos.
-     - `rol_id === 2` o `rol_id === 3`: Muestra "Emisor", "Signos" y "Consultorio".
-     - `rol_id === 4`: Muestra solo "Consultorio".
-   
-2. **Acceso al estado global**:
-   - Se utiliza el hook `useAuthStore` para obtener la información del usuario y su rol.
+2. **Mapear `employee_id` a `id`:**
+   - `DataGrid` requiere una propiedad `id` única para cada fila. Mapeamos `employee_id` (que viene de tu base de datos) a `id` en cada objeto.
 
-3. **Manejo de módulos filtrados**:
-   - Se crea un nuevo array `filteredModules` que contiene únicamente los módulos permitidos para el rol del usuario.
+3. **Indicador de carga:**
+   - La tabla muestra un spinner mientras `loading` es `true`.
 
-4. **Skeletons**:
-   - Se mantienen para simular una carga inicial, pero solo se renderizan antes de completar el filtrado.
+---
 
-5. **Acción de navegación**:
-   - Sigue funcionando con el `onClick` definido en `LogginModulesCard`.
+### **4. Agregar manejo de errores**
+Podemos agregar un mensaje de error si la carga falla. Solo extendemos la lógica en el `useEffect`:
 
-Prueba este código y verifica que los módulos se muestren según los roles especificados. Si necesitas ajustes, avísame. 😊
+```tsx
+const [error, setError] = useState<string | null>(null);
+
+// Dentro del try-catch:
+try {
+  const data = await fetchEmployees();
+  setEmployees(data);
+} catch (error: any) {
+  console.error("Error cargando empleados:", error);
+  setError(error.message); // Guardar el error
+}
+```
+
+Y en el `return`, podrías mostrar un mensaje condicional:
+
+```tsx
+{error && <div style={{ color: "red" }}>Error: {error}</div>}
+```
+
+---
+
+### **5. Resultados esperados**
+- La tabla cargará dinámicamente todos los empleados registrados en la base de datos.
+- Si no hay empleados, la tabla estará vacía, pero mostrará la estructura correctamente.
+- Manejo de carga y errores estará implementado.
+
+¿Quieres que ahora extendamos la funcionalidad para incluir la búsqueda, edición o alguna otra funcionalidad? 😊

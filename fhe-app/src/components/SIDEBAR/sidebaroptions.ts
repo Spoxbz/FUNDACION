@@ -41,7 +41,7 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
     label: "Conf. Consultorio",
     icon: React.createElement(MedicalServices),
     title: "Configuración Consultorio",
-    route: ROUTES.DASHBOARD.FCHILD,
+    route: ROUTES.ADMIN.ADMINPAGEOFFICE,
   },
   // {
   //   label: "Listar empleados",
@@ -49,12 +49,6 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
   //   title: "Listar empleados",
   //   route: ROUTES.DASHBOARD.FCHILD,
   // },
-  {
-    label: "Crear Hor. Médico",
-    icon: React.createElement(EditCalendar),
-    title: "Crear Horario Médico",
-    route: ROUTES.DASHBOARD.FCHILD,
-  },
   {
     label: "Conf. Especialidad",
     icon: React.createElement(HealthAndSafety),
@@ -67,6 +61,13 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
     title: "Configurar Paciente",
     route: ROUTES.DASHBOARD.FCHILD,
   },
+  {
+    label: "Crear Hor. Médico",
+    icon: React.createElement(EditCalendar),
+    title: "Crear Horario Médico",
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
+
   {
     label: "Bloquear Médico",
     icon: React.createElement(PersonOff),

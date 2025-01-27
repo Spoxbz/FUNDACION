@@ -6,7 +6,7 @@
 
 import { useState } from "react";
 // Estilos
-import "../../CSS/adminsidebaroptions/registeremployees.css";
+import "../../CSS/admin/registeremployees.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";

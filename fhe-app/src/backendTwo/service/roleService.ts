@@ -1,7 +1,7 @@
 import { client } from "../api/client";
 import { rol } from "../model/mode.rol";
 
-// Obtener todos los roles (si los necesitas en algún momento)
+// Obtener todos los roles
 export const fetchRoles = async (): Promise<rol[]> => {
   const { data, error } = await client.from("rol").select("*");
   if (error) throw new Error("Error obteniendo roles: " + error.message);

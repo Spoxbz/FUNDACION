@@ -36,6 +36,9 @@ const ROUTES = {
     get ADMINPAGEMPLOYEE() {
       return `${this.BASE4}/conf-Employees`;
     },
+    get ADMINPAGEOFFICE() {
+      return `${this.BASE4}/conf-Office`;
+    },
     get ADMINPAGESPECIALTIES() {
       return `${this.BASE4}/conf-Specialties`;
     },
