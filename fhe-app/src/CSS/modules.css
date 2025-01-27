@@ -3,29 +3,43 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  height: fit-content;
+  /* height: fit-content; */
+  height: 95vh;
   width: 100%;
   margin-top: 2rem;
+  padding-top: 5%;
+}
+
+.sub-cont-modules {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: fit-content;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px;
 }
 
 .headerModulesPage {
   width: 100%;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .titleHeaderModules {
+  font-size: 2rem;
+  color: rgb(0, 30, 109);
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
 }
 
 .main {
-  width: inherit;
+  width: 80%;
   height: 100%;
   height: fit-content;
   display: flex;
-  flex-wrap: wrap; /*Esto permitirá que las tarjetas se envuelvan */
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }

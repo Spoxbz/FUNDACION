@@ -1,6 +1,6 @@
 .appbar-container {
   display: flex;
-  height: 40px;
+  height: 45px;
   flex-direction: column;
   box-sizing: border-box;
   /* background-color: #1976d2; */
@@ -42,11 +42,16 @@
   height: auto;
   align-items: center;
 }
-.midle-section h3 {
+.title-header-topbar {
   margin: 0;
+  padding: 5px;
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
+  /* font-size: small; */
   color: #1a369a;
+  /* border-radius: 49px;
+  background: #ffffff;
+  box-shadow: 5px 5px 5px #c4c4c4, -5px -5px 5px #ffffff; */
 }
 
 .rigth-section {

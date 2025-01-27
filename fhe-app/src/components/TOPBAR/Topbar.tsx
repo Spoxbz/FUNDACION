@@ -89,7 +89,7 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
           ) : (
             <>
               <img className="img-logo" src={Logo} alt="Logo" />
-              <h3 className="titleHeadertopbar">{showGrettingMessage()}</h3>
+              <h3 className="title-header-topbar">{showGrettingMessage()}</h3>
             </>
           )}
         </div>

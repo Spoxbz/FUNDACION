@@ -71,37 +71,39 @@ export default function Modules() {
 
   return (
     <div className="cont-modules">
-      <header className="headerModulesPage">
-        <br />
-        <h1 className="titleHeaderModules">Sus Módulos</h1>
-      </header>
-      <div className="main">
-        {loading
-          ? Array.from({ length: 4 }).map((_, index) => (
-              <Skeleton
-                key={index}
-                variant="rectangular"
-                width={200}
-                height={200}
-                sx={{
-                  margin: "10px",
-                  borderRadius: "10px",
-                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-                }}
-              />
-            ))
-          : filteredModules.map((module) => {
-              const moduleWithAction: modulesStructureTypes = {
-                ...module,
-                onClick: handleModuleNavigation, // Agrega la acción de navegación
-              };
-              return (
-                <LogginModulesCard
-                  key={module.title}
-                  {...moduleWithAction} // Pasa el módulo completo como props
+      <div className="sub-cont-modules">
+        <header className="headerModulesPage">
+          <br />
+          <h1 className="titleHeaderModules">Sus Módulos</h1>
+        </header>
+        <div className="main">
+          {loading
+            ? Array.from({ length: 4 }).map((_, index) => (
+                <Skeleton
+                  key={index}
+                  variant="rectangular"
+                  width={200}
+                  height={200}
+                  sx={{
+                    margin: "10px",
+                    borderRadius: "10px",
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                  }}
                 />
-              );
-            })}
+              ))
+            : filteredModules.map((module) => {
+                const moduleWithAction: modulesStructureTypes = {
+                  ...module,
+                  onClick: handleModuleNavigation, // Agrega la acción de navegación
+                };
+                return (
+                  <LogginModulesCard
+                    key={module.title}
+                    {...moduleWithAction} // Pasa el módulo completo como props
+                  />
+                );
+              })}
+        </div>
       </div>
     </div>
   );
