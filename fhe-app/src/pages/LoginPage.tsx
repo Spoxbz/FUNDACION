@@ -1,3 +1,4 @@
+import "../css/loginpage.css";
 import React, { useState } from "react";
 import {
   Container,
@@ -9,12 +10,22 @@ import {
   OutlinedInput,
   InputLabel,
   FormControl,
+  CircularProgress,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../backendTwo/service/authService"; // Importa la función de inicio de sesión personalizada
-import "../css/loginpage.css";
 // Import del logo
 import Logo from "../assets/Logo.avif";
+// Import de las imagenes
+import emisor from "../assets/img/logpage/emisor-purple.png";
+import hospital from "../assets/img/logpage/hospital-purple.png";
+import optic from "../assets/img/logpage/optic-purple.png";
+import pharmacy from "../assets/img/logpage/pharmacy-purple.png";
+// ***********************
+// import emisor from "../assets/img/cardoptions/emisor-blue.png";
+// import hospital from "../assets/img/cardoptions/hopistal-blue.png";
+// import optic from "../assets/img/cardoptions/optic-blue.png";
+// import pharmacy from "../assets/img/cardoptions/pharmacy-blue.png";
 // Import de las rutas
 import ROUTES from "../enviroment/variables_routes";
 // Import de zustand para almacenar el usuario logueado
@@ -26,9 +37,13 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  // constantes para el tiempo de espera
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Tiempo de espera para simular una solicitud a la API
+    setLoading(true);
 
     // Inicia sesión con la función personalizada
     const { employee, error } = await signIn(username, password);
@@ -36,6 +51,7 @@ export default function LoginPage() {
     if (error || !employee) {
       // Si hay un error o no se encuentra el empleado, muestra un mensaje de error
       setErrorMessage("Credenciales incorrectas o usuario no encontrado");
+      setLoading(false);
       return;
     }
 
@@ -45,8 +61,11 @@ export default function LoginPage() {
     // Guarda el empleado en zustand
     useAuthStore.getState().login(employee);
 
-    // Redirige al Dashboard después de un inicio de sesión exitoso
-    navigate(ROUTES.DASHBOARD.FCHILD);
+    setTimeout(() => {
+      setLoading(false);
+      // Redirige al Dashboard después de un inicio de sesión exitoso
+      navigate(ROUTES.DASHBOARD.FCHILD);
+    }, 1000);
   };
 
   // Validacion para que el campo de username no acepte numeros
@@ -64,17 +83,32 @@ export default function LoginPage() {
 
   return (
     <div className="main-container">
+      <Container className="presentation">
+        <div className="presentation-info">
+          <p className="subtitle">Bienvenido</p>
+          <div className="cont-img-presentation">
+            <img className="presentation-icons" src={emisor} />
+            <img className="presentation-icons" src={hospital} />
+            <img className="presentation-icons" src={optic} />
+            <img className="presentation-icons" src={pharmacy} />
+          </div>
+          <footer>
+            <p>2025 | Sistema</p>
+          </footer>
+        </div>
+      </Container>
       <Container className="form-login">
-        <Paper elevation={3} sx={{ p: 4 }}>
-          <Box className="Form">
-            <Typography variant="h5" align="center" gutterBottom>
-              Bienvenido, Inicie Sesión
+        <Paper className="paper" elevation={5}>
+          <div className="form-header">
+            <Typography sx={{ paddingTop: "20px", marginBottom: "10px" }} variant="h4" align="center" gutterBottom>
+              Inicie Sesion
             </Typography>
-            <img
-              style={{ marginTop: "15px", marginBottom: "15px", width: "120px", height: "100px" }}
-              src={Logo}
-              alt="Logo FHE"
-            />
+          </div>
+          <div className="imagen-circular-wrapper">
+            <div className="linea"></div>
+            <img className="form-logo" src={Logo} alt="Logo FHE" />
+          </div>
+          <Box className="Form">
             <Box
               component="form"
               onSubmit={handleLogin}
@@ -102,17 +136,6 @@ export default function LoginPage() {
                   }
                 />
               </FormControl>
-              {/* <TextField
-                label="Usuario"
-                type="text"
-                value={username}
-                onChange={handleUsernameChange}
-                variant="outlined"
-                required
-                fullWidth
-                className="input-field"
-                sx={{ padding: "0px !important" }}
-              /> */}
               <FormControl>
                 <InputLabel htmlFor="campo-password" sx={{ marginLeft: "-5%" }}>
                   Contraseña
@@ -134,17 +157,6 @@ export default function LoginPage() {
                   }
                 />
               </FormControl>
-              {/* <TextField
-                label="Contraseña"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                variant="outlined"
-                required
-                fullWidth
-                className="input-field"
-                sx={{ marginBottom: "15px", height: "30px", background: "black" }}
-              /> */}
               {errorMessage && (
                 <Typography
                   color="error"
@@ -170,6 +182,11 @@ export default function LoginPage() {
                 <p style={{ width: "100%" }}>Login</p>
               </Button>
             </Box>
+            {loading && (
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                <CircularProgress />
+              </Box>
+            )}
           </Box>
         </Paper>
       </Container>

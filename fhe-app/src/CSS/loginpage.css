@@ -1,28 +1,187 @@
 .main-container {
   background-color: #1976d2;
-  /* background-color: black; */
   width: 100%;
-  height: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  /* background-image: url("../assets/img_Login.avif"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/*! Estilos seccion derecha*/
+/*Animaciones*/
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.presentation {
+  /* background-color: rgba(25, 118, 210, 0.56); */
+  /* background-color: rgba(255, 255, 255, 0.56); */
+  background-image: url("https://imgs.search.brave.com/lkUTN7dbHRMRvLiDtadZbx15AoGxSFxsQmWggBo6QjU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9mb25kb3MtdGV4/dHVyYS1henVsLXZp/YnJhbnRlXzk4NDAy/Ny0yMTA5MDAuanBn/P3NlbXQ9YWlzX2lu/Y29taW5n");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* height: fit-content; */
+  height: 100vh;
+  width: 45% !important;
+  height: 100% !important;
+  padding-top: 50px;
+  padding-left: 3% !important;
+}
+.presentation-info {
+  animation: slideInLeft 1s ease-out forwards;
+}
+.subtitle {
+  margin-top: 15%;
+  font-size: 70px;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  justify-content: flex-start;
+  width: 100%;
+  display: flex;
+  margin-bottom: 30px;
+  color: rgb(116, 9, 116);
+}
+
+.cont-img-presentation {
+  height: auto;
+  display: flex;
+  margin-bottom: 180px;
+}
+.presentation-icons {
+  width: 5%;
+  margin-right: 10px;
+  /* border: 1px solid #1976d2; */
+  border: 1px solid purple;
+  border-radius: 10px;
+  padding: 10px;
+  animation: bounce 2s ease-out;
+}
+
+.presentation-info > footer {
+  width: 100%;
+  display: flex;
+  color: rgb(116, 9, 116);
+  /* color: rgb(15, 111, 185); */
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+/*! Estilos grupales*/
+/* .presentation,
+.form-login {
+  background-color: rgba(255, 255, 255, 0.5);
+} */
+
+/*! Estilos seccion izquierda*/
+/*Animaciones*/
+@keyframes slideInUp {
+  0% {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 .form-login {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrado de los elementos dentro del contenedor */
-  justify-content: center; /* Centrado vertical */
-  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 55% !important;
+  background-image: url("../assets/img_Login.avif");
+  background-size: fill;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.paper {
+  background: linear-gradient(to bottom, rgb(25, 118, 210) 30%, white 25%) !important;
+  /* background: linear-gradient(to bottom, rgb(116, 9, 116) 30%, white 25%) !important; */
+  border-radius: 10px !important;
+  min-width: 100px !important;
+  width: auto !important;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8) !important;
+  animation: slideInUp 1s ease-out forwards;
+}
+
+.imagen-circular-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -5px;
+}
+
+.linea {
+  width: 100%;
+  height: 2px;
+  /* background-color: black; */
+  position: absolute;
+}
+.form-header {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /* background-color: #1976d2; */
+  color: white;
+}
+
+.form-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: white;
+  /* top: 10px; */
+  object-fit: contain;
+  z-index: 1;
 }
 
 .Form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  /* background-color: #1976d2; */
+  /* background-color: white; */
   border-radius: 10px;
   min-height: 200px;
   height: auto;
   max-height: 400px;
-  max-height: 350;
   padding: 20px;
 }
 
@@ -30,24 +189,12 @@
   height: 100%;
   margin-top: 10px;
 }
+/* .button-login {
+  background-color: rgb(116, 9, 116) !important;
+} */
 
 .css-fplxkc-MuiFormLabel-root-MuiInputLabel-root {
   transform: translate(20px, 30px) !important;
-}
-
-.login {
-  width: 100%;
-  height: 40px;
-  background-color: #1976d2;
-  color: white;
-  border-radius: 15px;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.login:hover {
-  background-color: #1565c0;
 }
 
 /* .MuiInputBase-input {
