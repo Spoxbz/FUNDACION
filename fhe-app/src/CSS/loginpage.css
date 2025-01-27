@@ -67,6 +67,7 @@
   display: flex;
   margin-bottom: 30px;
   color: rgb(116, 9, 116);
+  /* color: rgb(1, 31, 108); */
 }
 
 .cont-img-presentation {
@@ -78,6 +79,7 @@
   width: 5%;
   margin-right: 10px;
   /* border: 1px solid #1976d2; */
+  /* border: 1px solid rgb(1, 31, 108); */
   border: 1px solid purple;
   border-radius: 10px;
   padding: 10px;
@@ -88,6 +90,7 @@
   width: 100%;
   display: flex;
   color: rgb(116, 9, 116);
+  /* color: rgb(1, 31, 108); */
   /* color: rgb(15, 111, 185); */
   font-size: 20px;
   font-family: "Roboto", sans-serif;
