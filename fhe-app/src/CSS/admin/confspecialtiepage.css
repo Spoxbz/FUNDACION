@@ -1,0 +1,89 @@
+/*! Estilos del contendor de la page*/
+.container-spe-page {
+  margin-top: 3rem !important;
+  margin-left: 4.2rem !important;
+  margin-right: 0.2rem !important;
+  width: 95.5%;
+  font-family: "Roboto", sans-serif;
+  background-color: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*! Estilos del encabezado de la pagina de configuracion de empleado*/
+.header-spe-page {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  width: 98%;
+  max-width: 1920px !important;
+  border-radius: 4px;
+  box-shadow: 2px 0.5px 5px -2px #a8a8a8;
+  margin-top: 1%;
+  margin-bottom: 3.5%;
+}
+.header-spe-page > h1 {
+  font-weight: bold;
+  font-size: 40px;
+  color: #333;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 33%;
+}
+.cont-searchbar-spe-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+}
+/*Estilos barra de busqueda*/
+.searchbar-spe-page {
+  width: 100% !important;
+  /* background-color: white; */
+}
+.container-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 33%;
+  gap: 1rem;
+}
+/*Estilos globales*/
+.btn-modal-delEmployee,
+.btn-modal-regEmployee {
+  color: white !important;
+  border: none;
+  cursor: pointer;
+  text-transform: capitalize !important;
+  gap: 0.5rem;
+}
+
+/*Estilos del boton que abre el modal registrar*/
+.btn-modal-regEmployee {
+  background-color: rgb(24, 144, 255) !important;
+}
+/*Estilos del boton que abre el modal de eliminar*/
+.btn-modal-delEmployee {
+  background-color: rgb(255, 24, 43) !important;
+}
+
+/*! Estilos del encabezado del contenedor de la tabla y mas elementos*/
+.container-table {
+  /* border: 1px solid #f0f; */
+  width: 98% !important;
+  max-width: 1920px !important;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/*Estilos del contendor de la tabla*/
+.sub-container-table {
+  /* border: 1px solid #000; */
+  width: 100% !important;
+  height: 79vh;
+}

@@ -53,7 +53,7 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
     label: "Conf. Especialidad",
     icon: React.createElement(HealthAndSafety),
     title: "Configurar Especialidad",
-    route: ROUTES.DASHBOARD.FCHILD,
+    route: ROUTES.ADMIN.ADMINPAGESPECIALTIES,
   },
   {
     label: "Conf. Paciente",
