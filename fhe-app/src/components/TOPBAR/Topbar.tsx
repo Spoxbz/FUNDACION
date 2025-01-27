@@ -111,7 +111,7 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
             </>
           ) : (
             <>
-              <button ref={toggleButtonRef} onClick={handleLogout} style={{ border: "none" }} aria-label="toggle menu">
+              <button ref={toggleButtonRef} style={{ border: "none" }} aria-label="toggle menu">
                 <Avatar
                   sx={{
                     width: "30px",
