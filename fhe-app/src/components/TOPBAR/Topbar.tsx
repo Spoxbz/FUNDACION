@@ -111,7 +111,7 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
             </>
           ) : (
             <>
-              <button ref={toggleButtonRef} style={{ border: "none" }} aria-label="toggle menu">
+              <button ref={toggleButtonRef} style={{ border: "none", background: "none" }} aria-label="toggle menu">
                 <Avatar
                   sx={{
                     width: "30px",
@@ -159,7 +159,6 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
                   height: "80px",
                   marginRight: "10px",
                   fontSize: "30px",
-                  background: "#1A369A",
                 }}
               >
                 {`${name.split(" ")[0][0]}${name.split(" ")[1][0]}`}
