@@ -13,8 +13,12 @@ import ModalDeleteEmployees from "../../components/REGISTER/DeleteDialog";
 import OfficeTable from "../../components/ADMIN/OfficeTable";
 import { TextField } from "@mui/material";
 import { Paper } from "@mui/material";
+import { useState } from "react";
 
 export default function ConfOfficePage() {
+  // Constantes para filtrar consultorios
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
   return (
     <>
       <Paper className="container-off-page">
@@ -27,6 +31,9 @@ export default function ConfOfficePage() {
               label="Buscar"
               placeholder="Buscar Consultorio"
               size="small"
+              // agregados para poder buscar en la tabla
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
           <div className="container-button">
@@ -36,7 +43,7 @@ export default function ConfOfficePage() {
         </header>
         <div className="container-table">
           <div className="sub-container-table">
-            <OfficeTable />
+            <OfficeTable searchTerm={searchTerm} />
           </div>
         </div>
       </Paper>

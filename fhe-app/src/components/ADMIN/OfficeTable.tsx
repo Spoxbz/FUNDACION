@@ -29,9 +29,16 @@ const columns: GridColDef[] = [
 
 const paginationModel = { page: 0, pageSize: 10 };
 
-export default function DataTable() {
+// Props que recibira la tabla de oficina
+interface OfficeTableProps {
+  searchTerm: string;
+}
+
+export default function DataTable({ searchTerm }: OfficeTableProps) {
   const [offices, setOffices] = useState<Offices[]>([]); // Estado para los consultorios
   const [loading, setLoading] = useState<boolean>(true); // Estado para la cargar
+  // constante para filtrar oficinas
+  const [filteredOffices, setFilteredOffices] = useState<Offices[]>([]);
 
   // Funcion para obtener los consultorios
   useEffect(() => {
@@ -45,19 +52,28 @@ export default function DataTable() {
         setLoading(false); // Detener la carga
       }
     };
+
+    const filtered = offices.filter((off) =>
+      `${off.office_id} ${off.office_name} ${off.office_number} ${off.ubicacion}`
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
+    );
+    setFilteredOffices(filtered);
     loadOffices();
-  }, []);
+  }, [searchTerm, offices]);
+
+  // Funcion para listar los consultorios
   return (
     <Paper sx={{ height: 460, width: "auto" }}>
       <DataGrid
         initialState={{ pagination: { paginationModel } }}
-        rows={offices.map((offs) => ({
+        rows={filteredOffices.map((offs) => ({
           ...offs,
           id: offs.office_id, // Mapeamos `office_id` a `id`, necesario para DataGrid
         }))}
         columns={columns}
         loading={loading}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[5, 10, 15, 20]}
         checkboxSelection
         sx={{ border: 0 }}
       />

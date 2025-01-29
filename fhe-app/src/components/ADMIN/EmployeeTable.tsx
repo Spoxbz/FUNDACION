@@ -90,7 +90,7 @@ export default function DataTable({ searchTerm, onSelectEmployee }: EmployeeTabl
         }))}
         columns={columns}
         loading={loading}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[5, 10, 15, 20]}
         checkboxSelection
         sx={{ border: 0 }}
         // Actualizar la selección del empleado cuando se selecciona una fila
