@@ -1,5 +1,12 @@
 .dashboardpage-container {
   display: flex;
+  flex-direction: column;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 10px 1fr; /* Sidebar fijo, contenido dinámico */
+  height: calc(100vh - 60px); /* Ajuste dejando espacio para la Topbar */
 }
 
 .dash-content {
@@ -11,42 +18,15 @@
   box-sizing: border-box;
   height: fit-content;
   margin-top: 50px;
-  /*-5.9%*/
-  /* margin-left: -5.5%; */
-  padding-left: 2.5%;
-  padding-right: 0.5%;
-  /* padding: 1rem; */
   transition: margin-left 0.3s ease; /* Transición suave para cambios */
 }
 
+.sidebar.closed {
+  width: 70px !important; /* Tamaño reducido cuando está cerrado */
+}
+
+.sidebar.open {
+  width: 250px !important; /* Tamaño normal cuando está abierto */
+}
+
 /**Responsive*/
-@media (max-width: 1600px) {
-  .dash-content {
-    padding-left: 0%;
-  }
-}
-@media (max-width: 1200px) {
-  .dash-content {
-    padding: -8%;
-    width: 1000%;
-  }
-}
-
-@media (max-width: 840px) {
-  .dash-content {
-    margin-left: -11%;
-    width: 110%;
-  }
-}
-
-@media (max-width: 768px) {
-  .dash-content {
-    margin-left: -12%;
-    width: 1000%;
-  }
-}
-@media (max-width: 500px) {
-  .dash-content {
-    margin-left: -25%;
-  }
-}

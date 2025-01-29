@@ -104,7 +104,7 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
                 sx={{ backgroundColor: "rgba(12, 5, 5, 0.17)", borderRadius: "50%" }}
               />
               <Skeleton
-                width={100}
+                width={220}
                 height={20}
                 sx={{ marginLeft: "10px", backgroundColor: "rgba(12, 5, 5, 0.17)", borderRadius: "4px" }}
               />

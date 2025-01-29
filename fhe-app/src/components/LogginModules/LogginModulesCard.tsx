@@ -22,7 +22,7 @@ export default function LogginModulesCard({ title, icon, onClick }: modulesStruc
           alt={`${title} Icon`}
           sx={{
             width: 100,
-            height: 100,
+            height: "100px",
             objectFit: "contain",
             margin: "auto",
           }}

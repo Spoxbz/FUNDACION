@@ -3,11 +3,11 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  /* height: fit-content; */
-  height: 95vh;
+  height: fit-content;
+  /* height: 95vh; */
   width: 100%;
-  margin-top: 2rem;
-  padding-top: 5%;
+  margin-top: 5rem;
+  font-family: "Roboto", sans-serif;
 }
 
 .sub-cont-modules {
@@ -17,29 +17,115 @@
   align-items: center;
   height: fit-content;
   width: 80%;
-  background-color: rgba(255, 255, 255, 0.2) !important;
   border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .headerModulesPage {
   width: 100%;
   text-align: center;
-  padding-bottom: 50px;
+  margin-bottom: 50px;
 }
-
 .titleHeaderModules {
   font-size: 2rem;
   color: rgb(0, 30, 109);
-  font-family: "Roboto", sans-serif;
   font-weight: lighter;
 }
 
 .main {
-  width: 80%;
+  width: 100%;
   height: 100%;
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+/*! Estilos para modificar cuando el rol del usuario sea 1 o 4*/
+.cont-modu {
+  width: 95%;
+  height: 50vh;
+  display: grid;
+  grid-template-columns: 60% auto;
+  margin-left: 4%;
+  gap: 1%;
+}
+
+.cont-modules-left {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px;
+  /* background-color: blue !important; */
+}
+
+.aside-modules {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: flit-content;
+  border-radius: 10px;
+  width: auto;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px;
+  /* background-color: purple; */
+}
+
+/*! Estilos para modificar cuando el rol del usuario sea 4*/
+
+.info {
+  width: 90%;
+  height: 150px;
+  align-self: center;
+  background-color: white;
+  border: 2px solid #8d9bcd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.info-medico {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(198, 205, 230, 0.5);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  padding: 10px;
+}
+/*! Estilos para modificar cuando el rol del usuario sea 1*/
+.info-empleados {
+  width: 90%;
+  height: 150px;
+  align-self: center;
+  background-color: white;
+  border: 2px solid #8d9bcd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.info-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.data-employee {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(198, 205, 230, 0.5);
+  border-radius: 4px;
+}
+.data {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }

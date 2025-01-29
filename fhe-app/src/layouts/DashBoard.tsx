@@ -71,10 +71,12 @@ export default function Dashboard() {
         menuRef={menuRef}
       />
 
-      <div ref={sidebarRef}>
-        <Sidebar open={open} handleDrawerClose={toggleSidebar} toggleButtonRef={toggleButtonRef} />
+      <div className="dashboard-layout">
+        <div ref={sidebarRef} className={`sidebar ${open ? "open" : "closed"}`}>
+          <Sidebar open={open} handleDrawerClose={toggleSidebar} toggleButtonRef={toggleButtonRef} />
+        </div>
+        <Outlet />
       </div>
-      <Outlet></Outlet>
     </Box>
   );
 }
