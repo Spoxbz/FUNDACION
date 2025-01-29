@@ -1,8 +1,8 @@
 // Estilos
 import "../../CSS/admin/confspecialtiepage.css";
 import { TextField } from "@mui/material";
-import ModalDeleteEmployees from "../../components/REGISTER/DeleteDialog";
-import ModalRegisterEmployees from "../../components/REGISTER/ModalRegisterEmployees";
+import ModalDeleteEmployees from "../../components/ADMIN/REGISTER/DeleteDialog";
+import ModalRegisterEmployees from "../../components/ADMIN/REGISTER/ModalRegisterEmployees";
 // Import de la tabla que lista las especialidades
 import SpecialtyTable from "../../components/ADMIN/SpecialtyTable";
 

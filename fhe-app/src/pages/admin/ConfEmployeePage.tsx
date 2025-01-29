@@ -6,8 +6,8 @@
  */
 // Import de los estilos
 import "../../CSS/admin/confemployeepage.css";
-import ModalRegisterEmployees from "../../components/REGISTER/ModalRegisterEmployees";
-import DeleteDialog from "../../components/REGISTER/DeleteDialog";
+import ModalRegisterEmployees from "../../components/ADMIN/REGISTER/ModalRegisterEmployees";
+import DeleteDialog from "../../components/ADMIN/REGISTER/DeleteDialog";
 // Import de componentes de la tabla
 import EmployeeTable from "../../components/ADMIN/EmployeeTable";
 import { TextField } from "@mui/material";

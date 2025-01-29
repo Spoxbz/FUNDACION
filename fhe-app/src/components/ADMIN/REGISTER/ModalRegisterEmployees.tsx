@@ -6,14 +6,14 @@
 
 import { useState } from "react";
 // Estilos
-import "../../CSS/admin/registeremployees.css";
+import "../../../CSS/admin/registeremployees.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { FormControl, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
 import { AddCircleOutline, Mail, Person } from "@mui/icons-material";
 // Import para traer la funcion que registra empleados
-import { createEmployee } from "../../backendTwo/service/employeeService"; // Asegúrate de que la ruta sea correcta
+import { createEmployee } from "../../../backendTwo/service/employeeService";
 
 export default function ModalRegisterEmployees() {
   const [open, setOpen] = useState(false);

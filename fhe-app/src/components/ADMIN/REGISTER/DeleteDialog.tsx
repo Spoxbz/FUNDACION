@@ -6,7 +6,7 @@
 
 import React, { useState } from "react";
 // Estilos
-import "../../CSS/admin/confemployeepage.css";
+import "../../../CSS/admin/confemployeepage.css";
 import Button from "@mui/material/Button";
 import { Delete } from "@mui/icons-material";
 import {
@@ -18,7 +18,7 @@ import {
   DialogTitle,
   Slide,
 } from "@mui/material";
-import { Employee } from "../../backendTwo/model/model.employee";
+import { Employee } from "../../../backendTwo/model/model.employee";
 import { TransitionProps } from "@mui/material/transitions";
 
 const Transition = React.forwardRef(function Transition(
