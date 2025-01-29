@@ -1,7 +1,6 @@
 // Estilos
 import "../../CSS/admin/confspecialtiepage.css";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import Paper from "@mui/material/Paper";
 import { Edit } from "@mui/icons-material";
 // Import del Type de Officecs
 import { Specialty } from "../../backendTwo/model/model.specialty";
@@ -49,8 +48,9 @@ export default function DataTable() {
     loadOffices();
   }, []);
   return (
-    <Paper sx={{ height: 600, width: "auto" }}>
+    <div style={{ height: "460px", width: "auto" }}>
       <DataGrid
+        sx={{ backgroundColor: "white" }}
         initialState={{ pagination: { paginationModel } }}
         rows={specialties.map((spec) => ({
           ...spec,
@@ -60,8 +60,7 @@ export default function DataTable() {
         loading={loading}
         pageSizeOptions={[5, 10]}
         checkboxSelection
-        sx={{ border: 0 }}
       />
-    </Paper>
+    </div>
   );
 }

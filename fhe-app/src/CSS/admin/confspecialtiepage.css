@@ -4,25 +4,28 @@
   margin-left: 4.2rem !important;
   margin-right: 0.2rem !important;
   width: 95.5%;
+  height: 100vh !important;
   font-family: "Roboto", sans-serif;
   background-color: none !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white !important;
+  /* overflow: auto; */
 }
 
 /*! Estilos del encabezado de la pagina de configuracion de empleado*/
 .header-spe-page {
   display: flex;
   align-items: center;
-  height: fit-content;
+  height: fit-content !important;
   width: 98%;
   max-width: 1920px !important;
   border-radius: 4px;
   box-shadow: 2px 0.5px 5px -2px #a8a8a8;
   margin-top: 1%;
-  margin-bottom: 3.5%;
+  margin-bottom: 3%;
 }
 .header-spe-page > h1 {
   font-weight: bold;
@@ -85,5 +88,5 @@
 .sub-container-table {
   /* border: 1px solid #000; */
   width: 100% !important;
-  height: 79vh;
+  height: fit-content;
 }

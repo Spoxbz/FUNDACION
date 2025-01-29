@@ -48,7 +48,7 @@ export default function DataTable() {
     loadOffices();
   }, []);
   return (
-    <Paper sx={{ height: 600, width: "auto" }}>
+    <Paper sx={{ height: 460, width: "auto" }}>
       <DataGrid
         initialState={{ pagination: { paginationModel } }}
         rows={offices.map((offs) => ({

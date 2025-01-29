@@ -8,7 +8,7 @@
 // Import de los estilos
 import "../../CSS/admin/confofficepage.css";
 import ModalRegisterEmployees from "../../components/REGISTER/ModalRegisterEmployees";
-import ModalDeleteEmployees from "../../components/REGISTER/ModalDeleteEmployee";
+import ModalDeleteEmployees from "../../components/REGISTER/DeleteDialog";
 // Import de componentes de la tabla
 import OfficeTable from "../../components/ADMIN/OfficeTable";
 import { TextField } from "@mui/material";

@@ -38,9 +38,17 @@ const columns: GridColDef[] = [
 
 const paginationModel = { page: 0, pageSize: 10 };
 
-export default function DataTable() {
+//  props que recibirá el componente
+interface EmployeeTableProps {
+  searchTerm: string;
+  onSelectEmployee: (employee: Employee | null) => void; // Función para manejar la selección
+}
+
+export default function DataTable({ searchTerm, onSelectEmployee }: EmployeeTableProps) {
   const [employees, setEmployees] = useState<Employee[]>([]); // Estado para los empleados
   const [loading, setLoading] = useState<boolean>(true); // Estado para la carga
+  // Constantes para filtrar empleados
+  const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>([]);
 
   // Obtener los empleados al cargar el componente
   useEffect(() => {
@@ -57,11 +65,26 @@ export default function DataTable() {
     loadEmployees();
   }, []);
 
+  // Filtrar empleados según el término de búsqueda
+  useEffect(() => {
+    const filtered = employees.filter((emp) =>
+      `${emp.employee_name} ${emp.employee_lastname} ${emp.employee_ci} ${emp.employee_email}`
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
+    );
+    setFilteredEmployees(filtered);
+  }, [searchTerm, employees]);
+
+  const handleRowSelection = (selectedRow) => {
+    const selectedEmployee = employees.find((emp) => emp.employee_id === selectedRow[0]);
+    onSelectEmployee(selectedEmployee || null);
+  };
+
   return (
-    <Paper sx={{ height: 600, width: "100%" }}>
+    <Paper sx={{ height: 460, width: "100%" }}>
       <DataGrid
         initialState={{ pagination: { paginationModel } }}
-        rows={employees.map((emp) => ({
+        rows={filteredEmployees.map((emp) => ({
           ...emp,
           id: emp.employee_id, // Mapeamos `employee_id` a `id`, necesario para DataGrid
         }))}
@@ -70,6 +93,12 @@ export default function DataTable() {
         pageSizeOptions={[5, 10]}
         checkboxSelection
         sx={{ border: 0 }}
+        // Actualizar la selección del empleado cuando se selecciona una fila
+        onRowSelectionModelChange={handleRowSelection}
+        // onRowSelectionModelChange={(newSelection) => {
+        //   const selectedEmployee = employees.find((emp) => emp.employee_id === newSelection[0]);
+        //   onSelectEmployee(selectedEmployee || null); // Pasar el empleado seleccionado
+        // }}
       />
     </Paper>
   );

@@ -1,7 +1,7 @@
 // Estilos
 import "../../CSS/admin/confspecialtiepage.css";
-import { Paper, TextField } from "@mui/material";
-import ModalDeleteEmployees from "../../components/REGISTER/ModalDeleteEmployee";
+import { TextField } from "@mui/material";
+import ModalDeleteEmployees from "../../components/REGISTER/DeleteDialog";
 import ModalRegisterEmployees from "../../components/REGISTER/ModalRegisterEmployees";
 // Import de la tabla que lista las especialidades
 import SpecialtyTable from "../../components/ADMIN/SpecialtyTable";
@@ -9,7 +9,7 @@ import SpecialtyTable from "../../components/ADMIN/SpecialtyTable";
 export default function ConfSpecialtiesPage() {
   return (
     <>
-      <Paper className="container-spe-page">
+      <div className="container-spe-page">
         <header className="header-spe-page">
           <h1>Manteniemiento Especialidades</h1>
           <div className="cont-searchbar-spe-page">
@@ -31,7 +31,7 @@ export default function ConfSpecialtiesPage() {
             <SpecialtyTable />
           </div>
         </div>
-      </Paper>
+      </div>
     </>
   );
 }
