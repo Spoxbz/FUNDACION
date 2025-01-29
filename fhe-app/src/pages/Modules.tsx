@@ -165,7 +165,7 @@ export default function Modules() {
               alignItems: "center",
             }}
           >
-            <Skeleton width={500} height={200} />
+            <Skeleton width={600} height={200} />
           </Box>
         ) : (
           <>
