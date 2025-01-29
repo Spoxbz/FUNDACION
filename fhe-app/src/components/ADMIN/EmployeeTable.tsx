@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRowSelectionModel } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import { Edit } from "@mui/icons-material";
 // Import del Type del empleado
@@ -75,7 +75,7 @@ export default function DataTable({ searchTerm, onSelectEmployee }: EmployeeTabl
     setFilteredEmployees(filtered);
   }, [searchTerm, employees]);
 
-  const handleRowSelection = (selectedRow) => {
+  const handleRowSelection = (selectedRow: GridRowSelectionModel) => {
     const selectedEmployee = employees.find((emp) => emp.employee_id === selectedRow[0]);
     onSelectEmployee(selectedEmployee || null);
   };
