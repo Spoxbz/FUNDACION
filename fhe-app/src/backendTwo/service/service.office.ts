@@ -15,3 +15,12 @@ export const fetchOffices = async (): Promise<Offices[]> => {
 
   return data as Offices[];
 };
+
+export const deleteOffice = async (officeId: number): Promise<void> => {
+  const { error } = await client.from("offices").delete().eq("office_id", officeId);
+
+  if (error) {
+    console.error("Error eliminando el consultorio:", error.message);
+    throw new Error("No se pudo eliminar el consultorio");
+  }
+};

@@ -1,4 +1,4 @@
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRowSelectionModel } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import { Edit } from "@mui/icons-material";
 // Import del Type de Officecs
@@ -32,9 +32,10 @@ const paginationModel = { page: 0, pageSize: 10 };
 // Props que recibira la tabla de oficina
 interface OfficeTableProps {
   searchTerm: string;
+  onSelectOffice: (office: Offices | null) => void;
 }
 
-export default function DataTable({ searchTerm }: OfficeTableProps) {
+export default function DataTable({ searchTerm, onSelectOffice }: OfficeTableProps) {
   const [offices, setOffices] = useState<Offices[]>([]); // Estado para los consultorios
   const [loading, setLoading] = useState<boolean>(true); // Estado para la cargar
   // constante para filtrar oficinas
@@ -45,7 +46,7 @@ export default function DataTable({ searchTerm }: OfficeTableProps) {
     const loadOffices = async () => {
       try {
         const data = await fetchOffices(); // Llamar al servicio
-        setOffices(data); // Actualizar los empleados
+        setOffices(data); // Actualizar los conssultorios
       } catch (error) {
         console.error("Error cargando empleados:", error);
       } finally {
@@ -62,7 +63,11 @@ export default function DataTable({ searchTerm }: OfficeTableProps) {
     loadOffices();
   }, [searchTerm, offices]);
 
-  // Funcion para listar los consultorios
+  // Funcion para manejar la selccion de una fila
+  const handleRowSelection = (selectedRow: GridRowSelectionModel) => {
+    const selectedOffice = offices.find((off) => off.office_id === selectedRow[0]);
+    onSelectOffice(selectedOffice || null);
+  };
   return (
     <Paper sx={{ height: 460, width: "auto" }}>
       <DataGrid
@@ -76,6 +81,7 @@ export default function DataTable({ searchTerm }: OfficeTableProps) {
         pageSizeOptions={[5, 10, 15, 20]}
         checkboxSelection
         sx={{ border: 0 }}
+        onRowSelectionModelChange={handleRowSelection}
       />
     </Paper>
   );
