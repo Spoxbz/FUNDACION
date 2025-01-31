@@ -1,4 +1,83 @@
+/*! Estilos del contenedor principal*/
 .medicalOffice-container {
-  margin-top: 3rem;
-  margin-left: 4.2rem;
+  margin-top: 3rem !important;
+  margin-left: 4.2rem !important;
+  margin-right: 0.2rem !important;
+  width: 95.5%;
+  height: fit-content !important;
+  font-family: "Roboto", sans-serif;
+  background-color: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/*! Estilos del header*/
+.mo-header {
+  width: 98%;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin-top: 1%;
+  margin-bottom: 3.5%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0.5px 5px -2px #a8a8a8;
+  border-radius: 10px;
+}
+.mo-header-top {
+  padding: 0px 10px 0px 10px;
+  width: auto;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  /* background-color: aqua; */
+}
+/* .MuiSelect-select,
+.MuiSelect-outlined,
+.MuiInputBase-input,
+.MuiOutlinedInput-input, */
+.css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 0px 0px 0px 10px !important;
+}
+.MuiInputBase-input {
+  /* background-color: green !important; */
+  margin-right: 32px !important;
+}
+
+.mo-header-select {
+  padding: 0px !important;
+}
+.mo-header-title {
+  width: 80%;
+  text-align: center;
+}
+.mo-header-bot {
+  padding: 0px 10px 0px 10px;
+  width: auto;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  /* background-color: gray; */
+}
+.mo-header-bot-calendaer {
+  width: 30% !important;
+}
+.mo-header-bot-mss {
+  width: 90%;
+  display: flex;
+}
+
+.mo-header-button {
+  background-color: rgb(25, 118, 210) !important;
+  color: white !important;
+  font-size: 10px !important;
+}
+
+/*! Estilos del contenedor del main content*/
+.mo-main {
+  min-width: 500px;
+  width: 1500px;
+  max-width: 1500px;
 }
