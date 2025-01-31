@@ -67,3 +67,14 @@ export const deleteAppointment = async (appointmentId: number, deletedBy: number
     throw new Error(`Error al eliminar la cita: ${error.message}`);
   }
 };
+
+export const getAppointments = async (): Promise<Appointment[]> => {
+  const { data, error } = await client.from("appointment").select("*");
+
+  if (error) {
+    console.error("Error obteniendo los datos de appointment:", error);
+    return [];
+  }
+
+  return data;
+};

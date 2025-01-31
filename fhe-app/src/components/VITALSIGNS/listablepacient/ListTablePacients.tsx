@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -31,18 +31,22 @@ const PacientesTabla: React.FC<Props> = ({ pacientes }) => {
   const [search, setSearch] = useState("");
   const [filteredPacientes, setFilteredPacientes] = useState<Paciente[]>(pacientes);
 
+  useEffect(() => {
+    setFilteredPacientes(pacientes);
+  }, [pacientes]); // Actualizar los pacientes filtrados cuando cambian los datos
+
   // Manejar la lógica de filtrado
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value.toLowerCase();
-    setSearch(query);
-    const filtered = pacientes.filter(
-      (p) =>
-        p.turno.toLowerCase().includes(query) ||
-        p.medico.toLowerCase().includes(query) ||
-        p.paciente.toLowerCase().includes(query)
-    );
-    setFilteredPacientes(filtered);
-  };
+  // const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const query = event.target.value.toLowerCase();
+  //   setSearch(query);
+  //   const filtered = pacientes.filter(
+  //     (p) =>
+  //       p.turno.toLowerCase().includes(query) ||
+  //       p.medico.toLowerCase().includes(query) ||
+  //       p.paciente.toLowerCase().includes(query)
+  //   );
+  //   setFilteredPacientes(filtered);
+  // };
 
   return (
     <Box>
@@ -61,7 +65,19 @@ const PacientesTabla: React.FC<Props> = ({ pacientes }) => {
           label="Buscar"
           placeholder="Buscar por turno, médico o paciente"
           value={search}
-          onChange={handleSearchChange}
+          // onChange={handleSearchChange}
+          onChange={(e) => {
+            const query = e.target.value.toLowerCase();
+            setSearch(query);
+            setFilteredPacientes(
+              pacientes.filter(
+                (p) =>
+                  p.turno.toLowerCase().includes(query) ||
+                  p.medico.toLowerCase().includes(query) ||
+                  p.paciente.toLowerCase().includes(query)
+              )
+            );
+          }}
           sx={{ width: "50%", backgroundColor: "white", borderRadius: "4px" }}
           size="small"
         />
