@@ -5,39 +5,43 @@ import { useAuthStore } from "../../backendTwo/zustand/authStore";
 import { useEffect, useState } from "react";
 import { Employee } from "../../backendTwo/model/model.employee";
 
-export default function HeaderMedicalOffice() {
+export default function HeaderMedicalOffice({
+  setSelectedDoctorId,
+}: {
+  setSelectedDoctorId: (id: number | null) => void;
+}) {
   const { user } = useAuthStore(); // Obtiene el usuario logueado
   const [doctors, setDoctors] = useState<Employee[]>([]);
-  const [selectedDoctorId, setSelectedDoctorId] = useState(null);
+  const [selectedDoctorId, setLocalDoctorId] = useState<number | null>(null);
 
   useEffect(() => {
-    const fetchDoctors = async () => {
-      try {
-        const employees = await fetchEmployees();
-        const doctorList = employees.filter((emp) => emp.rol_id === 4);
-        setDoctors(doctorList);
-      } catch (error) {
-        console.error("Error obteniendo médicos:", error);
-      }
-    };
-
     if (user?.rol_id === 1 || user?.rol_id === 2 || user?.rol_id === 3) {
+      const fetchDoctors = async () => {
+        try {
+          const employees = await fetchEmployees();
+          const doctorList = employees.filter((emp) => emp.rol_id === 4);
+          setDoctors(doctorList);
+        } catch (error) {
+          console.error("Error obteniendo médicos:", error);
+        }
+      };
       fetchDoctors();
     }
   }, [user]);
 
   const handleDoctorChange = (event) => {
-    setSelectedDoctorId(event.target.value);
-    setSelectedDoctor(event.target.value); // Actualiza el médico seleccionado en el componente padre
+    const selectedId = event.target.value;
+    setLocalDoctorId(selectedId);
+    setSelectedDoctorId(selectedId); // Actualiza en el componente padre
   };
 
   return (
     <>
       <header className="mo-header">
         <div className="mo-header-top">
-          {user?.rol_id === 1 || user?.rol_id === 2 || user?.rol_id === 3 ? (
+          {user?.rol_id !== 4 && (
             <Select
-              className="mo-header-select "
+              className="mo-header-select"
               value={selectedDoctorId || ""}
               onChange={handleDoctorChange}
               displayEmpty
@@ -49,7 +53,7 @@ export default function HeaderMedicalOffice() {
                 </MenuItem>
               ))}
             </Select>
-          ) : null}
+          )}
           <h1 className="mo-header-title">Consultorio Medico</h1>
           <div>
             <Button className="mo-header-button" size="small">

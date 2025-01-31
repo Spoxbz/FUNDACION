@@ -3,7 +3,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { fetchAppointments } from "../../backendTwo/service/appointmentsService";
-import { useAuthStore } from "../../backendTwo/zustand/authStore";
+// import { useAuthStore } from "../../backendTwo/zustand/authStore";
 
 // Traducciones personalizadas en español
 interface CustomLocaleText {
@@ -49,83 +49,82 @@ const customLocaleText: CustomLocaleText = {
 };
 
 // Definir las columnas del DataGrid
-const columns: GridColDef[] = [
-  { field: "turno", headerName: "Turno", width: 100 },
-  { field: "hora", headerName: "Hora", width: 130 },
-  { field: "consultorio", headerName: "Consultorio", width: 150 },
-  { field: "paciente", headerName: "Paciente", width: 180 },
-  {
-    field: "atendido",
-    headerName: "Atendido",
-    width: 130,
-    renderCell: (params) => (
-      <span
-        style={{
-          margin: "10px",
-          background: params.value ? "" : "",
-        }}
-      >
-        {params.value ? "Pendiente" : "Pendiente"}
-      </span>
-    ),
-  },
-  {
-    field: "llamar",
-    headerName: "Llamar",
-    width: 130,
-    sortable: false,
-    renderCell: () => (
-      <Button variant="contained" color="success" size="small">
-        Llamar
-      </Button>
-    ),
-  },
-  {
-    field: "cancelar",
-    headerName: "Cancelar",
-    width: 130,
-    sortable: false,
-    renderCell: () => (
-      <Button variant="contained" color="error" size="small">
-        Cancelar
-      </Button>
-    ),
-  },
-  {
-    field: "ficha",
-    headerName: "Ficha",
-    width: 130,
-    sortable: false,
-    renderCell: () => (
-      <Button variant="contained" color="secondary" size="small">
-        Ficha
-      </Button>
-    ),
-  },
-];
+// const columns: GridColDef[] = [
+//   { field: "turno", headerName: "Turno", width: 100 },
+//   { field: "hora", headerName: "Hora", width: 130 },
+//   { field: "consultorio", headerName: "Consultorio", width: 150 },
+//   { field: "paciente", headerName: "Paciente", width: 180 },
+//   {
+//     field: "llamar",
+//     headerName: "Llamar",
+//     width: 130,
+//     sortable: false,
+//     renderCell: (params) => (
+//       <Button variant="contained" color="success" size="small">
+//         Llamar
+//       </Button>
+//     ),
+//   },
+//   {
+//     field: "cancelar",
+//     headerName: "Cancelar",
+//     width: 130,
+//     sortable: false,
+//     renderCell: (params) => (
+//       <Button variant="contained" color="error" size="small">
+//         Cancelar
+//       </Button>
+//     ),
+//   },
+//   {
+//     field: "ficha",
+//     headerName: "Ficha",
+//     width: 130,
+//     sortable: false,
+//     renderCell: () => (
+//       <Button variant="contained" color="secondary" size="small">
+//         Ficha
+//       </Button>
+//     ),
+//   },
+//   {
+//     field: "atendidos",
+//     headerName: "Atendidos",
+//     width: 130,
+//     renderCell: (params) => (
+//       <span
+//         style={{
+//           margin: "10px",
+//           background: params.value ? "" : "",
+//         }}
+//       >
+//         {params.value ? "Atendiendo" : "Pendiente"}
+//       </span>
+//     ),
+//   },
+// ];
+
+interface Appointment {
+  id: number;
+  turno: string;
+  hora: string;
+  consultorio: string;
+  paciente: string;
+  atendido: string;
+}
 
 const paginationModel = { page: 2, pageSize: 10 };
 
-export default function DoctorApointmentTable() {
-  interface Appointment {
-    id: number;
-    turno: string;
-    hora: string;
-    consultorio: string;
-    paciente: string;
-    atendido: boolean;
-  }
-
+export default function DoctorApointmentTable({ selectedDoctorId }: { selectedDoctorId: number | null }) {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
-  const doctor = useAuthStore((state) => state.user);
 
   useEffect(() => {
-    if (!doctor) return;
+    if (!selectedDoctorId) return;
 
     const fetchData = async () => {
       try {
         const data = await fetchAppointments();
-        const filteredData = data.filter((appointment) => appointment.employee_id === doctor.employee_id);
+        const filteredData = data.filter((appointment) => appointment.employee_id === selectedDoctorId);
 
         const formattedData = filteredData.map((appointment) => ({
           id: appointment.appointment_id,
@@ -133,7 +132,7 @@ export default function DoctorApointmentTable() {
           hora: appointment.appointment_time,
           consultorio: `Consultorio ${appointment.office_id}`,
           paciente: `Paciente ${appointment.patient_id}`,
-          atendido: appointment.is_doctor_attended,
+          atendido: appointment.is_doctor_attended ? "Atendido" : "Pendiente",
         }));
 
         setAppointments(formattedData);
@@ -143,7 +142,78 @@ export default function DoctorApointmentTable() {
     };
 
     fetchData();
-  }, [doctor]);
+  }, [selectedDoctorId]);
+
+  // Definir columnas del DataGrid dentro del componente para acceder a `appointments`
+  const columns: GridColDef[] = [
+    { field: "turno", headerName: "Turno", width: 100 },
+    { field: "hora", headerName: "Hora", width: 130 },
+    { field: "consultorio", headerName: "Consultorio", width: 150 },
+    { field: "paciente", headerName: "Paciente", width: 180 },
+    {
+      field: "llamar",
+      headerName: "Llamar",
+      width: 130,
+      sortable: false,
+      renderCell: (params) => {
+        const handleLlamarClick = () => {
+          setAppointments((prevAppointments) =>
+            prevAppointments.map((appointment) =>
+              appointment.id === params.id ? { ...appointment, atendido: "Atendiendo" } : appointment
+            )
+          );
+        };
+
+        return (
+          <Button variant="contained" color="success" size="small" onClick={handleLlamarClick}>
+            Llamar
+          </Button>
+        );
+      },
+    },
+    {
+      field: "cancelar",
+      headerName: "Cancelar",
+      width: 130,
+      sortable: false,
+      renderCell: (params) => {
+        const handleCancelarClick = () => {
+          setAppointments((prevAppointments) =>
+            prevAppointments.map((appointment) =>
+              appointment.id === params.id ? { ...appointment, atendido: "Pendiente" } : appointment
+            )
+          );
+        };
+
+        return (
+          <Button variant="contained" color="error" size="small" onClick={handleCancelarClick}>
+            Cancelar
+          </Button>
+        );
+      },
+    },
+    {
+      field: "ficha",
+      headerName: "Ficha",
+      width: 130,
+      sortable: false,
+      renderCell: () => (
+        <Button variant="contained" color="secondary" size="small">
+          Ficha
+        </Button>
+      ),
+    },
+    {
+      field: "atendido",
+      headerName: "Estado",
+      width: 130,
+      renderCell: (params) => (
+        <span style={{ margin: "10px", fontWeight: "bold", color: params.value === "Atendiendo" ? "green" : "red" }}>
+          {params.value}
+        </span>
+      ),
+    },
+  ];
 
   return (
     <Paper sx={{ height: 460, width: "100%" }}>
