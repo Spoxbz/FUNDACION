@@ -6,6 +6,7 @@ import { Edit } from "@mui/icons-material";
 import { Employee } from "../../backendTwo/model/model.employee";
 // Import del servicio para recuperar todos los empleados
 import { fetchEmployees } from "../../backendTwo/service/employeeService";
+import { fetchRoleNameById } from "../../backendTwo/service/roleService";
 
 const columns: GridColDef[] = [
   { field: "employee_id", headerName: "ID", width: 70 },
@@ -21,7 +22,7 @@ const columns: GridColDef[] = [
   { field: "username", headerName: "Usuario", width: 130 },
   { field: "password", headerName: "Contraseña", width: 130 },
   { field: "employee_address", headerName: "Dirección", width: 130 },
-  { field: "rol_id", headerName: "Rol", width: 130 },
+  { field: "rol_name", headerName: "Rol", width: 130 },
   {
     field: "edit",
     headerName: "Editar",
@@ -54,8 +55,17 @@ export default function DataTable({ searchTerm, onSelectEmployee }: EmployeeTabl
   useEffect(() => {
     const loadEmployees = async () => {
       try {
-        const data = await fetchEmployees(); // Llamar al servicio
-        setEmployees(data); // Actualizar los empleados
+        const employeesData = await fetchEmployees(); // Llamar al servicio
+
+        // Crear una lista de promesas para obtener los nombres de los roles
+        const employeesWithRoles = await Promise.all(
+          employeesData.map(async (employee) => {
+            const roleName = await fetchRoleNameById(employee.rol_id);
+            return { ...employee, rol_name: roleName || "Sin rol" };
+          })
+        );
+
+        setEmployees(employeesWithRoles); // Guardar empleados con rol_name
       } catch (error) {
         console.error("Error cargando empleados:", error);
       } finally {
