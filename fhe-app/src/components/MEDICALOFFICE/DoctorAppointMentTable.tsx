@@ -48,62 +48,6 @@ const customLocaleText: CustomLocaleText = {
   paginationLabelDisplayedRows: ({ from, to, count }) => `${from}–${to} de ${count}`,
 };
 
-// Definir las columnas del DataGrid
-// const columns: GridColDef[] = [
-//   { field: "turno", headerName: "Turno", width: 100 },
-//   { field: "hora", headerName: "Hora", width: 130 },
-//   { field: "consultorio", headerName: "Consultorio", width: 150 },
-//   { field: "paciente", headerName: "Paciente", width: 180 },
-//   {
-//     field: "llamar",
-//     headerName: "Llamar",
-//     width: 130,
-//     sortable: false,
-//     renderCell: (params) => (
-//       <Button variant="contained" color="success" size="small">
-//         Llamar
-//       </Button>
-//     ),
-//   },
-//   {
-//     field: "cancelar",
-//     headerName: "Cancelar",
-//     width: 130,
-//     sortable: false,
-//     renderCell: (params) => (
-//       <Button variant="contained" color="error" size="small">
-//         Cancelar
-//       </Button>
-//     ),
-//   },
-//   {
-//     field: "ficha",
-//     headerName: "Ficha",
-//     width: 130,
-//     sortable: false,
-//     renderCell: () => (
-//       <Button variant="contained" color="secondary" size="small">
-//         Ficha
-//       </Button>
-//     ),
-//   },
-//   {
-//     field: "atendidos",
-//     headerName: "Atendidos",
-//     width: 130,
-//     renderCell: (params) => (
-//       <span
-//         style={{
-//           margin: "10px",
-//           background: params.value ? "" : "",
-//         }}
-//       >
-//         {params.value ? "Atendiendo" : "Pendiente"}
-//       </span>
-//     ),
-//   },
-// ];
-
 interface Appointment {
   id: number;
   turno: string;
