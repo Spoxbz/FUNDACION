@@ -26,6 +26,9 @@ const ROUTES = {
     get MTCHILD() {
       return `${this.BASE3}/consultorio`;
     },
+    get M4CHILD() {
+      return `${this.BASE3}/records`;
+    },
     get M5CHILD() {
       return `${this.BASE3}/example`;
     },

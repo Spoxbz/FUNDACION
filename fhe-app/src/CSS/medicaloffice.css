@@ -6,25 +6,24 @@
   width: 95.5%;
   height: fit-content !important;
   font-family: "Roboto", sans-serif;
-  background-color: none !important;
+  /* background-color: transparent !important; */
+  /* background-color: white; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
+  box-shadow: 0px 0px 0px 0px !important;
 }
 
 /*! Estilos del header*/
 .mo-header {
-  width: 98%;
-  padding-left: 1%;
-  padding-right: 1%;
-  margin-top: 1%;
-  margin-bottom: 3.5%;
+  width: 99%;
+  margin-bottom: 2%;
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0.5px 5px -2px #a8a8a8;
   border-radius: 10px;
+  background-color: white !important;
 }
 .mo-header-top {
   padding: 0px 10px 0px 10px;
@@ -78,8 +77,12 @@
 /*! Estilos del contenedor del main content*/
 .mo-main {
   min-width: 500px;
-  width: 1500px;
+  width: 100%;
   max-width: 1500px;
+}
+
+.mo-container-table {
+  padding-bottom: 1%;
 }
 
 /*Media Querys 1334x710*/

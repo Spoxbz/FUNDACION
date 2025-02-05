@@ -13,6 +13,7 @@ import ROUTES from "../enviroment/variables_routes";
 import ConfEmployeePage from "../pages/admin/ConfEmployeePage";
 import ConfSpecialtiesPage from "../pages/admin/ConfSpecialtiesPage";
 import ConfOfficePage from "../pages/admin/ConfOfficePage";
+import MedicalRecordPage from "../pages/MedicalRecordPage";
 
 export default function RoutesComp() {
   return (
@@ -26,6 +27,7 @@ export default function RoutesComp() {
           <Route path={ROUTES.MODULES.MFCHILD} element={<Calendar />} />
           <Route path={ROUTES.MODULES.MSCHILD} element={<VitalSigns />} />
           <Route path={ROUTES.MODULES.MTCHILD} element={<MedicalOffice />} />
+          <Route path={ROUTES.MODULES.M4CHILD} element={<MedicalRecordPage />} />
           <Route path={ROUTES.MODULES.M5CHILD} element={<InterfaceExample />} />
         </Route>
 

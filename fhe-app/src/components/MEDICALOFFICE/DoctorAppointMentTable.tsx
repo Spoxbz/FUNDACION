@@ -160,7 +160,7 @@ export default function DoctorApointmentTable({ selectedDoctorId }: { selectedDo
   ];
 
   return (
-    <Paper sx={{ height: 460, width: "100%" }}>
+    <Paper sx={{ height: 600, width: "100%" }}>
       <DataGrid
         initialState={{ pagination: { paginationModel } }}
         rows={appointments}

@@ -1,0 +1,22 @@
+.mr-container {
+  margin-top: 3rem;
+  padding-left: 4.2rem;
+  /* width: 100%; */
+}
+.mr-cont-tabs {
+  background-color: beige;
+}
+/*! Estilos del contenedor de la primera tab*/
+.mr-top-container {
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  border-radius: 4px;
+}
+.patient {
+  width: 50%;
+  flex-wrap: wrap;
+}
+.field-patient-info {
+  border-top: 1px solid white !important;
+}

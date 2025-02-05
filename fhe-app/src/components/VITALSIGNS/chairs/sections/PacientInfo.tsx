@@ -7,19 +7,12 @@ import React from "react";
 import dayjs, { Dayjs } from "dayjs";
 
 export default function PacientInfo() {
-  const [dateValue, setDateValue] = React.useState<Dayjs | null>(
-    dayjs("2022-04-17")
-  );
+  const [dateValue, setDateValue] = React.useState<Dayjs | null>(dayjs("2022-04-17"));
   return (
     <Box className="fields-patient-info">
       <div className="field">
         <label htmlFor="ci">C.I:</label>
-        <input
-          id="ci"
-          type="text"
-          className="custom-input"
-          value={"1234567890"}
-        />
+        <input id="ci" type="text" className="custom-input" value={"1234567890"} />
       </div>
 
       <div className="field">
@@ -29,12 +22,7 @@ export default function PacientInfo() {
 
       <div className="field field-nombre">
         <label htmlFor="nombre">Nombre:</label>
-        <input
-          id="nombre"
-          type="text"
-          className="custom-input"
-          value={"Bravo Zhunio Bruno Esteban"}
-        />
+        <input id="nombre" type="text" className="custom-input" value={"Bravo Zhunio Bruno Esteban"} />
       </div>
       <div className="field">
         <label htmlFor="genero">Género:</label>
@@ -58,13 +46,7 @@ export default function PacientInfo() {
 
       <div className="field field-edad">
         <label htmlFor="edad">Edad:</label>
-        <input
-          id="edad"
-          type="text"
-          className="custom-input"
-          value={"23 años, 5 meses, 14 días"}
-          readOnly
-        />
+        <input id="edad" type="text" className="custom-input" value={"23 años, 5 meses, 14 días"} readOnly />
       </div>
     </Box>
   );
