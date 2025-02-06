@@ -6,7 +6,7 @@
   width: 95.5%;
   height: fit-content !important;
   font-family: "Roboto", sans-serif;
-  /* background-color: transparent !important; */
+  background-color: transparent !important;
   /* background-color: white; */
   display: flex;
   flex-direction: column;
@@ -16,14 +16,26 @@
 }
 
 /*! Estilos del header*/
+.mo-cont-header {
+  width: 100%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .mo-header {
-  width: 99%;
-  margin-bottom: 2%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0.5px 5px -2px #a8a8a8;
   border-radius: 10px;
   background-color: white !important;
+}
+.mo-header-calendaer {
+  display: flex;
+  align-items: end;
+  height: 50px;
 }
 .mo-header-top {
   padding: 0px 10px 0px 10px;
@@ -31,7 +43,6 @@
   height: fit-content;
   display: flex;
   align-items: center;
-  /* background-color: aqua; */
 }
 /* .MuiSelect-select,
 .MuiSelect-outlined,
@@ -53,19 +64,11 @@
   text-align: center;
 }
 .mo-header-bot {
-  padding: 0px 10px 0px 10px;
-  width: auto;
+  padding: 0px 10px 5px 10px;
   height: fit-content;
   display: flex;
   align-items: center;
-  /* background-color: gray; */
-}
-.mo-header-bot-calendaer {
-  width: 30% !important;
-}
-.mo-header-bot-mss {
-  width: 90%;
-  display: flex;
+  justify-content: end;
 }
 
 .mo-header-button {
@@ -78,7 +81,7 @@
 .mo-main {
   min-width: 500px;
   width: 100%;
-  max-width: 1500px;
+  max-width: auto;
 }
 
 .mo-container-table {

@@ -1,8 +1,13 @@
+/**
+ * Este componente es para listar los turnos asignados a un medicop
+ */
+
 import { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { fetchAppointments } from "../../backendTwo/service/appointmentsService";
+import dayjs, { Dayjs } from "dayjs";
 // import { useAuthStore } from "../../backendTwo/zustand/authStore";
 
 // Traducciones personalizadas en español
@@ -59,16 +64,26 @@ interface Appointment {
 
 const paginationModel = { page: 2, pageSize: 10 };
 
-export default function DoctorApointmentTable({ selectedDoctorId }: { selectedDoctorId: number | null }) {
+export default function DoctorApointmentTable({
+  selectedDoctorId,
+  selectedDate,
+}: {
+  selectedDoctorId: number | null;
+  selectedDate: Dayjs | null;
+}) {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   useEffect(() => {
-    if (!selectedDoctorId) return;
+    if (!selectedDoctorId || !selectedDate) return;
 
     const fetchData = async () => {
       try {
         const data = await fetchAppointments();
-        const filteredData = data.filter((appointment) => appointment.employee_id === selectedDoctorId);
+        const filteredData = data.filter(
+          (appointment) =>
+            appointment.employee_id === selectedDoctorId &&
+            dayjs(appointment.appointment_date).isSame(selectedDate, "day") // Comparar fechas
+        );
 
         const formattedData = filteredData.map((appointment) => ({
           id: appointment.appointment_id,
@@ -86,7 +101,7 @@ export default function DoctorApointmentTable({ selectedDoctorId }: { selectedDo
     };
 
     fetchData();
-  }, [selectedDoctorId]);
+  }, [selectedDoctorId, selectedDate]);
 
   // Definir columnas del DataGrid dentro del componente para acceder a `appointments`
   const columns: GridColDef[] = [

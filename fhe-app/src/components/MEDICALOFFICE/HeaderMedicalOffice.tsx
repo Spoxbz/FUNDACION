@@ -1,5 +1,4 @@
 import { Box, Button, Checkbox, MenuItem, Select, Typography } from "@mui/material";
-import CalendarMedicalOffice from "./CalendarMedicalOffice";
 import { fetchEmployees } from "../../backendTwo/service/employeeService";
 import { useAuthStore } from "../../backendTwo/zustand/authStore";
 import { useEffect, useState } from "react";
@@ -70,15 +69,6 @@ export default function HeaderMedicalOffice({
           </Box>
         </div>
         <div className="mo-header-bot">
-          <CalendarMedicalOffice />
-          {/* <Stack sx={{ width: "5%" }} /> */}
-          <div className="mo-header-bot-mss">
-            {/* <Typography>Columna verde para llamar</Typography>
-            <Typography>Columna roja para cancelar</Typography>
-            <Typography>Columna verde para llamar</Typography>
-            <Typography>Columna gris para finalizar atencion</Typography> */}
-          </div>
-          {/* <Stack sx={{ width: "5%" }} /> */}
           <div>
             <Button className="mo-header-button" size="small" title="Buscar pacientes">
               Buscar
