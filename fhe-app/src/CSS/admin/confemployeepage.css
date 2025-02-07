@@ -1,9 +1,9 @@
 /*! Estilos del contendor de la page*/
 .container-emp-page {
   margin-top: 3rem !important;
-  margin-left: 4.2rem !important;
+  margin-left: 4rem !important;
   margin-right: 0.2rem !important;
-  width: 75.5%;
+  width: 75.5% !important;
   height: fit-content !important;
   font-family: "Roboto", sans-serif;
   background-color: none !important;
@@ -74,8 +74,8 @@
 /*! Estilos del encabezado del contenedor de la tabla y mas elementos*/
 .container-table {
   /* border: 1px solid #f0f; */
-  width: 98% !important;
-  max-width: 1920px !important;
+  /* width: 98% !important; */
+  max-width: 1400px !important;
   height: fit-content;
   display: flex;
   flex-direction: column;

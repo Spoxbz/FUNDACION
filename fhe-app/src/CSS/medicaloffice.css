@@ -92,7 +92,6 @@
   .medicalOffice-container {
     width: 94%;
     margin-left: 4.2rem !important;
-    border: 1px solid red;
   }
 
   .mo-main {
@@ -103,6 +102,5 @@
 
   .mo-container-table {
     width: 100% !important;
-    border: 1px solid blue;
   }
 }

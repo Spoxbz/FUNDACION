@@ -3,6 +3,7 @@ import { fetchEmployees } from "../../backendTwo/service/employeeService";
 import { useAuthStore } from "../../backendTwo/zustand/authStore";
 import { useEffect, useState } from "react";
 import { Employee } from "../../backendTwo/model/model.employee";
+import ModalBuscarTurnos from "./modal/ModalBuscarTurnos";
 
 export default function HeaderMedicalOffice({
   setSelectedDoctorId,
@@ -70,9 +71,7 @@ export default function HeaderMedicalOffice({
         </div>
         <div className="mo-header-bot">
           <div>
-            <Button className="mo-header-button" size="small" title="Buscar pacientes">
-              Buscar
-            </Button>
+            <ModalBuscarTurnos />
           </div>
         </div>
       </header>
