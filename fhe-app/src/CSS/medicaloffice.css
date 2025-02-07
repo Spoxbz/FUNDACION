@@ -17,7 +17,7 @@
 
 /*! Estilos del header*/
 .mo-cont-header {
-  width: 100%;
+  width: 98%;
   margin-top: 1%;
   margin-bottom: 1%;
   display: flex;
@@ -52,7 +52,6 @@
   padding: 0px 0px 0px 10px !important;
 }
 .MuiInputBase-input {
-  /* background-color: green !important; */
   margin-right: 32px !important;
 }
 
@@ -85,7 +84,7 @@
 }
 
 .mo-container-table {
-  padding-bottom: 1%;
+  padding: 0px !important;
 }
 
 /*Media Querys 1334x710*/
@@ -93,16 +92,17 @@
   .medicalOffice-container {
     width: 94%;
     margin-left: 4.2rem !important;
-    /* margin-right: 2rem !important; */
+    border: 1px solid red;
   }
 
   .mo-main {
-    width: auto;
+    width: 100%;
     max-width: 1200px;
+    margin: 0px !important;
   }
 
   .mo-container-table {
-    width: 100%;
-    overflow-x: auto;
+    width: 100% !important;
+    border: 1px solid blue;
   }
 }
