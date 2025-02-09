@@ -24,7 +24,7 @@ export default function MedicalOffice() {
     <>
       <Paper className={"medicalOffice-container"}>
         <div className="mo-cont-header">
-          <div style={{ width: "25%" }}>
+          <div style={{ width: "25%", marginLeft: "1%" }}>
             <CalendarMedicalOffice onDateChange={setSelectedDate} />
           </div>
           <HeaderMedicalOffice setSelectedDoctorId={setSelectedDoctorId} />

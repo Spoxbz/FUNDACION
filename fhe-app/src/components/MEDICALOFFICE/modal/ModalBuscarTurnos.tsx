@@ -61,7 +61,7 @@ export default function ModalDoctorAppointments() {
 
   return (
     <>
-      <Button className="mo-header-button" onClick={() => setOpen(true)} sx={{ mb: 2 }}>
+      <Button className="mo-header-button" onClick={() => setOpen(true)}>
         Buscar
       </Button>
 

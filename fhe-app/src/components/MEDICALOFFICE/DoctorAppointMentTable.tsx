@@ -8,6 +8,8 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { fetchAppointments } from "../../backendTwo/service/appointmentsService";
 import dayjs, { Dayjs } from "dayjs";
+import { Link } from "react-router-dom";
+import ROUTES from "../../enviroment/variables_routes";
 // import { useAuthStore } from "../../backendTwo/zustand/authStore";
 
 // Traducciones personalizadas en español
@@ -157,9 +159,11 @@ export default function DoctorApointmentTable({
       width: 130,
       sortable: false,
       renderCell: () => (
-        <Button variant="contained" color="secondary" size="small">
-          Ficha
-        </Button>
+        <Link to={ROUTES.MODULES.M4CHILD}>
+          <Button variant="contained" color="secondary" size="small">
+            Ficha
+          </Button>
+        </Link>
       ),
     },
     {

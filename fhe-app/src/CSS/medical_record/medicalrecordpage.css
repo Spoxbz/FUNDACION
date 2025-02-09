@@ -1,22 +1,49 @@
 .mr-container {
+  display: flex;
+  flex-direction: column;
   margin-top: 3rem;
-  padding-left: 4.2rem;
-  /* width: 100%; */
+  padding-left: 4rem;
+  padding-right: 0.5rem;
+  gap: 1rem;
 }
+/*! Estilos del contenedor del encabezado*/
+.mr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 4px;
+  padding: 0% 1% 0% 1%;
+}
+.mr-header-back {
+  color: #1a369a !important;
+  cursor: pointer;
+  width: 35px !important;
+  height: 35px !important;
+}
+
+/*! Estilos del contenedor de las tabs*/
 .mr-cont-tabs {
+  border-radius: 4px;
   background-color: beige;
+}
+.mr-header-tabs {
+  background-color: white !important;
 }
 /*! Estilos del contenedor de la primera tab*/
 .mr-top-container {
   display: flex;
   flex-direction: column;
-  background-color: aliceblue;
   border-radius: 4px;
+  gap: 10px;
+  border: 1px solid black;
+  padding: 10px;
 }
-.patient {
-  width: 50%;
-  flex-wrap: wrap;
+.mr-top-info-turn {
+  display: flex;
+  justify-content: space-around;
 }
-.field-patient-info {
-  border-top: 1px solid white !important;
+.mr-top-info-patient {
+  display: flex;
+  justify-content: space-around;
 }

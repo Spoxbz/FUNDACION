@@ -17,20 +17,22 @@
 
 /*! Estilos del header*/
 .mo-cont-header {
-  width: 98%;
+  width: 100%;
   margin-top: 1%;
   margin-bottom: 1%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: white;
+  border-radius: 4px;
 }
 .mo-header {
   width: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0.5px 5px -2px #a8a8a8;
-  border-radius: 10px;
-  background-color: white !important;
+  /* box-shadow: 2px 0.5px 5px -2px #a8a8a8; */
+  /* border-radius: 10px; */
+  /* background-color: white !important; */
 }
 .mo-header-calendaer {
   display: flex;
@@ -62,18 +64,16 @@
   width: 80%;
   text-align: center;
 }
-.mo-header-bot {
-  padding: 0px 10px 5px 10px;
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-}
 
 .mo-header-button {
   background-color: rgb(25, 118, 210) !important;
   color: white !important;
   font-size: 10px !important;
+}
+.mo-header-search {
+  display: flex;
+  align-items: center;
+  margin-left: 1%;
 }
 
 /*! Estilos del contenedor del main content*/

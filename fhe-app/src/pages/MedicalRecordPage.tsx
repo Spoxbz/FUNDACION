@@ -1,8 +1,11 @@
 // Estilos
 import "../CSS/medical_record/medicalrecordpage.css";
-import { Box, Tab, Tabs } from "@mui/material";
+import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
 import React from "react";
 import Top from "../components/MEDICALOFFICE/records/Top";
+import { ArrowBack } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import ROUTES from "../enviroment/variables_routes";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -43,13 +46,23 @@ export default function MedicalRecordPage() {
   return (
     <>
       <div className="mr-container">
+        <div className="mr-header">
+          <Stack className="mr-header-cont-back">
+            <Link to={ROUTES.MODULES.MTCHILD}>
+              <ArrowBack className="mr-header-back" />
+            </Link>
+          </Stack>
+          <Stack className="item">
+            <Typography variant="h5">Ficha Medica</Typography>
+          </Stack>
+          <Stack></Stack>
+        </div>
         <div className="mr-cont-tabs">
           <Box sx={{ width: "100%" }}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider", background: "aliceblue" }}>
+            <Box className={"mr-header-tabs"} sx={{ borderBottom: 1, borderColor: "divider" }}>
               <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                 <Tab label="Paciente" {...a11yProps(0)} />
-                <Tab label="Turno" {...a11yProps(1)} />
-                <Tab label="Diagnóstico" {...a11yProps(2)} />
+                <Tab label="Diagnóstico" {...a11yProps(1)} />
               </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>

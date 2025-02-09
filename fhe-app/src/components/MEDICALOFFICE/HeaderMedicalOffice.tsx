@@ -54,7 +54,7 @@ export default function HeaderMedicalOffice({
               ))}
             </Select>
           )}
-          <h1 className="mo-header-title">Consultorio Medico</h1>
+          <h1 className="mo-header-title">Consultorio Médico</h1>
           <div>
             <Button className="mo-header-button" size="small">
               Auditoria
@@ -68,9 +68,7 @@ export default function HeaderMedicalOffice({
             <Checkbox />
             <Typography>Atendidos</Typography>
           </Box>
-        </div>
-        <div className="mo-header-bot">
-          <div>
+          <div className="mo-header-search">
             <ModalBuscarTurnos />
           </div>
         </div>
