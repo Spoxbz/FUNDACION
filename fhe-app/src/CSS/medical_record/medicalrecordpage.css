@@ -24,20 +24,34 @@
 
 /*! Estilos del contenedor de las tabs*/
 .mr-cont-tabs {
-  border-radius: 4px;
-  background-color: beige;
+  border-radius: 4px !important;
+  background-color: rgb(83, 104, 179);
 }
 .mr-header-tabs {
   background-color: white !important;
+  border-radius: 4px;
 }
-/*! Estilos del contenedor de la primera tab*/
+/*Cuerpo del contendor de las tabs*/
+/* .MuiBox-root {
+  border: 1px solid red !important;
+  border-radius: 4px !important;
+} */
+/*Contenedor contenido del cuerpo de las tabs*/
+.css-19kzrtu {
+  /* padding: 0px !important; */
+  border-bottom-right-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+}
+
+/*? Estilos del contenedor de la primera tab*/
 .mr-top-container {
   display: flex;
   flex-direction: column;
   border-radius: 4px;
-  gap: 10px;
-  border: 1px solid black;
-  padding: 10px;
+}
+.mr-top-info-turn,
+.mr-top-info-patient {
+  margin: 1rem;
 }
 .mr-top-info-turn {
   display: flex;
@@ -46,4 +60,44 @@
 .mr-top-info-patient {
   display: flex;
   justify-content: space-around;
+  gap: 10px;
+  /* flex-wrap: wrap; */
+}
+/*? Estilos del contenedor de la segunda tab*/
+.mr-sp-container {
+  border: 1px solid blue;
+  display: flex;
+  justify-content: space-between;
+}
+.sections {
+  border: 1px solid black;
+  padding: 5px;
+}
+/*Seccion Izquierda*/
+.sp-left {
+  width: 30%;
+}
+.css-1lj39kh-MuiAccordionDetails-root {
+  padding: 0px !important;
+}
+.sp-left-textArea {
+  width: 100% !important;
+  align-self: center;
+}
+.sp-rigth {
+  width: 70%;
+}
+
+/*! Estilos del contenedor footer*/
+.mr-cont-footer {
+  background-color: white;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  text-align: end;
+  padding: 10px;
+}
+.mr-footer-button {
+  background-color: rgb(25, 118, 210) !important;
+  color: white !important;
+  font-size: 10px !important;
 }

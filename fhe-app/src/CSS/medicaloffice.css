@@ -30,9 +30,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* box-shadow: 2px 0.5px 5px -2px #a8a8a8; */
-  /* border-radius: 10px; */
-  /* background-color: white !important; */
 }
 .mo-header-calendaer {
   display: flex;
