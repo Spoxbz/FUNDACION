@@ -35,19 +35,6 @@ const PacientesTabla: React.FC<Props> = ({ pacientes }) => {
     setFilteredPacientes(pacientes);
   }, [pacientes]); // Actualizar los pacientes filtrados cuando cambian los datos
 
-  // Manejar la lógica de filtrado
-  // const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const query = event.target.value.toLowerCase();
-  //   setSearch(query);
-  //   const filtered = pacientes.filter(
-  //     (p) =>
-  //       p.turno.toLowerCase().includes(query) ||
-  //       p.medico.toLowerCase().includes(query) ||
-  //       p.paciente.toLowerCase().includes(query)
-  //   );
-  //   setFilteredPacientes(filtered);
-  // };
-
   return (
     <Box>
       {/* Barra de búsqueda y filtros */}
