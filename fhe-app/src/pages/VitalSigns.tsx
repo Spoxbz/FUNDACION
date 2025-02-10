@@ -8,6 +8,8 @@ import ChairCard from "../components/VITALSIGNS/chairs/ChairCard";
 import "../CSS/vitalsigns.css";
 import "../CSS/chaircard.css";
 import { useEffect, useState } from "react";
+// Datos de prueba para listar en la tabla
+// import { pacientesData } from "../backendMuckData/datas/pacientesData";
 // Datos para las cards de modulos
 import { chairData } from "../backendMuckData/datas/datamodulesvitalsigns/datos";
 import { Appointment } from "../backendTwo/model/model.appointment";
