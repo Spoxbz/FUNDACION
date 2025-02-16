@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../CSS/topbar/topbar.css";
-import { Avatar, Skeleton } from "@mui/material";
+import { Avatar, MenuItem, Skeleton } from "@mui/material";
 import Logo from "../../assets/Logo.avif";
 // uso de zustand
 import { useAuthStore } from "../../backendTwo/zustand/authStore";
@@ -18,7 +18,7 @@ interface TopbarProps {
 }
 
 const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onLogout, toggleButtonRef, menuRef }) => {
-  const { user, roleName, loadUserRole } = useAuthStore();
+  const { user, roleName, loadUserRole, toggleShowTips, showTips } = useAuthStore();
   // contantes para skeleton
   const [loading, setLoading] = React.useState(true);
 
@@ -175,13 +175,13 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
                 <button className="logout-buttom" onClick={handleLogout}>
                   Cerrar Sesión
                 </button>
+                <MenuItem onClick={toggleShowTips}>{showTips ? "Desactivar Consejos" : "Activar Consejos"}</MenuItem>
               </div>
             </div>
           )}
         </div>
       </div>
       {showModal && <ModalLogout onClose={() => setShowModal(false)} />}
-      <div className="divisor"></div>
     </header>
   );
 };
