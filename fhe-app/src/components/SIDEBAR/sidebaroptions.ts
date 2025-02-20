@@ -16,10 +16,11 @@ import {
   PersonAddAlt,
   PersonOff,
   PostAdd,
-  // RecentActors,
 } from "@mui/icons-material";
+
 // Import de rutas
 import ROUTES from "../../enviroment/variables_routes";
+import Tools from "./tooltips/Tools";
 
 interface typesSidebarOptions {
   label: string;
@@ -30,117 +31,115 @@ interface typesSidebarOptions {
 
 // Admin rol_id 1
 export const listOptionsAdmin: typesSidebarOptions[] = [
-  { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
+  {
+    label: "Inicio",
+    icon: React.createElement(Tools, { icon: React.createElement(Home), title: "Inicio" }),
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
   {
     label: "Conf. Empleados",
-    icon: React.createElement(PersonAdd),
-    title: "Configuracion Empleados",
+    icon: React.createElement(Tools, { icon: React.createElement(PersonAdd), title: "Configuración Empleados" }),
     route: ROUTES.ADMIN.ADMINPAGEMPLOYEE,
   },
   {
     label: "Conf. Consultorio",
-    icon: React.createElement(MedicalServices),
-    title: "Configuración Consultorio",
+    icon: React.createElement(Tools, {
+      icon: React.createElement(MedicalServices),
+      title: "Configuración Consultorio",
+    }),
     route: ROUTES.ADMIN.ADMINPAGEOFFICE,
   },
-  // {
-  //   label: "Listar empleados",
-  //   icon: React.createElement(RecentActors),
-  //   title: "Listar empleados",
-  //   route: ROUTES.DASHBOARD.FCHILD,
-  // },
   {
     label: "Conf. Especialidad",
-    icon: React.createElement(HealthAndSafety),
-    title: "Configurar Especialidad",
+    icon: React.createElement(Tools, { icon: React.createElement(HealthAndSafety), title: "Configurar Especialidad" }),
     route: ROUTES.ADMIN.ADMINPAGESPECIALTIES,
   },
   {
     label: "Conf. Paciente",
-    icon: React.createElement(PersonAddAlt),
-    title: "Configurar Paciente",
+    icon: React.createElement(Tools, { icon: React.createElement(PersonAddAlt), title: "Configurar Paciente" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Crear Hor. Médico",
-    icon: React.createElement(EditCalendar),
-    title: "Crear Horario Médico",
+    icon: React.createElement(Tools, { icon: React.createElement(EditCalendar), title: "Crear Horario Médico" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
 
   {
     label: "Bloquear Médico",
-    icon: React.createElement(PersonOff),
-    title: "Bloquea Médico",
+    icon: React.createElement(Tools, { icon: React.createElement(PersonOff), title: "Bloquear Médico" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Agregar Turno",
-    icon: React.createElement(PostAdd),
-    title: "Agregar Turno",
+    icon: React.createElement(Tools, { icon: React.createElement(PostAdd), title: "Agregar Turno" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
 ];
 
 // Asistente rol_id 2
 export const listOptionsAsistente: typesSidebarOptions[] = [
-  { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
+  {
+    label: "Inicio",
+    icon: React.createElement(Tools, { icon: React.createElement(Home), title: "Inicio" }),
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
   {
     label: "Bloquear Médico",
-    icon: React.createElement(PersonOff),
-    title: "Bloquea Médico",
+    icon: React.createElement(Tools, { icon: React.createElement(PersonOff), title: "Bloquear Médico" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Conf. Paciente",
-    icon: React.createElement(PersonAddAlt),
-    title: "Configurar Paciente",
+    icon: React.createElement(Tools, { icon: React.createElement(PersonAddAlt), title: "Configurar Paciente" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Agregar Turno",
-    icon: React.createElement(PostAdd),
-    title: "Agregar Turno",
+    icon: React.createElement(Tools, { icon: React.createElement(PostAdd), title: "Agregar Turno" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
 ];
 
 // Emisor rol_id 3
 export const listOptionsEmisor: typesSidebarOptions[] = [
-  { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
+  {
+    label: "Inicio",
+    icon: React.createElement(Tools, { icon: React.createElement(Home), title: "Inicio" }),
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
   {
     label: "Bloquear Médico",
-    icon: React.createElement(PersonOff),
-    title: "Bloquea Médico",
+    icon: React.createElement(Tools, { icon: React.createElement(PersonOff), title: "Bloquear Médico" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Conf. Paciente",
-    icon: React.createElement(PersonAddAlt),
-    title: "Configurar Paciente",
+    icon: React.createElement(Tools, { icon: React.createElement(PersonAddAlt), title: "Configurar Paciente" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Agregar Turno",
-    icon: React.createElement(PostAdd),
-    title: "Agregar Turno",
+    icon: React.createElement(Tools, { icon: React.createElement(PostAdd), title: "Agregar Turno" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
 ];
 
 // Medico rol_id 4
 export const listOptionsMedico: typesSidebarOptions[] = [
-  { label: "Inicio", icon: React.createElement(Home), title: "Ir a inicio", route: ROUTES.DASHBOARD.FCHILD },
+  {
+    label: "Inicio",
+    icon: React.createElement(Tools, { icon: React.createElement(Home), title: "Inicio" }),
+    route: ROUTES.DASHBOARD.FCHILD,
+  },
   {
     label: "Turnos",
-    icon: React.createElement(ConfirmationNumber),
-    title: "Ver turnos",
+    icon: React.createElement(Tools, { icon: React.createElement(ConfirmationNumber), title: "Ver turnos" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Agenda",
-    icon: React.createElement(CalendarMonth),
-    title: "Revisar Agenda",
+    icon: React.createElement(Tools, { icon: React.createElement(CalendarMonth), title: "Revisar Agenda" }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
 ];
