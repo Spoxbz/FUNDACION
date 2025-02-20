@@ -41,7 +41,7 @@
 .presentation {
   /* background-color: rgba(25, 118, 210, 0.56); */
   /* background-color: rgba(255, 255, 255, 0.56); */
-  background-image: url("https://imgs.search.brave.com/lkUTN7dbHRMRvLiDtadZbx15AoGxSFxsQmWggBo6QjU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9mb25kb3MtdGV4/dHVyYS1henVsLXZp/YnJhbnRlXzk4NDAy/Ny0yMTA5MDAuanBn/P3NlbXQ9YWlzX2lu/Y29taW5n");
+  background-image: url("/f-log-page.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;

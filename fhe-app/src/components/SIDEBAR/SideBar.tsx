@@ -134,7 +134,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButton
           sx={{ alignSelf: "start" }}
         >
           <Alert onClose={() => setOpenToast(false)} severity="info" sx={{ width: "100%" }}>
-            Esta es la funcionalidad del sidebar
+            Menu de navegacion
           </Alert>
         </Snackbar>
         <List>
