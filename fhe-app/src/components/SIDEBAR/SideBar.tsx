@@ -79,6 +79,9 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButton
     }
   }, [showTips]);
 
+  // manejar clases con el onclick
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <>
       <MuiDrawer
@@ -89,7 +92,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButton
           width: drawerWidthOpen,
           flexShrink: 0,
           whiteSpace: "nowrap",
-          zIndex: "0 !important",
           boxSizing: "border-box",
           ...(open && {
             "& .MuiDrawer-paper": openedMixin(theme),
@@ -138,7 +140,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButton
             Menu de navegación
           </Alert>
         </Snackbar>
-        <List>
+        <List className={` ${isActive ? "MuiListItemText-root selected" : ""}`} onClick={() => setIsActive(!isActive)}>
           {/*Usa las opciones laterales */}
           {loading
             ? // Mostrar Skeleton mientras se cargan los datos
@@ -153,7 +155,6 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButton
                     marginRight: open ? "10px" : "auto",
                     width: open ? "90%" : "40px",
                     borderRadius: "4px",
-                    backgroundColor: "rgba(12, 5, 5, 0.17)",
                   }}
                 />
               ))

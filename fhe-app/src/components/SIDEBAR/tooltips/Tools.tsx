@@ -8,7 +8,7 @@ interface ToolsProps {
 
 export default function Tools({ title, icon }: ToolsProps) {
   return (
-    <Tooltip disableFocusListener title={title}>
+    <Tooltip disableFocusListener title={title} placement="right">
       {icon}
     </Tooltip>
   );

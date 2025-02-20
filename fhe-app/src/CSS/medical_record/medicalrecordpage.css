@@ -70,7 +70,7 @@
   justify-content: space-between;
 }
 .sections {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 5px;
 }
 /*Seccion Izquierda*/

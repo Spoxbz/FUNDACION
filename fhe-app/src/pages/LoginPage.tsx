@@ -77,7 +77,7 @@ export default function LoginPage() {
       setUsername(input); // Actualiza el estado si es válido
       setErrorMessage(""); // Limpia el mensaje de error
     } else {
-      setErrorMessage("Por favor, ingresa solo texto.");
+      setErrorMessage("Por favor, ingresar solo texto.");
     }
   };
 
@@ -134,6 +134,7 @@ export default function LoginPage() {
                       <AccountBox />
                     </InputAdornment>
                   }
+                  autoComplete={username}
                 />
               </FormControl>
               <FormControl>
@@ -155,6 +156,7 @@ export default function LoginPage() {
                       <Password />
                     </InputAdornment>
                   }
+                  autoComplete={password}
                 />
               </FormControl>
               {errorMessage && (
