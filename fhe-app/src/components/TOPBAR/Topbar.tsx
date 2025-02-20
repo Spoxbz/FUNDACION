@@ -99,12 +99,12 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
             <>
               <Skeleton
                 variant="circular"
-                width={30}
+                width={40}
                 height={30}
                 sx={{ backgroundColor: "rgba(12, 5, 5, 0.17)", borderRadius: "50%" }}
               />
               <Skeleton
-                width={220}
+                width={200}
                 height={20}
                 sx={{ marginLeft: "10px", backgroundColor: "rgba(12, 5, 5, 0.17)", borderRadius: "4px" }}
               />
@@ -116,7 +116,6 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
                   sx={{
                     width: "30px",
                     height: "30px",
-                    marginRight: "10px",
                     cursor: "pointer",
                     fontSize: "15px",
                     background: "#1A369A",
@@ -170,18 +169,21 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
                 {user ? `Usted es ${roleName + "/a" || "Cargando..."}` : "No autenticado"}
               </p>
 
+              <MenuItem id="advices-btn" onClick={toggleShowTips}>
+                {showTips ? "Desactivar Consejos" : "Activar Consejos"}
+              </MenuItem>
               <div className="options-user-menu">
                 <p className="oum">Mi perfil</p>
                 <button className="logout-buttom" onClick={handleLogout}>
                   Cerrar Sesión
                 </button>
-                <MenuItem onClick={toggleShowTips}>{showTips ? "Desactivar Consejos" : "Activar Consejos"}</MenuItem>
               </div>
             </div>
           )}
         </div>
       </div>
       {showModal && <ModalLogout onClose={() => setShowModal(false)} />}
+      <div className="divisor"></div>
     </header>
   );
 };

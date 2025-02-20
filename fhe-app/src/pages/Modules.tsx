@@ -165,7 +165,7 @@ export default function Modules() {
               alignItems: "center",
             }}
           >
-            <Skeleton width={600} height={200} />
+            <Skeleton width={480} height={200} />
           </Box>
         ) : (
           <>
@@ -174,7 +174,12 @@ export default function Modules() {
                 <Typography
                   className="titleHeaderModules"
                   variant="h4"
-                  sx={{ width: "100%", textAlign: "center", top: "10px", marginBottom: "50px" }}
+                  sx={{
+                    width: "100%",
+                    textAlign: "center",
+                    marginBottom: "50px",
+                    marginTop: "20px",
+                  }}
                 >
                   Información
                 </Typography>
@@ -235,7 +240,7 @@ export default function Modules() {
                 <Typography
                   className="titleHeaderModules"
                   variant="h4"
-                  sx={{ width: "100%", textAlign: "center", top: "10px", marginBottom: "50px" }}
+                  sx={{ width: "100%", textAlign: "center", top: "10px", marginBottom: "50px", marginTop: "20px" }}
                 >
                   Información
                 </Typography>

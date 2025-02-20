@@ -105,10 +105,6 @@ export default function DataTable({ searchTerm, onSelectEmployee }: EmployeeTabl
         sx={{ border: 0 }}
         // Actualizar la selección del empleado cuando se selecciona una fila
         onRowSelectionModelChange={handleRowSelection}
-        // onRowSelectionModelChange={(newSelection) => {
-        //   const selectedEmployee = employees.find((emp) => emp.employee_id === newSelection[0]);
-        //   onSelectEmployee(selectedEmployee || null); // Pasar el empleado seleccionado
-        // }}
       />
     </Paper>
   );
