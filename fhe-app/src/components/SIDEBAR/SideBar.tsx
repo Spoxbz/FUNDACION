@@ -170,7 +170,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButton
                   >
                     <ListItemIcon
                       sx={{
-                        minWidth: 0,
+                        // minWidth: 0,
                         justifyContent: "center",
                         mr: open ? 3 : "auto",
                         color: "white",
@@ -178,7 +178,13 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButton
                     >
                       {icon}
                     </ListItemIcon>
-                    <ListItemText primary={label} sx={{ opacity: open ? 1 : 0, color: "white" }} />
+                    <ListItemText
+                      primary={label}
+                      sx={{
+                        opacity: open ? 1 : 0,
+                        color: "white",
+                      }}
+                    />
                   </ListItemButton>
                 </ListItem>
               ))}
@@ -189,5 +195,3 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButton
 };
 
 export default Sidebar;
-
-// // Sidebar.tsx

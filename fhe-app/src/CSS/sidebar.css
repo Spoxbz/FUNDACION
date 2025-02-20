@@ -1,7 +1,7 @@
 /* Color de fondo cuando el drawer está cerrado */
 .MuiDrawer-paper.MuiDrawer-paperAnchorLeft {
-  background-color: #1976d2;
-  background: rgba(2, 0, 36, 1) 0%;
+  /* background-color: #1976d2; */
+  /* background: rgba(2, 0, 36, 1) 0%; */
   background-color: #1a369a;
 }
 
@@ -10,24 +10,25 @@
 }
 
 .barra-lateral .MuiListItemButton-root:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Cambia este color según tus necesidades */
+  background-color: rgba(255, 255, 255, 0.2);
   transition: background-color 0.3s ease;
 }
-
-.barra-lateral .MuiListItemText-root:hover {
-  color: #ffffff; /* Cambia este color según tus necesidades */
-  transition: color 0.3s ease;
+.MuiListItemButton-root {
+  padding: 0px !important;
 }
 
-.barra-lateral .MuiListItemButton-root.selected {
-  background-color: rgba(255, 255, 255, 0.2); /* Cambia este color según tus necesidades */
+/* Estilos para manejar el estado de active del navlink de Tools*/
+.aside-link {
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+  margin: 0px !important;
+  top: 0px !important;
 }
 
-.barra-lateral .MuiListItemText-root:hover {
-  color: #ffffff; /* Cambia este color según tus necesidades */
-  transition: color 0.3s ease;
-}
-
-.barra-lateral .MuiListItemText-root.selected {
-  color: #ffffff; /* Cambia este color según tus necesidades */
+.aside-link.active {
+  color: #1a369a;
+  /* background-color: #78a2cd; */
+  background-color: #fff;
 }

@@ -30,14 +30,24 @@ export default function RoutesComp() {
           <Route path={ROUTES.MODULES.M4CHILD} element={<MedicalRecordPage />} />
           <Route path={ROUTES.MODULES.M5CHILD} element={<InterfaceExample />} />
         </Route>
-
         {/*Segundo ruta padre para las paginas de administrador */}
         <Route path={ROUTES.ADMIN.BASE4} element={<Dashboard />}>
           <Route path={ROUTES.ADMIN.ADMINPAGEMPLOYEE} element={<ConfEmployeePage />} />
           <Route path={ROUTES.ADMIN.ADMINPAGEOFFICE} element={<ConfOfficePage />} />
           <Route path={ROUTES.ADMIN.ADMINPAGESPECIALTIES} element={<ConfSpecialtiesPage />} />
+          <Route path={ROUTES.ADMIN.ADMINPAGEHORMED} element={<InterfaceExample />} />
         </Route>
-
+        {/*Tercera ruta padre para las paginas que comparten roles */}
+        <Route path={ROUTES.DASHBOARD.BASE2} element={<Dashboard />}>
+          <Route path={ROUTES.SHAREDROUTE.SHAREDCONFPAT} element={<InterfaceExample />} />
+          <Route path={ROUTES.SHAREDROUTE.SHAREDBLOCKDOC} element={<InterfaceExample />} />
+          <Route path={ROUTES.SHAREDROUTE.SHAREDADDTURN} element={<InterfaceExample />} />
+        </Route>
+        {/*Cuarta ruta padre para las paginas de doctor */}\
+        <Route path={ROUTES.DASHBOARD.BASE2} element={<Dashboard />}>
+          <Route path={ROUTES.DOCTOR.DOCTORTURNS} element={<InterfaceExample />} />
+          <Route path={ROUTES.DOCTOR.DOCTORSCHEDULE} element={<InterfaceExample />} />
+        </Route>
         {/*En caso de que no se encuentre una ruta, esta sera la pagina que se mostrara */}
         <Route path={ROUTES.NOTFOUND.LASTBASE} element={<NotFound />} />
       </Routes>

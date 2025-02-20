@@ -33,12 +33,20 @@ interface typesSidebarOptions {
 export const listOptionsAdmin: typesSidebarOptions[] = [
   {
     label: "Inicio",
-    icon: React.createElement(Tools, { icon: React.createElement(Home), title: "Inicio" }),
+    icon: React.createElement(Tools, {
+      icon: React.createElement(Home),
+      title: "Inicio",
+      route: ROUTES.DASHBOARD.FCHILD,
+    }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Conf. Empleados",
-    icon: React.createElement(Tools, { icon: React.createElement(PersonAdd), title: "Configuración Empleados" }),
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PersonAdd),
+      title: "Configuración Empleados",
+      route: ROUTES.ADMIN.ADMINPAGEMPLOYEE,
+    }),
     route: ROUTES.ADMIN.ADMINPAGEMPLOYEE,
   },
   {
@@ -46,34 +54,55 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
     icon: React.createElement(Tools, {
       icon: React.createElement(MedicalServices),
       title: "Configuración Consultorio",
+      route: ROUTES.ADMIN.ADMINPAGEOFFICE,
     }),
     route: ROUTES.ADMIN.ADMINPAGEOFFICE,
   },
   {
     label: "Conf. Especialidad",
-    icon: React.createElement(Tools, { icon: React.createElement(HealthAndSafety), title: "Configurar Especialidad" }),
+    icon: React.createElement(Tools, {
+      icon: React.createElement(HealthAndSafety),
+      title: "Configurar Especialidad",
+      route: ROUTES.ADMIN.ADMINPAGESPECIALTIES,
+    }),
     route: ROUTES.ADMIN.ADMINPAGESPECIALTIES,
   },
   {
     label: "Conf. Paciente",
-    icon: React.createElement(Tools, { icon: React.createElement(PersonAddAlt), title: "Configurar Paciente" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PersonAddAlt),
+      title: "Configurar Paciente",
+      route: ROUTES.SHAREDROUTE.SHAREDCONFPAT,
+    }),
+    route: ROUTES.SHAREDROUTE.SHAREDCONFPAT,
   },
   {
     label: "Crear Hor. Médico",
-    icon: React.createElement(Tools, { icon: React.createElement(EditCalendar), title: "Crear Horario Médico" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(EditCalendar),
+      title: "Crear Horario Médico",
+      route: ROUTES.ADMIN.ADMINPAGEHORMED,
+    }),
+    route: ROUTES.ADMIN.ADMINPAGEHORMED,
   },
 
   {
     label: "Bloquear Médico",
-    icon: React.createElement(Tools, { icon: React.createElement(PersonOff), title: "Bloquear Médico" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PersonOff),
+      title: "Bloquear Médico",
+      route: ROUTES.SHAREDROUTE.SHAREDBLOCKDOC,
+    }),
+    route: ROUTES.SHAREDROUTE.SHAREDBLOCKDOC,
   },
   {
     label: "Agregar Turno",
-    icon: React.createElement(Tools, { icon: React.createElement(PostAdd), title: "Agregar Turno" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PostAdd),
+      title: "Agregar Turno",
+      route: ROUTES.SHAREDROUTE.SHAREDADDTURN,
+    }),
+    route: ROUTES.SHAREDROUTE.SHAREDADDTURN,
   },
 ];
 
@@ -81,23 +110,39 @@ export const listOptionsAdmin: typesSidebarOptions[] = [
 export const listOptionsAsistente: typesSidebarOptions[] = [
   {
     label: "Inicio",
-    icon: React.createElement(Tools, { icon: React.createElement(Home), title: "Inicio" }),
+    icon: React.createElement(Tools, {
+      icon: React.createElement(Home),
+      title: "Inicio",
+      route: ROUTES.DASHBOARD.FCHILD,
+    }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Bloquear Médico",
-    icon: React.createElement(Tools, { icon: React.createElement(PersonOff), title: "Bloquear Médico" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PersonOff),
+      title: "Bloquear Médico",
+      route: ROUTES.SHAREDROUTE.SHAREDBLOCKDOC,
+    }),
+    route: ROUTES.SHAREDROUTE.SHAREDBLOCKDOC,
   },
   {
     label: "Conf. Paciente",
-    icon: React.createElement(Tools, { icon: React.createElement(PersonAddAlt), title: "Configurar Paciente" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PersonAddAlt),
+      title: "Configurar Paciente",
+      route: ROUTES.SHAREDROUTE.SHAREDCONFPAT,
+    }),
+    route: ROUTES.SHAREDROUTE.SHAREDCONFPAT,
   },
   {
     label: "Agregar Turno",
-    icon: React.createElement(Tools, { icon: React.createElement(PostAdd), title: "Agregar Turno" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PostAdd),
+      title: "Agregar Turno",
+      route: ROUTES.SHAREDROUTE.SHAREDADDTURN,
+    }),
+    route: ROUTES.SHAREDROUTE.SHAREDADDTURN,
   },
 ];
 
@@ -105,23 +150,39 @@ export const listOptionsAsistente: typesSidebarOptions[] = [
 export const listOptionsEmisor: typesSidebarOptions[] = [
   {
     label: "Inicio",
-    icon: React.createElement(Tools, { icon: React.createElement(Home), title: "Inicio" }),
+    icon: React.createElement(Tools, {
+      icon: React.createElement(Home),
+      title: "Inicio",
+      route: ROUTES.DASHBOARD.FCHILD,
+    }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Bloquear Médico",
-    icon: React.createElement(Tools, { icon: React.createElement(PersonOff), title: "Bloquear Médico" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PersonOff),
+      title: "Bloquear Médico",
+      route: ROUTES.SHAREDROUTE.SHAREDBLOCKDOC,
+    }),
+    route: ROUTES.SHAREDROUTE.SHAREDBLOCKDOC,
   },
   {
     label: "Conf. Paciente",
-    icon: React.createElement(Tools, { icon: React.createElement(PersonAddAlt), title: "Configurar Paciente" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PersonAddAlt),
+      title: "Configurar Paciente",
+      route: ROUTES.SHAREDROUTE.SHAREDCONFPAT,
+    }),
+    route: ROUTES.SHAREDROUTE.SHAREDCONFPAT,
   },
   {
     label: "Agregar Turno",
-    icon: React.createElement(Tools, { icon: React.createElement(PostAdd), title: "Agregar Turno" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(PostAdd),
+      title: "Agregar Turno",
+      route: ROUTES.SHAREDROUTE.SHAREDADDTURN,
+    }),
+    route: ROUTES.SHAREDROUTE.SHAREDADDTURN,
   },
 ];
 
@@ -129,17 +190,29 @@ export const listOptionsEmisor: typesSidebarOptions[] = [
 export const listOptionsMedico: typesSidebarOptions[] = [
   {
     label: "Inicio",
-    icon: React.createElement(Tools, { icon: React.createElement(Home), title: "Inicio" }),
+    icon: React.createElement(Tools, {
+      icon: React.createElement(Home),
+      title: "Inicio",
+      route: ROUTES.DASHBOARD.FCHILD,
+    }),
     route: ROUTES.DASHBOARD.FCHILD,
   },
   {
     label: "Turnos",
-    icon: React.createElement(Tools, { icon: React.createElement(ConfirmationNumber), title: "Ver turnos" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(ConfirmationNumber),
+      title: "Ver turnos",
+      route: ROUTES.DOCTOR.DOCTORTURNS,
+    }),
+    route: ROUTES.DOCTOR.DOCTORTURNS,
   },
   {
     label: "Agenda",
-    icon: React.createElement(Tools, { icon: React.createElement(CalendarMonth), title: "Revisar Agenda" }),
-    route: ROUTES.DASHBOARD.FCHILD,
+    icon: React.createElement(Tools, {
+      icon: React.createElement(CalendarMonth),
+      title: "Revisar Agenda",
+      route: ROUTES.DOCTOR.DOCTORSCHEDULE,
+    }),
+    route: ROUTES.DOCTOR.DOCTORSCHEDULE,
   },
 ];
