@@ -4,19 +4,47 @@
  * * Este modal form usa la funcion createEmployee declarada en employeeService.tsx
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Estilos
 import "../../../CSS/admin/registeremployees.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import { FormControl, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
-import { AddCircleOutline, Mail, Person } from "@mui/icons-material";
+import { FormControl, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
+import {
+  AccountCircle,
+  AddCircleOutline,
+  AssignmentInd,
+  Cake,
+  Home,
+  LocalPhone,
+  Mail,
+  Password,
+  Person,
+  PhoneAndroid,
+} from "@mui/icons-material";
 // Import para traer la funcion que registra empleados
 import { createEmployee } from "../../../backendTwo/service/employeeService";
+// Import del rolservice
+import { fetchRoles } from "../../../backendTwo/service/roleService";
 
 export default function ModalRegisterEmployees() {
   const [open, setOpen] = useState(false);
+  // Constantes de roles
+  const [roles, setRoles] = useState<{ rol_id: number; rol_name: string }[]>([]);
+
+  // Cargar los roles al iniciar el componente
+  useEffect(() => {
+    const loadRoles = async () => {
+      try {
+        const rolesData = await fetchRoles();
+        setRoles(rolesData);
+      } catch (error) {
+        console.error("Error cargando roles:", error);
+      }
+    };
+    loadRoles();
+  }, []);
 
   // Estado para los datos del formulario
   const [formData, setFormData] = useState({
@@ -68,6 +96,25 @@ export default function ModalRegisterEmployees() {
     } catch (error) {
       setMessage(`Error al crear el empleado: ${(error as Error).message}`);
     }
+  };
+
+  const resetForm = () => {
+    setFormData({
+      employee_name: "",
+      employee_lastname: "",
+      employee_ci: 0,
+      employee_gender: "",
+      employee_born_date: "",
+      employee_age: 0,
+      employee_phone_number: 0,
+      employee_cellphone_number: 0,
+      employee_email: "",
+      username: "",
+      password: "",
+      employee_address: "",
+      rol_id: 0, // También reiniciamos el rol
+    });
+    setMessage(null); // Limpiamos cualquier mensaje de éxito/error
   };
 
   // constantes para abrir/cerrar el modal
@@ -149,7 +196,7 @@ export default function ModalRegisterEmployees() {
                   onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
-                      <Person />
+                      <AssignmentInd />
                     </InputAdornment>
                   }
                   aria-describedby="outlined-employee-helper-text"
@@ -191,7 +238,7 @@ export default function ModalRegisterEmployees() {
                   onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
-                      <Person />
+                      <Cake />
                     </InputAdornment>
                   }
                   aria-describedby="outlined-employee-helper-text"
@@ -210,11 +257,7 @@ export default function ModalRegisterEmployees() {
                   className="camps"
                   value={formData.employee_age}
                   onChange={handleChange}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <Person />
-                    </InputAdornment>
-                  }
+                  endAdornment={<InputAdornment position="end"></InputAdornment>}
                   aria-describedby="outlined-employee-helper-text"
                   inputProps={{
                     "aria-label": "edad empleado",
@@ -223,9 +266,9 @@ export default function ModalRegisterEmployees() {
               </FormControl>
               {/* Campo para el num celular*/}
               <FormControl variant="outlined">
-                <InputLabel htmlFor="camp-employee-cellphone">Número celular</InputLabel>
+                <InputLabel htmlFor="camp-employee-cellphone">Celular</InputLabel>
                 <OutlinedInput
-                  label="Número celular"
+                  label="Celular"
                   id="camp-employee-cellphone"
                   name="employee_cellphone_number"
                   className="camps"
@@ -233,7 +276,7 @@ export default function ModalRegisterEmployees() {
                   onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
-                      <Person />
+                      <PhoneAndroid />
                     </InputAdornment>
                   }
                   aria-describedby="outlined-employee-helper-text"
@@ -254,7 +297,7 @@ export default function ModalRegisterEmployees() {
                   onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
-                      <Person />
+                      <LocalPhone />
                     </InputAdornment>
                   }
                   aria-describedby="outlined-employee-helper-text"
@@ -296,7 +339,7 @@ export default function ModalRegisterEmployees() {
                   onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
-                      <Mail />
+                      <AccountCircle />
                     </InputAdornment>
                   }
                   aria-describedby="outlined-employee-helper-text"
@@ -317,7 +360,7 @@ export default function ModalRegisterEmployees() {
                   onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
-                      <Mail />
+                      <Password />
                     </InputAdornment>
                   }
                   aria-describedby="outlined-employee-helper-text"
@@ -338,7 +381,7 @@ export default function ModalRegisterEmployees() {
                   onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
-                      <Mail />
+                      <Home />
                     </InputAdornment>
                   }
                   aria-describedby="outlined-employee-helper-text"
@@ -350,28 +393,34 @@ export default function ModalRegisterEmployees() {
               {/*Campo para asignar un rol de empleado*/}
               <FormControl variant="outlined">
                 <InputLabel htmlFor="camp-employee-role">Rol</InputLabel>
-                <OutlinedInput
-                  label="Rol"
+                <Select
+                  labelId="camp-employee-role"
                   id="camp-employee-role"
                   name="rol_id"
                   className="camps"
                   value={formData.rol_id}
-                  onChange={handleChange}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <Mail />
-                    </InputAdornment>
-                  }
-                  aria-describedby="outlined-employee-helper-text"
-                  inputProps={{
-                    "aria-label": "rol del empleado",
-                  }}
-                />
+                  onChange={(e) => setFormData({ ...formData, rol_id: Number(e.target.value) })}
+                  label="Rol"
+                >
+                  <MenuItem value={0} disabled>
+                    Seleccione Rol
+                  </MenuItem>
+                  {roles.map((role) => (
+                    <MenuItem key={role.rol_id} value={role.rol_id}>
+                      {role.rol_name}
+                    </MenuItem>
+                  ))}
+                </Select>
               </FormControl>
             </div>
-            <Button onClick={handleSubmit} sx={{ background: "#0F6FB9", color: "white" }}>
-              Registrar Empleado
-            </Button>
+            <div className="footer-form">
+              <Button onClick={handleSubmit} sx={{ background: "#0F6FB9", color: "white" }}>
+                Registrar Empleado
+              </Button>
+              <Button onClick={resetForm} sx={{ background: "#B90F0F", color: "white" }}>
+                Cancelar
+              </Button>
+            </div>
           </div>
           <br />
           <hr />

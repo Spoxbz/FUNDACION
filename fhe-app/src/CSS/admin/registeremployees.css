@@ -35,6 +35,15 @@
   height: 50px;
 }
 
+/*! Estilos seccion botones de creacion de usuario*/
+.footer-form {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 /*! Estilos seccion asignar especialidad al  medico en creacion*/
 .cont-camps-select-specialty {
   display: flex;
