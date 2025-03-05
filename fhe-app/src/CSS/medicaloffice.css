@@ -43,6 +43,7 @@
   display: flex;
   align-items: center;
 }
+
 /* .MuiSelect-select,
 .MuiSelect-outlined,
 .MuiInputBase-input,
@@ -50,12 +51,12 @@
 .css-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   padding: 0px 0px 0px 10px !important;
 }
-.MuiInputBase-input {
-  margin-right: 32px !important;
-}
 
 .mo-header-select {
-  padding: 0px !important;
+  padding: 10px 0px 0px 0px !important;
+  width: 260px;
+  display: flex;
+  align-items: center !important;
 }
 .mo-header-title {
   width: 80%;

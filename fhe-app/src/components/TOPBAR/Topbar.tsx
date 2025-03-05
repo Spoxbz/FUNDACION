@@ -44,7 +44,7 @@ const Topbar: React.FC<TopbarProps> = ({ onMenuOpen, username, menuAnchorEl, onL
 
   // Cargar el nombre del rol si aún no está en el estado
   useEffect(() => {
-    setTimeout(() => setLoading(false), 2000); // Simula una carga de 2 segundos
+    setTimeout(() => setLoading(false), 1000); // Simula una carga de 1 segundo
     if (!roleName && user) {
       loadUserRole();
     }

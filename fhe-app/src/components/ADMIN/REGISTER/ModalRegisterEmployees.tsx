@@ -423,27 +423,9 @@ export default function ModalRegisterEmployees() {
               </FormControl>
               {/*Campo para asignar un rol de empleado*/}
               <FormControl variant="outlined">
-                {/* <InputLabel htmlFor="camp-employee-role">Rol</InputLabel>
-                <Select
-                  labelId="camp-employee-role"
-                  id="camp-employee-role"
-                  name="rol_id"
-                  className="camps"
-                  value={formData.rol_id}
-                  onChange={(e) => setFormData({ ...formData, rol_id: Number(e.target.value) })}
-                  label="Rol"
-                >
-                  <MenuItem value={0} disabled>
-                    Seleccione Rol
-                  </MenuItem>
-                  {roles.map((role) => (
-                    <MenuItem key={role.rol_id} value={role.rol_id}>
-                      {role.rol_name}
-                    </MenuItem>
-                  ))}
-                </Select> */}
                 <Autocomplete
                   className="camps"
+                  sx={{ width: 230, height: "50px" }}
                   id="camp-employee-role"
                   options={roles} // Aquí usas los roles
                   getOptionLabel={(role) => role.rol_name} // Muestra el nombre del rol
@@ -472,11 +454,11 @@ export default function ModalRegisterEmployees() {
             <div className="cont-camps-select-specialty">
               <FormControl>
                 <Autocomplete
-                  className="camps"
                   id="id_camp_employee_created"
+                  className="select-medic-employee"
                   options={filteredEmployees}
                   getOptionLabel={(employee) => `${employee.employee_name} ${employee.employee_lastname}`}
-                  renderInput={(params) => <TextField className="select-medic-employee" {...params} label="Empleado" />}
+                  renderInput={(params) => <TextField {...params} label="Empleado" />}
                   onChange={(value) => console.log("Empleado seleccionado:", value)}
                 />
               </FormControl>

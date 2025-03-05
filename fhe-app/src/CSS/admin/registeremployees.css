@@ -32,7 +32,7 @@
 /*! Estilos campos del formulario*/
 .camps {
   width: 80%;
-  height: 50px;
+  height: 50px !important;
 }
 
 /*! Estilos seccion botones de creacion de usuario*/
@@ -58,10 +58,16 @@
 /*Estilos campo seleccionable medico*/
 .select-medic-employee {
   width: 230px !important;
-  /* height: 180px !important; */
+  align-items: center !important;
+  height: auto !important;
 }
-.MuiInputBase-input {
-  height: 50px !important;
+
+/*Campo del Autocmplete component donde se muestran las opciones*/
+.MuiOutlinedInput-input {
+  display: flex !important;
+  /* border: 1px solid #000; */
+  padding: 0px 0px 9px 5px !important;
+  margin: 0px !important;
 }
 /*Estilos campo seleccionable*/
 .select-specialty {

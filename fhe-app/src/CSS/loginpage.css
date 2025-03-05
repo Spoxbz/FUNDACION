@@ -230,13 +230,14 @@
   margin-top: -0.8% !important;
 } */
 
-.MuiInputBase-root {
-  /* height: fit-content !important; */
-  /* height: 35px !important; */
-  /* background-color: red; */
+/*Areas de texto de los campos como fecha o selects*/
+/* .MuiInputBase-root {
+  height: fit-content !important;
+  height: 50px !important;
+  background-color: red;
   margin: 0px !important ;
   padding: 0px !important;
-}
+} */
 /* 
 .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input {
   font: inherit;

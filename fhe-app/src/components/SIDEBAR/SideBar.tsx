@@ -70,7 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, handleDrawerClose, toggleButton
       }));
       setMenuItems(formattedOptions);
       setLoading(false); // Finaliza la carga
-    }, 2000); // Ajusta el tiempo de simulación de carga
+    }, 1000); // Ajusta el tiempo de simulación de carga
   }, [user]);
 
   useEffect(() => {

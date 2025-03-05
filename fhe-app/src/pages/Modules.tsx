@@ -40,7 +40,7 @@ export default function Modules() {
 
   useEffect(() => {
     // Simula la carga por 2 segundos
-    setTimeout(() => setLoading(false), 2000);
+    setTimeout(() => setLoading(false), 1000);
 
     if (user) {
       if (user.rol_id === 4) obtenerTurnosMedico(user.employee_id);
