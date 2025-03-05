@@ -10,7 +10,15 @@ import "../../../CSS/admin/registeremployees.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import { FormControl, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
+import {
+  Autocomplete,
+  FormControl,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+  Typography,
+} from "@mui/material";
 import {
   AccountCircle,
   AddCircleOutline,
@@ -24,14 +32,18 @@ import {
   PhoneAndroid,
 } from "@mui/icons-material";
 // Import para traer la funcion que registra empleados
-import { createEmployee } from "../../../backendTwo/service/employeeService";
+import { createEmployee, fetchEmployees } from "../../../backendTwo/service/employeeService";
 // Import del rolservice
 import { fetchRoles } from "../../../backendTwo/service/roleService";
+import { Employee } from "../../../backendTwo/model/model.employee";
 
 export default function ModalRegisterEmployees() {
   const [open, setOpen] = useState(false);
   // Constantes de roles
   const [roles, setRoles] = useState<{ rol_id: number; rol_name: string }[]>([]);
+  // Constantes para manejar empleados medicos para signarlse especialidades
+  const [employees, setEmployees] = useState<Employee[]>([]); // Lista de empleados con rol médico
+  const [searchQuery] = useState(""); // Para manejar la búsqueda
 
   // Cargar los roles al iniciar el componente
   useEffect(() => {
@@ -43,7 +55,21 @@ export default function ModalRegisterEmployees() {
         console.error("Error cargando roles:", error);
       }
     };
+
+    // Cargar empleados
+    const loadEmployees = async () => {
+      try {
+        const employeesData = await fetchEmployees();
+        // Filtramos solo los empleados con rol médico (rol_id = 4)
+        const filteredEmployees = employeesData.filter((emp) => emp.rol_id === 4);
+        setEmployees(filteredEmployees);
+      } catch (error) {
+        console.error("Error cargando empleados:", error);
+      }
+    };
+
     loadRoles();
+    loadEmployees();
   }, []);
 
   // Estado para los datos del formulario
@@ -116,6 +142,11 @@ export default function ModalRegisterEmployees() {
     });
     setMessage(null); // Limpiamos cualquier mensaje de éxito/error
   };
+
+  // Filtrar empleados según la búsqueda
+  const filteredEmployees = employees.filter((employee) =>
+    employee.employee_name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   // constantes para abrir/cerrar el modal
   const handleOpen = () => setOpen(true);
@@ -392,7 +423,7 @@ export default function ModalRegisterEmployees() {
               </FormControl>
               {/*Campo para asignar un rol de empleado*/}
               <FormControl variant="outlined">
-                <InputLabel htmlFor="camp-employee-role">Rol</InputLabel>
+                {/* <InputLabel htmlFor="camp-employee-role">Rol</InputLabel>
                 <Select
                   labelId="camp-employee-role"
                   id="camp-employee-role"
@@ -410,7 +441,18 @@ export default function ModalRegisterEmployees() {
                       {role.rol_name}
                     </MenuItem>
                   ))}
-                </Select>
+                </Select> */}
+                <Autocomplete
+                  className="camps"
+                  id="camp-employee-role"
+                  options={roles} // Aquí usas los roles
+                  getOptionLabel={(role) => role.rol_name} // Muestra el nombre del rol
+                  value={roles.find((role) => role.rol_id === formData.rol_id) || null} // Asegúrate de mostrar el rol seleccionado
+                  onChange={(event, newValue) => {
+                    setFormData({ ...formData, rol_id: newValue ? newValue.rol_id : 0 }); // Actualiza el rol en el formData
+                  }}
+                  renderInput={(params) => <TextField {...params} label="Rol" />}
+                />
               </FormControl>
             </div>
             <div className="footer-form">
@@ -429,16 +471,13 @@ export default function ModalRegisterEmployees() {
             <Typography variant="h6">Asignar especialidad al medico</Typography>
             <div className="cont-camps-select-specialty">
               <FormControl>
-                <InputLabel htmlFor="id_camp_employee_created">Empleado</InputLabel>
-                <OutlinedInput
-                  label="Empleado"
-                  id="id_camp_employee_created"
+                <Autocomplete
                   className="camps"
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <Mail />
-                    </InputAdornment>
-                  }
+                  id="id_camp_employee_created"
+                  options={filteredEmployees}
+                  getOptionLabel={(employee) => `${employee.employee_name} ${employee.employee_lastname}`}
+                  renderInput={(params) => <TextField className="select-medic-employee" {...params} label="Empleado" />}
+                  onChange={(value) => console.log("Empleado seleccionado:", value)}
                 />
               </FormControl>
               <Box sx={{ minWidth: 120 }}>
