@@ -21,7 +21,7 @@ const columns: GridColDef[] = [
     width: 100,
     renderCell: () => (
       <div>
-        <Edit />
+        <Edit sx={{ cursor: "pointer" }} />
       </div>
     ),
   },
@@ -69,7 +69,7 @@ export default function DataTable({ searchTerm, onSelectOffice }: OfficeTablePro
     onSelectOffice(selectedOffice || null);
   };
   return (
-    <Paper sx={{ height: 460, width: "auto" }}>
+    <Paper sx={{ height: 600, width: "auto" }}>
       <DataGrid
         initialState={{ pagination: { paginationModel } }}
         rows={filteredOffices.map((offs) => ({

@@ -2,8 +2,7 @@
 .container-emp-page {
   margin-top: 2.5rem !important;
   margin-left: 3rem !important;
-  /* margin-right: 0.2rem !important; */
-  width: 77% !important;
+  width: 78.8% !important; /*! Importante solucionar con widt*/
   height: fit-content !important;
   font-family: "Roboto", sans-serif;
   background-color: none !important;
@@ -87,7 +86,7 @@
 .sub-container-table {
   /* border: 1px solid #000; */
   width: 100% !important;
-  height: 79vh;
+  height: auto !important;
 }
 
 @media (max-width: 1600px) {

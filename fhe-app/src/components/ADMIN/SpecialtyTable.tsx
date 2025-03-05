@@ -21,7 +21,7 @@ const columns: GridColDef[] = [
     width: 100,
     renderCell: () => (
       <div>
-        <Edit />
+        <Edit sx={{ cursor: "pointer" }} />
       </div>
     ),
   },

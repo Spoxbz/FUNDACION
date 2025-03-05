@@ -9,6 +9,18 @@ import { fetchEmployees } from "../../backendTwo/service/employeeService";
 import { fetchRoleNameById } from "../../backendTwo/service/roleService";
 
 const columns: GridColDef[] = [
+  {
+    field: "edit",
+    headerName: "Editar",
+    description: "Editar este empleado",
+    sortable: false,
+    width: 80,
+    renderCell: () => (
+      <div>
+        <Edit sx={{ cursor: "pointer" }} />
+      </div>
+    ),
+  },
   { field: "employee_id", headerName: "ID", width: 70 },
   { field: "employee_name", headerName: "Nombres", width: 130 },
   { field: "employee_lastname", headerName: "Apellidos", width: 130 },
@@ -23,18 +35,6 @@ const columns: GridColDef[] = [
   { field: "password", headerName: "Contraseña", width: 130 },
   { field: "employee_address", headerName: "Dirección", width: 130 },
   { field: "rol_name", headerName: "Rol", width: 130 },
-  {
-    field: "edit",
-    headerName: "Editar",
-    description: "Editar este empleado",
-    sortable: false,
-    width: 130,
-    renderCell: () => (
-      <div>
-        <Edit />
-      </div>
-    ),
-  },
 ];
 
 const paginationModel = { page: 0, pageSize: 10 };
@@ -91,7 +91,7 @@ export default function DataTable({ searchTerm, onSelectEmployee }: EmployeeTabl
   };
 
   return (
-    <Paper sx={{ height: 460, width: "100%" }}>
+    <Paper sx={{ height: 600, width: "100%" }}>
       <DataGrid
         initialState={{ pagination: { paginationModel } }}
         rows={filteredEmployees.map((emp) => ({

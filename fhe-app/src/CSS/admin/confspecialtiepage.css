@@ -4,12 +4,11 @@
   margin-left: 3rem !important;
   /* margin-right: 0.2rem !important; */
   width: 96.5%;
-  height: 100vh !important;
   font-family: "Roboto", sans-serif;
   background-color: none !important;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   background-color: white !important;
   /* overflow: auto; */

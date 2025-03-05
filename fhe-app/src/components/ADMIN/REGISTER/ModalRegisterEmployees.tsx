@@ -475,6 +475,9 @@ export default function ModalRegisterEmployees() {
               </Box>
             </div>
           </div>
+          <Button color="warning" onClick={handleClose}>
+            Cerrar
+          </Button>
         </Box>
       </Modal>
     </div>
