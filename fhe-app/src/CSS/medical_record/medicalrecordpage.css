@@ -1,7 +1,7 @@
 .mr-container {
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   padding-left: 4rem;
   padding-right: 0.5rem;
   gap: 1rem;
@@ -50,19 +50,37 @@
   border-radius: 4px;
 }
 .mr-top-info-turn,
-.mr-top-info-patient {
-  margin: 1rem;
+.mr-top-info-patient,
+.mr-top-info-signs-patient {
+  margin: 0.5rem;
 }
 .mr-top-info-turn {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
 }
 .mr-top-info-patient {
-  display: flex;
-  justify-content: space-around;
-  gap: 10px;
-  /* flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
 }
+.mr-top-info-signs-patient {
+  /* display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin: 0.5rem; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+/** Estilos elementos primera tab*/
+#outlined-basic {
+  width: 100%;
+  height: 40px !important;
+  padding: 0px 0px 0px 0px !important;
+  top: -10px !important;
+}
+
 /*? Estilos del contenedor de la segunda tab*/
 .mr-sp-container {
   border: 1px solid blue;
